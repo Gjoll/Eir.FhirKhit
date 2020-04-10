@@ -23,6 +23,10 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>FHIR_R4</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="specification.zip" Pack="true" PackagePath="lib\$(TargetFramework)">
     </None>
