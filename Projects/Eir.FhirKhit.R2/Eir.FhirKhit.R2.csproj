@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+    <Platforms>AnyCPU;x64</Platforms>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.19.0</Version>
+    <Authors>Kurt W. Allen</Authors>
+    <Company>Eir Solutions, LLC.</Company>
+    <PackageProjectUrl>https://github.com/Gjoll/FhirKhit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Gjoll/FhirKhit</RepositoryUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Description>FhirKhit tools for Fhir DSTU 2</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;FHIR_R2</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonMark.NET" Version="0.15.1" />
+    <PackageReference Include="Hl7.Fhir.DSTU2" Version="1.4.0" />
+    <PackageReference Include="Hl7.Fhir.Specification.DSTU2" Version="1.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FhirKhit.Tools\FhirKhit.Tools.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <Import Project="..\FhirKhit.Tools.Shar\FhirKhit.Tools.Shar.projitems" Label="PGShared" />
+
+  <Import Project="..\..\FhirKhit.GlobalSuppressions\FhirKhit.GlobalSuppressions.projitems" Label="PGShared" />
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <CreateItem Include="$(OutputPath)\..\FhirKhit.Tools.*nupkg">
+      <Output TaskParameter="Include" ItemName="FilesToCopy" />
+    </CreateItem>
+    <Move SourceFiles="@(FilesToCopy)" DestinationFolder="$(SolutionDir)CompiledNugetPackages" />
+  </Target>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del $(OutDir)..\*.nupkg" />
+  </Target>
+
+</Project>

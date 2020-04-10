@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+    <Platforms>AnyCPU;x64</Platforms>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.0</Version>
+    <Authors>Kurt W. Allen</Authors>
+    <Company>Eir Solutions, LLC.</Company>
+    <PackageProjectUrl>https://github.com/Gjoll/FhirKhit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Gjoll/FhirKhit</RepositoryUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Description>FhirKhit tools for Fhir Release 4</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;FHIR_R4</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="specification.zip" Pack="true" PackagePath="lib\$(TargetFramework)">
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="CommonMark.NET" Version="0.15.1" />
+    <PackageReference Include="Eir.DevTools" Version="1.7.0" />
+    <PackageReference Include="Hl7.Fhir.ElementModel" Version="1.6.0" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="1.6.0" />
+    <PackageReference Include="Hl7.Fhir.Serialization" Version="1.6.0" />
+    <PackageReference Include="Hl7.Fhir.Specification.R4" Version="1.6.0" />
+    <PackageReference Include="Hl7.FhirPath" Version="1.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj">
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <Import Project="..\Eir.FhirKhit.Shar\Eir.FhirKhit.Shar.projitems" Label="PGShared" />
+
+  <Import Project="..\FhirKhit.GlobalSuppressions\FhirKhit.GlobalSuppressions.projitems" Label="PGShared" />
+
+  <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
+
+</Project>
