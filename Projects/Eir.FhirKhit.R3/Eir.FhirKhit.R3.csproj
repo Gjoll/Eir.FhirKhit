@@ -11,11 +11,11 @@
     <PackageProjectUrl>https://github.com/Gjoll/Eir.FhirKhit</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Gjoll/Eir.FhirKhit</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageReleaseNotes>FhirKhit tools common</PackageReleaseNotes>
+    <Description>FhirKhit tools for Fhir STU 3</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;3021</NoWarn>
+    <DefineConstants>TRACE;FHIR_R3</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -23,13 +23,15 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <NoWarn>1701;1702;3021</NoWarn>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>FHIR_R3</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CommonMark.NET" Version="0.15.1" />
     <PackageReference Include="Eir.DevTools" Version="1.16.2" />
+    <PackageReference Include="Eir.FhirKhit" Version="1.0.0" />
+    <PackageReference Include="Hl7.Fhir.Specification.STU3" Version="1.7.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,6 +39,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <Import Project="..\Eir.FhirKhit.Shar\Eir.FhirKhit.Shar.projitems" Label="PGShared" />
 
   <Import Project="..\FhirKhit.GlobalSuppressions\FhirKhit.GlobalSuppressions.projitems" Label="PGShared" />
 
