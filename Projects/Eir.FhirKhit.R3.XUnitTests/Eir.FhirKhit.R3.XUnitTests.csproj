@@ -14,6 +14,10 @@
     <DefineConstants>TRACE;FHIR_R3</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>FHIR_R3</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Eir.DevTools" Version="1.7.0" />
     <PackageReference Include="Hl7.Fhir.Specification.STU3" Version="1.6.0" />

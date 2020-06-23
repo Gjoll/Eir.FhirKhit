@@ -26,7 +26,7 @@ namespace FhirKhit.Tools.R3
 
         public String ValidatorArgs { get; set; }
         public String ValidationPath { get; set; }
-        public String JarPath;
+        public String JarPath { get; set; }
 
 
         public FhirValidator(String validationPath = null)
