@@ -19,16 +19,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eir.DevTools" Version="1.7.0" />
-    <PackageReference Include="Hl7.Fhir.Specification.STU3" Version="1.6.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+    <PackageReference Include="Eir.DevTools" Version="1.16.2" />
+    <PackageReference Include="Eir.FhirKhit" Version="1.0.0" />
+    <PackageReference Include="Hl7.Fhir.Specification.STU3" Version="1.7.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -42,7 +43,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eir.FhirKhit.R3\Eir.FhirKhit.R3.csproj" />
-    <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj" />
   </ItemGroup>
 
   <ItemGroup>
