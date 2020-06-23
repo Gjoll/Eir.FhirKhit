@@ -5,7 +5,7 @@
     <LangVersion>7.1</LangVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <Authors>Kurt W. Allen</Authors>
     <Company>Eir Solutions, LLC.</Company>
     <PackageProjectUrl>https://github.com/Gjoll/Eir.FhirKhit</PackageProjectUrl>
@@ -36,7 +36,6 @@
   <ItemGroup>
     <PackageReference Include="CommonMark.NET" Version="0.15.1" />
     <PackageReference Include="Eir.DevTools" Version="1.16.2" />
-    <PackageReference Include="Eir.FhirKhit" Version="1.0.0" />
     <PackageReference Include="Hl7.Fhir.ElementModel" Version="1.7.0" />
     <PackageReference Include="Hl7.Fhir.R4" Version="1.7.0" />
     <PackageReference Include="Hl7.Fhir.Serialization" Version="1.7.0" />
@@ -49,8 +48,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
+    <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj" />
   </ItemGroup>
 
   <Import Project="..\Eir.FhirKhit.Shar\Eir.FhirKhit.Shar.projitems" Label="PGShared" />

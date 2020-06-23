@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="Eir.DevTools" Version="1.16.2" />
-    <PackageReference Include="Eir.FhirKhit" Version="1.0.0" />
     <PackageReference Include="Hl7.Fhir.ElementModel" Version="1.7.0" />
     <PackageReference Include="Hl7.Fhir.R4" Version="1.7.0" />
     <PackageReference Include="Hl7.Fhir.Serialization" Version="1.7.0" />
@@ -47,6 +46,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eir.FhirKhit.r4\Eir.FhirKhit.R4.csproj" />
+    <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj" />
   </ItemGroup>
 
 </Project>
