@@ -41,9 +41,12 @@ namespace FhirKhit.Tools.R3
     [DebuggerDisplay("{this.Path}")]
     public class ElementTreeNode : IElementTreeItem, IEnumerable<ElementTreeSlice>
     {
-        public const String DefaultSliceName = "";
+        /// <summary>
+        /// Name of item that is not a Fhir slice.
+        /// </summary>
+        public const String NonSliceName = "";
 
-        public ElementTreeSlice DefaultSlice => this.Slices[DefaultSliceName];
+        public ElementTreeSlice DefaultSlice => this.Slices[ElementTreeNode.NonSliceName];
 
         public ElementDefinition ElementDefinition => this.DefaultSlice.ElementDefinition;
 
@@ -94,7 +97,7 @@ namespace FhirKhit.Tools.R3
         {
             this.Path = path;
             this.Name = pathName;
-            this.Slices.Add(new ElementTreeSlice(this, DefaultSliceName, elementDefinition));
+            this.Slices.Add(new ElementTreeSlice(this, ElementTreeNode.NonSliceName, elementDefinition));
         }
 
         public void ReplaceBasePath(String newBase)
@@ -159,7 +162,7 @@ namespace FhirKhit.Tools.R3
                 {
                     case 1:
                         pathPart = pathItemParts[0];
-                        sliceName = DefaultSliceName;
+                        sliceName = ElementTreeNode.NonSliceName;
                         break;
 
                     case 2:
@@ -218,7 +221,7 @@ namespace FhirKhit.Tools.R3
                 {
                     case 1:
                         pathPart = pathItemParts[0];
-                        sliceName = DefaultSliceName;
+                        sliceName = ElementTreeNode.NonSliceName;
                         break;
                     case 2:
                         pathPart = pathItemParts[0];

@@ -36,7 +36,11 @@ namespace FhirKhit.Tools.R3
         public ElementTreeItemList<ElementTreeNode> Nodes { get; } = new ElementTreeItemList<ElementTreeNode>();
         public ElementDefinition ElementDefinition { get; set; }
 
+        /// <summary>
+        /// Parent node. This instance is a slice of this node.
+        /// </summary>
         ElementTreeNode parent;
+
         /// <summary>
         /// Name of this slice.
         /// </summary>
@@ -57,6 +61,7 @@ namespace FhirKhit.Tools.R3
             this.Dump("", sb);
             return sb.ToString();
         }
+
         public void Dump(String margin, StringBuilder sb)
         {
             sb.AppendLine($"{margin}Slice: {this.Name}");
