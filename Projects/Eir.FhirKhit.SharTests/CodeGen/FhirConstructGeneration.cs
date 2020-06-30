@@ -348,9 +348,9 @@ namespace FhirKhit.Tools.FhirConstructTests
         /// <summary>
         /// Generate Construct method.
         /// </summary>
-        [Fact(DisplayName = "CodeGeneration.FhirConstructA")]
+        [Fact(DisplayName = "CodeGeneration.FhirConstruct_Create")]
         [Trait("CodeGen", "CodeGen")]
-        public void FhirConstructA()
+        public void FhirConstruct_Create()
         {
             CodeEditor editor = new CodeEditor();
 
@@ -366,6 +366,7 @@ namespace FhirKhit.Tools.FhirConstructTests
                 .AppendLine($"using Hl7.Fhir.Model;")
                 .AppendLine($"using System.Diagnostics;")
                 .AppendLine($"using Hl7.FhirPath;")
+                .AppendLine("using Eir.DevTools;")
                 .AppendLine($"using Range = Hl7.Fhir.Model.Range;")
                 .BlankLine()
 #if FHIR_R3
@@ -418,11 +419,11 @@ namespace FhirKhit.Tools.FhirConstructTests
                 .CloseBrace()
                 ;
 
-            String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
+            String outputPath = Path.Combine(DirHelper.FindParentDir("Projects"),
 #if FHIR_R3
-                "FhirKhit.Tools.R3",
+                "Eir.FhirKhit.R3",
 #elif FHIR_R4
-                "FhirKhit.Tools.R4",
+                "Eir.FhirKhit.R4",
 #endif
                 "FhirConstruct.cs");
             editor.Save(outputPath);
@@ -536,9 +537,9 @@ namespace FhirKhit.Tools.FhirConstructTests
         /// There is no test to run the code, but compiling it shows that the
         /// code generated is correct syntactically, if not semantically.
         /// </summary>
-        [Fact(DisplayName = "CodeGeneration.FhirConstructB")]
+        [Fact(DisplayName = "CodeGeneration.FhirConstruct_CreateTest")]
         [Trait("CodeGen", "CodeGen")]
-        public void FhirConstructB()
+        public void FhirConstruct_CreateTest()
         {
             CodeEditor editor = new CodeEditor();
 
@@ -599,7 +600,7 @@ namespace FhirKhit.Tools.FhirConstructTests
                         ;
 
                     Element fix = CreateFix(fhirCSType);
-                    FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
+                    //$FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
                 }
                 else if (ModelInfo.IsDataType(fhirType))
                 {
@@ -613,7 +614,7 @@ namespace FhirKhit.Tools.FhirConstructTests
                             ;
 
                         Element fix = CreateFix(fhirCSType);
-                        FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
+                        //$FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
                     }
                 }
             }
@@ -623,13 +624,13 @@ namespace FhirKhit.Tools.FhirConstructTests
                 ;
 
 
-            String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
+            String outputPath = Path.Combine(DirHelper.FindParentDir("Projects"),
 #if FHIR_R3
-                "FhirKhit.Tools.R3.XUnitTests",
+                "Eir.FhirKhit.R3.XUnitTests",
 #elif FHIR_R4
-                "FhirKhit.Tools.R4.XUnitTests",
+                "Eir.FhirKhit.R4.XUnitTests",
 #endif
-            "FhirConstructUseTests.cs");
+                "FhirConstructUseTests.cs");
             editor.Save(outputPath);
         }
 
