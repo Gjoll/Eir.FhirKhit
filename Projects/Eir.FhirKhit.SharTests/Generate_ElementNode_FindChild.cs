@@ -10,15 +10,15 @@ using System.Diagnostics;
 using Eir.DevTools;
 
 #if FHIR_R3
-using FhirKhit.Tools.R3;
+using Eir.FhirKhit.R3;
 #elif FHIR_R4
-using FhirKhit.Tools.R4;
+using Eir.FhirKhit.R4;
 #endif
 
 #if FHIR_R3
-namespace FhirKhit.Tools.R3.XUnitTests
+namespace Eir.FhirKhit.R3.XUnitTests
 #elif FHIR_R4
-namespace FhirKhit.Tools.R4.XUnitTests
+namespace Eir.FhirKhit.R4.XUnitTests
 #endif
 {
     public class Generate_ElementDefinitionNode_FindChild
@@ -128,7 +128,7 @@ namespace FhirKhit.Tools.R4.XUnitTests
                 .AppendLine($"using System.Collections.Generic;")
                 .AppendLine($"using System.Reflection;")
                 .AppendLine($"using System.Text;")
-                .AppendLine($"using FhirKhit.Tools;")
+                .AppendLine($"using Eir.FhirKhit;")
                 .AppendLine($"using Hl7.Fhir.Introspection;")
                 .AppendLine($"using Hl7.Fhir.Model;")
                 .AppendLine($"using Hl7.Fhir.Support.Model;")
@@ -136,9 +136,9 @@ namespace FhirKhit.Tools.R4.XUnitTests
                 .AppendLine($"using Hl7.FhirPath;")
                 .BlankLine()
 #if FHIR_R3
-                .AppendLine($"namespace FhirKhit.Tools.R3")
+                .AppendLine($"namespace Eir.FhirKhit.R3")
 #elif FHIR_R4
-                .AppendLine($"namespace FhirKhit.Tools.R4")
+                .AppendLine($"namespace Eir.FhirKhit.R4")
 #endif
                 .OpenBrace()
                 .AppendCode($"public partial class ElementDefinitionNode")
@@ -197,11 +197,11 @@ namespace FhirKhit.Tools.R4.XUnitTests
 
 #if FHIR_R3
             String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
-                "FhirKhit.Tools.R3",
+                "Eir.FhirKhit.R3",
                 "ElementDefinitionNode.FindChild.cs");
 #elif FHIR_R4
             String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
-                "FhirKhit.Tools.R4",
+                "Eir.FhirKhit.R4",
                 "ElementDefinitionNode.FindChild.cs");
 #endif
             editor.Save(outputPath);

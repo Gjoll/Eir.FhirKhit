@@ -12,12 +12,12 @@ using Xunit;
 using Eir.DevTools;
 
 #if FHIR_R3
-using FhirKhit.Tools.R3;
+using Eir.FhirKhit.R3;
 #elif FHIR_R4
-using FhirKhit.Tools.R4;
+using Eir.FhirKhit.R4;
 #endif
 
-namespace FhirKhit.Tools.FhirConstructTests
+namespace Eir.FhirKhit.FhirConstructTests
 {
     /// <summary>
     /// Test the output test files generated in FhirKhit.ProfGen.XUnitTests.
@@ -361,7 +361,7 @@ namespace FhirKhit.Tools.FhirConstructTests
                 .AppendLine($"using System.Collections.Generic;")
                 .AppendLine($"using System.Reflection;")
                 .AppendLine($"using System.Text;")
-                .AppendLine($"using FhirKhit.Tools;")
+                .AppendLine($"using Eir.FhirKhit;")
                 .AppendLine($"using Hl7.Fhir.Introspection;")
                 .AppendLine($"using Hl7.Fhir.Model;")
                 .AppendLine($"using System.Diagnostics;")
@@ -370,9 +370,9 @@ namespace FhirKhit.Tools.FhirConstructTests
                 .AppendLine($"using Range = Hl7.Fhir.Model.Range;")
                 .BlankLine()
 #if FHIR_R3
-                .AppendLine($"namespace FhirKhit.Tools.R3")
+                .AppendLine($"namespace Eir.FhirKhit.R3")
 #elif FHIR_R4
-                .AppendLine($"namespace FhirKhit.Tools.R4")
+                .AppendLine($"namespace Eir.FhirKhit.R4")
 #endif
                 .OpenBrace()
                 .AppendCode($"public static class FhirConstruct")
@@ -550,7 +550,7 @@ namespace FhirKhit.Tools.FhirConstructTests
                 .AppendLine($"using System.Collections.Generic;")
                 .AppendLine($"using System.Reflection;")
                 .AppendLine($"using System.Text;")
-                .AppendLine($"using FhirKhit.Tools;")
+                .AppendLine($"using Eir.FhirKhit;")
                 .AppendLine($"using Hl7.Fhir.Introspection;")
                 .AppendLine($"using Hl7.Fhir.Model;")
                 .AppendLine($"using System.Diagnostics;")
@@ -558,9 +558,9 @@ namespace FhirKhit.Tools.FhirConstructTests
                 .AppendLine($"using Range = Hl7.Fhir.Model.Range;")
                 .BlankLine()
 #if FHIR_R3
-                .AppendLine($"namespace FhirKhit.Tools.R3")
+                .AppendLine($"namespace Eir.FhirKhit.R3")
 #elif FHIR_R4
-                .AppendLine($"namespace FhirKhit.Tools.R4")
+                .AppendLine($"namespace Eir.FhirKhit.R4")
 #endif
                 .OpenBrace()
                 .AppendCode($"public class FhirConstructUse")

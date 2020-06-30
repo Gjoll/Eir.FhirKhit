@@ -4,9 +4,9 @@ using System.Text;
 using System.Linq;
 
 #if FHIR_R4
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 #elif FHIR_R3
-namespace FhirKhit.Tools.R3
+namespace Eir.FhirKhit.R3
 #endif
 {
     public class ElementTreeSorter

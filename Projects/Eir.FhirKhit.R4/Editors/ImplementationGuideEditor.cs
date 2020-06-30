@@ -1,4 +1,4 @@
-﻿using FhirKhit.Tools.R4;
+﻿using Eir.FhirKhit.R4;
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using System;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Text;
 using Eir.DevTools;
 
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 {
     /// <summary>
     /// Edit implementation guide.

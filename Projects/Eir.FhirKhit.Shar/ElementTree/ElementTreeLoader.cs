@@ -1,5 +1,5 @@
 ﻿using Eir.DevTools;
-using FhirKhit.Tools;
+using Eir.FhirKhit;
 using Hl7.Fhir.Model;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 
 #if FHIR_R4
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 #elif FHIR_R3
-namespace FhirKhit.Tools.R3
+namespace Eir.FhirKhit.R3
 #endif
 {
     /// <summary>

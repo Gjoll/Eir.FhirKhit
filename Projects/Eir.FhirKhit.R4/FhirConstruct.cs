@@ -3,31 +3,31 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using FhirKhit.Tools;
+using Eir.FhirKhit;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using System.Diagnostics;
 using Hl7.FhirPath;
-using Range = Hl7.Fhir.Model.Range;
 using Eir.DevTools;
-// FhirConstructGeneration.cs:370
-namespace FhirKhit.Tools.R4
-{                                                                                                                                           // FhirConstructGeneration.cs:376
-    public static class FhirConstruct                                                                                                       // FhirConstructGeneration.cs:377
-    {                                                                                                                                       // FhirConstructGeneration.cs:378
+using Range = Hl7.Fhir.Model.Range;
+                                                                                                                                            // FhirConstructGeneration.cs:371
+namespace Eir.FhirKhit.R4
+{                                                                                                                                           // FhirConstructGeneration.cs:377
+    public static class FhirConstruct                                                                                                       // FhirConstructGeneration.cs:378
+    {                                                                                                                                       // FhirConstructGeneration.cs:379
         /// <summary>
         /// Return c# text to create indicated element.
         /// </summary>
         static public bool Construct(CodeBlockNested block,
-            Element fix,                                                                                                                    // FhirConstructGeneration.cs:393
-            String methodName,                                                                                                              // FhirConstructGeneration.cs:394
-            out String propertyType,                                                                                                        // FhirConstructGeneration.cs:395
-            String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:396
-        {                                                                                                                                   // FhirConstructGeneration.cs:397
-                                                                                                                                            // FhirConstructGeneration.cs:399
-            propertyType = null;                                                                                                            // FhirConstructGeneration.cs:400
-            switch (fix.TypeName)                                                                                                           // FhirConstructGeneration.cs:401
-            {                                                                                                                               // FhirConstructGeneration.cs:402
+            Element fix,                                                                                                                    // FhirConstructGeneration.cs:394
+            String methodName,                                                                                                              // FhirConstructGeneration.cs:395
+            out String propertyType,                                                                                                        // FhirConstructGeneration.cs:396
+            String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:397
+        {                                                                                                                                   // FhirConstructGeneration.cs:398
+                                                                                                                                            // FhirConstructGeneration.cs:400
+            propertyType = null;                                                                                                            // FhirConstructGeneration.cs:401
+            switch (fix.TypeName)                                                                                                           // FhirConstructGeneration.cs:402
+            {                                                                                                                               // FhirConstructGeneration.cs:403
                 case "Address": // Address  - DataType                                                                                      // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Address";                                                                                               // FhirConstructGeneration.cs:307
@@ -394,9 +394,9 @@ namespace FhirKhit.Tools.R4
                     return Construct(block, (XHtml)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:240
                 }                                                                                                                           // FhirConstructGeneration.cs:241
                                                                                                                                             // FhirConstructGeneration.cs:242
-            }                                                                                                                               // FhirConstructGeneration.cs:416
-            return false;                                                                                                                   // FhirConstructGeneration.cs:417
-        }                                                                                                                                   // FhirConstructGeneration.cs:418
+            }                                                                                                                               // FhirConstructGeneration.cs:417
+            return false;                                                                                                                   // FhirConstructGeneration.cs:418
+        }                                                                                                                                   // FhirConstructGeneration.cs:419
                                                                                                                                             // FhirConstructGeneration.cs:315
         /// <summary>
         /// Return c# text to create indicated element.
@@ -7418,5 +7418,5 @@ namespace FhirKhit.Tools.R4
                 ;                                                                                                                           // FhirConstructGeneration.cs:273
             return  true;                                                                                                                   // FhirConstructGeneration.cs:274
         }                                                                                                                                   // FhirConstructGeneration.cs:275
-    }                                                                                                                                       // FhirConstructGeneration.cs:384
-}                                                                                                                                           // FhirConstructGeneration.cs:385
+    }                                                                                                                                       // FhirConstructGeneration.cs:385
+}                                                                                                                                           // FhirConstructGeneration.cs:386

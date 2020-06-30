@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 {
     public static class StructureDefinitionExtensions2
     {

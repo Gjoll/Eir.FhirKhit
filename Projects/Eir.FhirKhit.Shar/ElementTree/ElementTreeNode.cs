@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using System.Linq;
-using FhirKhit.Tools;
+using Eir.FhirKhit;
 using System.Collections;
 using Eir.DevTools;
 
 #if FHIR_R4
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 #elif FHIR_R3
-namespace FhirKhit.Tools.R3
+namespace Eir.FhirKhit.R3
 #endif
 {
     /// <summary>

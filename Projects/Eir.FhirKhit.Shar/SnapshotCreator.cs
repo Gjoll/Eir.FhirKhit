@@ -7,9 +7,9 @@ using Hl7.Fhir.Specification.Snapshot;
 using Hl7.Fhir.Specification.Source;
 
 #if FHIR_R4
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 #elif FHIR_R3
-namespace FhirKhit.Tools.R3
+namespace Eir.FhirKhit.R3
 #endif
 {
     /// <summary>

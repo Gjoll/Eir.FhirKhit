@@ -3,233 +3,233 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using FhirKhit.Tools;
+using Eir.FhirKhit;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using System.Diagnostics;
 using Hl7.FhirPath;
-using Range = Hl7.Fhir.Model.Range;
 using Eir.DevTools;
-// FhirConstructGeneration.cs:370
-namespace FhirKhit.Tools.R3
-{                                                                                                                                           // FhirConstructGeneration.cs:376
-    public static class FhirConstruct                                                                                                       // FhirConstructGeneration.cs:377
-    {                                                                                                                                       // FhirConstructGeneration.cs:378
+using Range = Hl7.Fhir.Model.Range;
+                                                                                                                                            // FhirConstructGeneration.cs:371
+namespace Eir.FhirKhit.R3
+{                                                                                                                                           // FhirConstructGeneration.cs:377
+    public static class FhirConstruct                                                                                                       // FhirConstructGeneration.cs:378
+    {                                                                                                                                       // FhirConstructGeneration.cs:379
         /// <summary>
         /// Return c# text to create indicated element.
         /// </summary>
         static public bool Construct(CodeBlockNested block,
-            Element fix,                                                                                                                    // FhirConstructGeneration.cs:393
-            String methodName,                                                                                                              // FhirConstructGeneration.cs:394
-            out String propertyType,                                                                                                        // FhirConstructGeneration.cs:395
-            String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:396
-        {                                                                                                                                   // FhirConstructGeneration.cs:397
-                                                                                                                                            // FhirConstructGeneration.cs:399
-            propertyType = null;                                                                                                            // FhirConstructGeneration.cs:400
-            switch (fix.TypeName)                                                                                                           // FhirConstructGeneration.cs:401
-            {                                                                                                                               // FhirConstructGeneration.cs:402
+            Element fix,                                                                                                                    // FhirConstructGeneration.cs:394
+            String methodName,                                                                                                              // FhirConstructGeneration.cs:395
+            out String propertyType,                                                                                                        // FhirConstructGeneration.cs:396
+            String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:397
+        {                                                                                                                                   // FhirConstructGeneration.cs:398
+                                                                                                                                            // FhirConstructGeneration.cs:400
+            propertyType = null;                                                                                                            // FhirConstructGeneration.cs:401
+            switch (fix.TypeName)                                                                                                           // FhirConstructGeneration.cs:402
+            {                                                                                                                               // FhirConstructGeneration.cs:403
                 case "Address": // Address  - DataType                                                                                      // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Address";                                                                                               // FhirConstructGeneration.cs:307
-                    return Construct(block, (Address)fix, methodName);                                                                      // FhirConstructGeneration.cs:308
+                    return Construct(block, (Address)fix, methodName, methodAccess);                                                        // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Age": // Age  - DataType                                                                                              // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Age";                                                                                                   // FhirConstructGeneration.cs:307
-                    return Construct(block, (Age)fix, methodName);                                                                          // FhirConstructGeneration.cs:308
+                    return Construct(block, (Age)fix, methodName, methodAccess);                                                            // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Annotation": // Annotation  - DataType                                                                                // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Annotation";                                                                                            // FhirConstructGeneration.cs:307
-                    return Construct(block, (Annotation)fix, methodName);                                                                   // FhirConstructGeneration.cs:308
+                    return Construct(block, (Annotation)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Attachment": // Attachment  - DataType                                                                                // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Attachment";                                                                                            // FhirConstructGeneration.cs:307
-                    return Construct(block, (Attachment)fix, methodName);                                                                   // FhirConstructGeneration.cs:308
+                    return Construct(block, (Attachment)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "CodeableConcept": // CodeableConcept  - DataType                                                                      // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "CodeableConcept";                                                                                       // FhirConstructGeneration.cs:307
-                    return Construct(block, (CodeableConcept)fix, methodName);                                                              // FhirConstructGeneration.cs:308
+                    return Construct(block, (CodeableConcept)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Coding": // Coding  - DataType                                                                                        // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Coding";                                                                                                // FhirConstructGeneration.cs:307
-                    return Construct(block, (Coding)fix, methodName);                                                                       // FhirConstructGeneration.cs:308
+                    return Construct(block, (Coding)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "ContactDetail": // ContactDetail  - DataType                                                                          // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "ContactDetail";                                                                                         // FhirConstructGeneration.cs:307
-                    return Construct(block, (ContactDetail)fix, methodName);                                                                // FhirConstructGeneration.cs:308
+                    return Construct(block, (ContactDetail)fix, methodName, methodAccess);                                                  // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "ContactPoint": // ContactPoint  - DataType                                                                            // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "ContactPoint";                                                                                          // FhirConstructGeneration.cs:307
-                    return Construct(block, (ContactPoint)fix, methodName);                                                                 // FhirConstructGeneration.cs:308
+                    return Construct(block, (ContactPoint)fix, methodName, methodAccess);                                                   // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Contributor": // Contributor  - DataType                                                                              // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Contributor";                                                                                           // FhirConstructGeneration.cs:307
-                    return Construct(block, (Contributor)fix, methodName);                                                                  // FhirConstructGeneration.cs:308
+                    return Construct(block, (Contributor)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Count": // Count  - DataType                                                                                          // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Count";                                                                                                 // FhirConstructGeneration.cs:307
-                    return Construct(block, (Count)fix, methodName);                                                                        // FhirConstructGeneration.cs:308
+                    return Construct(block, (Count)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "DataRequirement": // DataRequirement  - DataType                                                                      // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "DataRequirement";                                                                                       // FhirConstructGeneration.cs:307
-                    return Construct(block, (DataRequirement)fix, methodName);                                                              // FhirConstructGeneration.cs:308
+                    return Construct(block, (DataRequirement)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Distance": // Distance  - DataType                                                                                    // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Distance";                                                                                              // FhirConstructGeneration.cs:307
-                    return Construct(block, (Distance)fix, methodName);                                                                     // FhirConstructGeneration.cs:308
+                    return Construct(block, (Distance)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Dosage": // Dosage  - DataType                                                                                        // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Dosage";                                                                                                // FhirConstructGeneration.cs:307
-                    return Construct(block, (Dosage)fix, methodName);                                                                       // FhirConstructGeneration.cs:308
+                    return Construct(block, (Dosage)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Duration": // Duration  - DataType                                                                                    // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Duration";                                                                                              // FhirConstructGeneration.cs:307
-                    return Construct(block, (Duration)fix, methodName);                                                                     // FhirConstructGeneration.cs:308
+                    return Construct(block, (Duration)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "ElementDefinition": // ElementDefinition  - DataType                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "ElementDefinition";                                                                                     // FhirConstructGeneration.cs:307
-                    return Construct(block, (ElementDefinition)fix, methodName);                                                            // FhirConstructGeneration.cs:308
+                    return Construct(block, (ElementDefinition)fix, methodName, methodAccess);                                              // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Extension": // Extension  - DataType                                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Extension";                                                                                             // FhirConstructGeneration.cs:307
-                    return Construct(block, (Extension)fix, methodName);                                                                    // FhirConstructGeneration.cs:308
+                    return Construct(block, (Extension)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "HumanName": // HumanName  - DataType                                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "HumanName";                                                                                             // FhirConstructGeneration.cs:307
-                    return Construct(block, (HumanName)fix, methodName);                                                                    // FhirConstructGeneration.cs:308
+                    return Construct(block, (HumanName)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Identifier": // Identifier  - DataType                                                                                // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Identifier";                                                                                            // FhirConstructGeneration.cs:307
-                    return Construct(block, (Identifier)fix, methodName);                                                                   // FhirConstructGeneration.cs:308
+                    return Construct(block, (Identifier)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Meta": // Meta  - DataType                                                                                            // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Meta";                                                                                                  // FhirConstructGeneration.cs:307
-                    return Construct(block, (Meta)fix, methodName);                                                                         // FhirConstructGeneration.cs:308
+                    return Construct(block, (Meta)fix, methodName, methodAccess);                                                           // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Money": // Money  - DataType                                                                                          // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Money";                                                                                                 // FhirConstructGeneration.cs:307
-                    return Construct(block, (Money)fix, methodName);                                                                        // FhirConstructGeneration.cs:308
+                    return Construct(block, (Money)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Narrative": // Narrative  - DataType                                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Narrative";                                                                                             // FhirConstructGeneration.cs:307
-                    return Construct(block, (Narrative)fix, methodName);                                                                    // FhirConstructGeneration.cs:308
+                    return Construct(block, (Narrative)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "ParameterDefinition": // ParameterDefinition  - DataType                                                              // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "ParameterDefinition";                                                                                   // FhirConstructGeneration.cs:307
-                    return Construct(block, (ParameterDefinition)fix, methodName);                                                          // FhirConstructGeneration.cs:308
+                    return Construct(block, (ParameterDefinition)fix, methodName, methodAccess);                                            // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Period": // Period  - DataType                                                                                        // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Period";                                                                                                // FhirConstructGeneration.cs:307
-                    return Construct(block, (Period)fix, methodName);                                                                       // FhirConstructGeneration.cs:308
+                    return Construct(block, (Period)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Quantity": // Quantity  - DataType                                                                                    // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Quantity";                                                                                              // FhirConstructGeneration.cs:307
-                    return Construct(block, (Quantity)fix, methodName);                                                                     // FhirConstructGeneration.cs:308
+                    return Construct(block, (Quantity)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Range": // Range  - DataType                                                                                          // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Range";                                                                                                 // FhirConstructGeneration.cs:307
-                    return Construct(block, (Range)fix, methodName);                                                                        // FhirConstructGeneration.cs:308
+                    return Construct(block, (Range)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Ratio": // Ratio  - DataType                                                                                          // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Ratio";                                                                                                 // FhirConstructGeneration.cs:307
-                    return Construct(block, (Ratio)fix, methodName);                                                                        // FhirConstructGeneration.cs:308
+                    return Construct(block, (Ratio)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Reference": // Reference  - DataType                                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Reference";                                                                                             // FhirConstructGeneration.cs:307
-                    return Construct(block, (ResourceReference)fix, methodName);                                                            // FhirConstructGeneration.cs:308
+                    return Construct(block, (ResourceReference)fix, methodName, methodAccess);                                              // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "RelatedArtifact": // RelatedArtifact  - DataType                                                                      // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "RelatedArtifact";                                                                                       // FhirConstructGeneration.cs:307
-                    return Construct(block, (RelatedArtifact)fix, methodName);                                                              // FhirConstructGeneration.cs:308
+                    return Construct(block, (RelatedArtifact)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "SampledData": // SampledData  - DataType                                                                              // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "SampledData";                                                                                           // FhirConstructGeneration.cs:307
-                    return Construct(block, (SampledData)fix, methodName);                                                                  // FhirConstructGeneration.cs:308
+                    return Construct(block, (SampledData)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Signature": // Signature  - DataType                                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Signature";                                                                                             // FhirConstructGeneration.cs:307
-                    return Construct(block, (Signature)fix, methodName);                                                                    // FhirConstructGeneration.cs:308
+                    return Construct(block, (Signature)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "SimpleQuantity": // SimpleQuantity  - DataType                                                                        // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "SimpleQuantity";                                                                                        // FhirConstructGeneration.cs:307
-                    return Construct(block, (SimpleQuantity)fix, methodName);                                                               // FhirConstructGeneration.cs:308
+                    return Construct(block, (SimpleQuantity)fix, methodName, methodAccess);                                                 // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "Timing": // Timing  - DataType                                                                                        // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Timing";                                                                                                // FhirConstructGeneration.cs:307
-                    return Construct(block, (Timing)fix, methodName);                                                                       // FhirConstructGeneration.cs:308
+                    return Construct(block, (Timing)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "TriggerDefinition": // TriggerDefinition  - DataType                                                                  // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "TriggerDefinition";                                                                                     // FhirConstructGeneration.cs:307
-                    return Construct(block, (TriggerDefinition)fix, methodName);                                                            // FhirConstructGeneration.cs:308
+                    return Construct(block, (TriggerDefinition)fix, methodName, methodAccess);                                              // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "UsageContext": // UsageContext  - DataType                                                                            // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "UsageContext";                                                                                          // FhirConstructGeneration.cs:307
-                    return Construct(block, (UsageContext)fix, methodName);                                                                 // FhirConstructGeneration.cs:308
+                    return Construct(block, (UsageContext)fix, methodName, methodAccess);                                                   // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
                 case "base64Binary": // Base64Binary  - primitive                                                                           // FhirConstructGeneration.cs:237
@@ -340,9 +340,9 @@ namespace FhirKhit.Tools.R3
                     return Construct(block, (XHtml)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:240
                 }                                                                                                                           // FhirConstructGeneration.cs:241
                                                                                                                                             // FhirConstructGeneration.cs:242
-            }                                                                                                                               // FhirConstructGeneration.cs:416
-            return false;                                                                                                                   // FhirConstructGeneration.cs:417
-        }                                                                                                                                   // FhirConstructGeneration.cs:418
+            }                                                                                                                               // FhirConstructGeneration.cs:417
+            return false;                                                                                                                   // FhirConstructGeneration.cs:418
+        }                                                                                                                                   // FhirConstructGeneration.cs:419
                                                                                                                                             // FhirConstructGeneration.cs:315
         /// <summary>
         /// Return c# text to create indicated element.
@@ -5519,5 +5519,5 @@ namespace FhirKhit.Tools.R3
                 ;                                                                                                                           // FhirConstructGeneration.cs:273
             return  true;                                                                                                                   // FhirConstructGeneration.cs:274
         }                                                                                                                                   // FhirConstructGeneration.cs:275
-    }                                                                                                                                       // FhirConstructGeneration.cs:384
-}                                                                                                                                           // FhirConstructGeneration.cs:385
+    }                                                                                                                                       // FhirConstructGeneration.cs:385
+}                                                                                                                                           // FhirConstructGeneration.cs:386

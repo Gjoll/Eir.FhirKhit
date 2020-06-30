@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FhirKhit.Tools
+namespace Eir.FhirKhit
 {
     public static class FHIRInfo
     {

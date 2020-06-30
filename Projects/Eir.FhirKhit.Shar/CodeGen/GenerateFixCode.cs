@@ -1,5 +1,5 @@
 ﻿using Eir.DevTools;
-using FhirKhit.Tools;
+using Eir.FhirKhit;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using System;
@@ -10,9 +10,9 @@ using System.Reflection;
 using System.Text;
 
 #if FHIR_R4
-namespace FhirKhit.Tools.R4
+namespace Eir.FhirKhit.R4
 #elif FHIR_R3
-namespace FhirKhit.Tools.R3
+namespace Eir.FhirKhit.R3
 #endif
 {
     public class GenerateFixCode
@@ -326,7 +326,7 @@ namespace FhirKhit.Tools.R3
                 .AppendLine($"using System.Collections.Generic;")
                 .AppendLine($"using System.Reflection;")
                 .AppendLine($"using System.Text;")
-                .AppendLine($"using FhirKhit.Tools;")
+                .AppendLine($"using Eir.FhirKhit;")
                 .AppendLine($"using Hl7.Fhir.Introspection;")
                 .AppendLine($"using Hl7.Fhir.Model;")
                 .AppendLine($"using Hl7.Fhir.Support.Model;")

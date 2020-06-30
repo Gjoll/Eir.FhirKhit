@@ -3,14 +3,14 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using FhirKhit.Tools;
+using Eir.FhirKhit;
 using Hl7.Fhir.Introspection;
 using Hl7.Fhir.Model;
 using System.Diagnostics;
 using Hl7.FhirPath;
 using Range = Hl7.Fhir.Model.Range;
                                                                                                                                             // FhirConstructGeneration.cs:558
-namespace FhirKhit.Tools.R3
+namespace Eir.FhirKhit.R3
 {                                                                                                                                           // FhirConstructGeneration.cs:564
     public class FhirConstructUse                                                                                                           // FhirConstructGeneration.cs:565
     {                                                                                                                                       // FhirConstructGeneration.cs:566
