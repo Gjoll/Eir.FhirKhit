@@ -57,7 +57,7 @@
   <ItemGroup>
     <Content Include="specification.zip">
       <Pack>true</Pack>
-      <PackagePath>"lib\$(TargetFramework)"</PackagePath>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
