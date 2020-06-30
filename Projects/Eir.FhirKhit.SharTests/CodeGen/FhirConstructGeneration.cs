@@ -600,7 +600,7 @@ namespace Eir.FhirKhit.FhirConstructTests
                         ;
 
                     Element fix = CreateFix(fhirCSType);
-                    //$FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
+                    FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
                 }
                 else if (ModelInfo.IsDataType(fhirType))
                 {
@@ -614,7 +614,7 @@ namespace Eir.FhirKhit.FhirConstructTests
                             ;
 
                         Element fix = CreateFix(fhirCSType);
-                        //$FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
+                        FhirConstruct.Construct(methods, fix, methodName1, out String propertyType1);
                     }
                 }
             }

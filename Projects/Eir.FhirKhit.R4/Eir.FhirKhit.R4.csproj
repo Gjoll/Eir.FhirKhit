@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>7.1</LangVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -27,16 +27,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>FHIR_R4</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="FhirConstruct.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="FhirConstruct.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="CommonMark.NET" Version="0.15.1" />
@@ -56,6 +46,12 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="FhirConstruct.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   
   <ItemGroup>
