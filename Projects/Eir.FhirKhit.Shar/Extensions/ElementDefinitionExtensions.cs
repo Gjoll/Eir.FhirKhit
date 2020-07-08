@@ -1,4 +1,5 @@
-﻿using Hl7.Fhir.Model;
+﻿using Eir.DevTools;
+using Hl7.Fhir.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,15 @@ namespace Eir.FhirKhit.R3
 #if FHIR_R4 || FHIR_R3
         const String DerivationExtensionUri = "http://hl7.org/fhir/StructureDefinition/elementdefinition-derivation";
 #endif
+
+        public static String SliceName(this ElementDefinition e)
+        {
+            String[] s = e.ElementId.LastPathPart().Split(':');
+            if (s.Length < 2)
+                return "";
+            return s[1];
+        }
+
         public static ElementDefinition GetOrCreateElement(this List<ElementDefinition> elements,
             String path,
             String id = null)
