@@ -31,7 +31,12 @@ namespace Eir.FhirKhit.R3
 
         public bool TryGetChild(String name, out ElementNode child)
         {
-            String fullName = $"{this.Element.ElementId}.{name}";
+            String fullName = "";
+            if (this.Element.ElementId.Length > 0)
+            {
+                fullName += $"{this.Element.ElementId}.";
+            }
+            fullName += name;
             child = null;
             foreach (ElementNode c in this.Children)
             {

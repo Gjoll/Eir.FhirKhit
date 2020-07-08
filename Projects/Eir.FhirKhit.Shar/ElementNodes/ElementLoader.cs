@@ -78,13 +78,12 @@ namespace Eir.FhirKhit.R3
                     return;
                 String loadId = loadItem.ElementId.Substring(elementId.Length);
 
-                if ((elementId.Length > 0) && (loadId[0] != '.') && (loadId[0] != ':'))
+                if ((elementId.Length > 0) && (loadId[0] != '.'))
                     return;
 
                 itemIndex += 1;
 
                 String[] parts = loadId.Split('.');
-                ElementNode childNode = null;
 
                 if (parts.Length > 1)
                     throw new Exception($"Invalid Element {loadId}");
@@ -94,42 +93,43 @@ namespace Eir.FhirKhit.R3
                 switch (sliceParts.Length)
                 {
                     case 1:
-                        if (head.TryGetChild(sliceParts[0], out childNode) == true)
                         {
-                            if (childNode.Element != null)
-                                throw new Exception($"Duplicate Element {elementId}");
-                            childNode.Element = loadItem;
+                            if (head.TryGetChild(sliceParts[0], out ElementNode childNode) == true)
+                            {
+                                if (childNode.Element != null)
+                                    throw new Exception($"Duplicate Element {elementId}");
+                                childNode.Element = loadItem;
+                            }
+                            else
+                            {
+                                childNode = new ElementNode(loadItem);
+                                head.Children.Add(childNode);
+                            }
+                            Load(loadItem.ElementId, childNode, loadItems, ref itemIndex);
                         }
-                        else
-                        {
-                            childNode = new ElementNode(loadItem);
-                            head.Children.Add(childNode);
-                        }
-                        Load(loadItem.ElementId, childNode, loadItems, ref itemIndex);
                         break;
 
                     case 2:
-                        if (head.TryGetChild(sliceParts[0], out childNode) == false)
                         {
-                            childNode = new ElementNode(loadItem);
-                            head.Children.Add(childNode);
-                        }
+                            if (head.TryGetChild(sliceParts[0], out ElementNode childNode) == false)
+                                throw new Exception($"Missing base element in slice node {parts[0]}");
 
-                        if (head.TryGetSlice(sliceParts[1], out ElementSlice slice) == true)
-                        {
-                            if (slice.ElementNode.Element != null)
-                                throw new Exception($"Duplicate Element {elementId}");
-                            slice.ElementNode.Element = loadItem;
-                        }
-                        else
-                        {
-                            slice = new ElementSlice
+                            if (head.TryGetSlice(sliceParts[1], out ElementSlice slice) == true)
                             {
-                                ElementNode = new ElementNode(loadItem)
-                            };
-                            childNode.Slices.Add(slice);
+                                if (slice.ElementNode.Element != null)
+                                    throw new Exception($"Duplicate Element {elementId}");
+                                slice.ElementNode.Element = loadItem;
+                            }
+                            else
+                            {
+                                slice = new ElementSlice
+                                {
+                                    ElementNode = new ElementNode(loadItem)
+                                };
+                                childNode.Slices.Add(slice);
+                            }
+                            Load(loadItem.ElementId, slice.ElementNode, loadItems, ref itemIndex);
                         }
-                        Load(loadItem.ElementId, slice.ElementNode, loadItems, ref itemIndex);
                         break;
 
                     default:
