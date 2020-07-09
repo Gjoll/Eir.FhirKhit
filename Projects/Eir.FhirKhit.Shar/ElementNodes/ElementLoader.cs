@@ -78,36 +78,34 @@ namespace Eir.FhirKhit.R3
                     return;
                 String loadId = loadItem.ElementId.Substring(baseId.Length);
 
-                if ((baseId.Length > 0) && (loadId[0] != '.'))
-                    return;
-                itemIndex += 1;
                 String[] parts = loadId.Split('.');
-                ElementNode currentNode = head;
-                foreach (String part in parts)
+                String[] sliceParts = parts[0].Split(':');
+                String newId = $"{baseId}{sliceParts[0]}";
+                ElementNode newNode = this.GetNode(head, newId);
+                switch (sliceParts.Length)
                 {
-                    String[] sliceParts = part.Split(':');
+                    case 1:
+                        break;
 
-                    ElementNode newNode = this.GetNode(currentNode, fullId);
-                    switch (sliceParts.Length)
-                    {
-                        case 1:
-                            break;
+                    case 2:
+                        {
+                            ElementSlice s = this.GetSlice(head, sliceParts[1], sliceParts[0]);
+                            newNode = s.ElementNode;
+                        }
+                        break;
 
-                        case 2:
-                            {
-                                ElementSlice s = this.GetSlice(currentNode, sliceParts[1], sliceParts[0]);
-                                newNode = s.ElementNode;
-                            }
-                            break;
-
-                        default:
-                            throw new Exception($"Invalid Element path part {part}");
-                    }
-                    currentNode = newNode;
+                    default:
+                        throw new Exception($"Invalid Element path part {parts[0]}");
                 }
-                if (currentNode.Element != null)
-                    throw new Exception($"Duplicate Element {baseId}");
-                currentNode.Element = loadItem;
+
+                if (parts.Length ==  1)
+                {
+                    itemIndex += 1;
+                    if (newNode.Element != null)
+                        throw new Exception($"Duplicate Element {baseId}");
+                    newNode.Element = loadItem;
+                }
+                Load($"{newId}.", newNode, loadItems, ref itemIndex);
             }
         }
 
