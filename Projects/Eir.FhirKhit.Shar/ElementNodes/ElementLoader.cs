@@ -63,100 +63,72 @@ namespace Eir.FhirKhit.R3
         /// <summary>
         /// Wildly recursive. Be carefull!
         /// </summary>
-        void Load(String elementId,
+        void Load(String baseId,
             ElementNode head,
             ElementDefinition[] loadItems,
             ref Int32 itemIndex)
         {
-            const String fcn = "Load";
+            //const String fcn = "Load";
 
             while (itemIndex < loadItems.Length)
             {
                 ElementDefinition loadItem = loadItems[itemIndex];
 
-                if (loadItem.ElementId.StartsWith(elementId) == false)
+                if (loadItem.ElementId.StartsWith(baseId) == false)
                     return;
-                String loadId = loadItem.ElementId.Substring(elementId.Length);
+                String loadId = loadItem.ElementId.Substring(baseId.Length);
 
-                if ((elementId.Length > 0) && (loadId[0] != '.'))
+                if ((baseId.Length > 0) && (loadId[0] != '.'))
                     return;
-
                 itemIndex += 1;
-
                 String[] parts = loadId.Split('.');
-
-                if (parts.Length > 1)
-                    throw new Exception($"Invalid Element {loadId}");
-
-                String[] sliceParts = parts[0].Split(':');
-
-                switch (sliceParts.Length)
+                ElementNode currentNode = head;
+                foreach (String part in parts)
                 {
-                    case 1:
-                        {
-                            if (head.TryGetChild(sliceParts[0], out ElementNode childNode) == true)
-                            {
-                                if (childNode.Element != null)
-                                    throw new Exception($"Duplicate Element {elementId}");
-                                childNode.Element = loadItem;
-                            }
-                            else
-                            {
-                                childNode = new ElementNode(loadItem);
-                                head.Children.Add(childNode);
-                            }
-                            Load(loadItem.ElementId, childNode, loadItems, ref itemIndex);
-                        }
-                        break;
+                    String[] sliceParts = part.Split(':');
 
-                    case 2:
-                        {
-                            if (head.TryGetChild(sliceParts[0], out ElementNode childNode) == false)
-                                throw new Exception($"Missing base element in slice node {parts[0]}");
+                    ElementNode newNode = this.GetNode(currentNode, fullId);
+                    switch (sliceParts.Length)
+                    {
+                        case 1:
+                            break;
 
-                            if (head.TryGetSlice(sliceParts[1], out ElementSlice slice) == true)
+                        case 2:
                             {
-                                if (slice.ElementNode.Element != null)
-                                    throw new Exception($"Duplicate Element {elementId}");
-                                slice.ElementNode.Element = loadItem;
+                                ElementSlice s = this.GetSlice(currentNode, sliceParts[1], sliceParts[0]);
+                                newNode = s.ElementNode;
                             }
-                            else
-                            {
-                                slice = new ElementSlice
-                                {
-                                    ElementNode = new ElementNode(loadItem)
-                                };
-                                childNode.Slices.Add(slice);
-                            }
-                            Load(loadItem.ElementId, slice.ElementNode, loadItems, ref itemIndex);
-                        }
-                        break;
+                            break;
 
-                    default:
-                        throw new Exception($"Internal error. Invalid slice...");
+                        default:
+                            throw new Exception($"Invalid Element path part {part}");
+                    }
+                    currentNode = newNode;
                 }
+                if (currentNode.Element != null)
+                    throw new Exception($"Duplicate Element {baseId}");
+                currentNode.Element = loadItem;
             }
         }
 
-        //public bool Add(ElementNode head,
-        //    ElementDefinition item)
-        //{
-        //    return Add(head, new ElementDefinition[] { item });
-        //}
+        ElementNode GetNode(ElementNode head, String name)
+        {
+            if (head.TryGetChild(name, out ElementNode childNode) == false)
+            {
+                childNode = new ElementNode(name);
+                head.Children.Add(childNode);
+            }
+            return childNode;
+        }
 
-        //public bool Add(ElementNode head,
-        //    IEnumerable<ElementDefinition> items)
-        //{
-        //    const String fcn = "Add";
-
-        //    Int32 itemIndex = 0;
-        //    Load("", head.DefaultSlice, items.ToArray(), ref itemIndex);
-        //    if (itemIndex != items.Count())
-        //    {
-        //        this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        ElementSlice GetSlice(ElementNode head, String sliceName, String elementName)
+        {
+            if (head.TryGetSlice(sliceName, out ElementSlice slice) == false)
+            {
+                slice = new ElementSlice(sliceName, elementName);
+                head.Slices.Add(slice);
+            }
+            return slice;
+        }
     }
 }

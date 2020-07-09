@@ -15,16 +15,22 @@ namespace Eir.FhirKhit.R3
         /// <summary>
         /// All names that this element is known by (i.e. value[x], valueInteger, etc)
         /// </summary>
-        public List<String> Names { get; }  = new List<string>();
+        public List<String> Names { get; } = new List<string>();
 
-        public String Id => this.Element.ElementId;
+        public String Id { get; }
 
         public ElementDefinition Element { get; set; }
         public List<ElementNode> Children { get; } = new List<ElementNode>();
         public List<ElementSlice> Slices { get; } = new List<ElementSlice>();
 
+        public ElementNode(String id)
+        {
+            this.Id = id;
+        }
+
         public ElementNode(ElementDefinition element)
         {
+            this.Id = element.ElementId;
             this.Element = element;
             this.Names.Add(element.ElementId.LastPathPart());
         }
@@ -55,7 +61,7 @@ namespace Eir.FhirKhit.R3
             slice = null;
             foreach (ElementSlice s in this.Slices)
             {
-                if (s.Slice == name)
+                if (s.SliceName == name)
                 {
                     slice = s;
                     return true;
