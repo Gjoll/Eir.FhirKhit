@@ -2,6 +2,7 @@
 using Hl7.Fhir.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 #if FHIR_R4
@@ -10,6 +11,7 @@ namespace Eir.FhirKhit.R4
 namespace Eir.FhirKhit.R3
 #endif
 {
+    [DebuggerDisplay("{this.NodeName}")]
     public class ElementNode
     {
         /// <summary>
@@ -17,7 +19,7 @@ namespace Eir.FhirKhit.R3
         /// </summary>
         public List<String> Names { get; } = new List<string>();
 
-        public String PathName { get; }
+        public String NodeName { get; }
 
         public ElementDefinition Element { get; set; }
         public List<ElementNode> Children { get; } = new List<ElementNode>();
@@ -25,22 +27,57 @@ namespace Eir.FhirKhit.R3
 
         public ElementNode(String pathName)
         {
-            this.PathName = pathName;
+            this.NodeName = pathName;
         }
 
         public ElementNode(ElementDefinition element)
         {
-            this.PathName = element.ElementId.LastPathPart().Split(':')[0];
+            this.NodeName = element.ElementId.LastPathPart().Split(':')[0];
             this.Element = element;
             this.Names.Add(element.ElementId.LastPathPart());
         }
 
-        public bool TryGetChild(String name, out ElementNode child)
+        /// <summary>
+        /// Drill down to search for child.
+        /// </summary>
+        /// <returns></returns>
+        public bool TryGetChild(String path, out ElementNode child)
+        {
+            child = null;
+            ElementNode working = this;
+            foreach (String pathPart in path.Split('.'))
+            {
+                String[] nameParts = pathPart.Split(':');
+                if (working.TryGetImmediateChild(nameParts[0], out working) == false)
+                    return false;
+                switch (nameParts.Length)
+                {
+                    case 1:
+                        break;
+
+                    case 2:
+                        if (working.TryGetSlice(nameParts[1], out ElementSlice slice) == false)
+                            return false;
+                        working = slice.ElementNode;
+                        break;
+
+                    default:
+                        throw new NotImplementedException($"Invalid path name {pathPart}");
+                }
+            }
+            child = working;
+            return true;
+        }
+
+        /// <summary>
+        /// Try to get immediate child.
+        /// </summary>
+        public bool TryGetImmediateChild(String name, out ElementNode child)
         {
             child = null;
             foreach (ElementNode c in this.Children)
             {
-                if (c.PathName == name)
+                if (c.NodeName == name)
                 {
                     child = c;
                     return true;

@@ -129,7 +129,7 @@ namespace Eir.FhirKhit.R3
 
         ElementNode GetNode(ElementNode head, ElementPath.Node pathNode)
         {
-            if (head.TryGetChild(pathNode.Name, out ElementNode childNode) == false)
+            if (head.TryGetImmediateChild(pathNode.Name, out ElementNode childNode) == false)
             {
                 childNode = new ElementNode(pathNode.Name);
                 head.Children.Add(childNode);

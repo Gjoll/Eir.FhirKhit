@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 #if FHIR_R4
@@ -8,6 +9,7 @@ namespace Eir.FhirKhit.R4
 namespace Eir.FhirKhit.R3
 #endif
 {
+    [DebuggerDisplay("{this.ElementNode.NodeName}:{this.SliceName}")]
     public class ElementSlice
     {
         public String SliceName { get; }
