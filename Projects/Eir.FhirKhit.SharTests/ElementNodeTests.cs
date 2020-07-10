@@ -48,17 +48,17 @@ namespace Eir.FhirKhit.R4.XUnitTests
 
             Assert.True(e.Children.Count == 3);
 
-            Assert.True(e.Children[0].Id == "A");
+            Assert.True(e.Children[0].Id.ToString() == "A");
             Assert.True(e.Children[0].Children.Count == 1);
-            Assert.True(e.Children[0].Children[0].Id == "A.1");
+            Assert.True(e.Children[0].Children[0].Id.ToString() == "A.1");
 
-            Assert.True(e.Children[1].Id == "B");
+            Assert.True(e.Children[1].Id.ToString() == "B");
             Assert.True(e.Children[1].Children.Count == 0);
 
-            Assert.True(e.Children[2].Id == "C");
+            Assert.True(e.Children[2].Id.ToString() == "C");
             Assert.True(e.Children[2].Children.Count == 2);
-            Assert.True(e.Children[2].Children[0].Id == "C.1");
-            Assert.True(e.Children[2].Children[1].Id == "C.2");
+            Assert.True(e.Children[2].Children[0].Id.ToString() == "C.1");
+            Assert.True(e.Children[2].Children[1].Id.ToString() == "C.2");
         }
 
 
@@ -69,7 +69,7 @@ namespace Eir.FhirKhit.R4.XUnitTests
             items.Add(CreateEDef("A", "A"));
             items.Add(CreateEDef("A", "A:Slice"));
             items.Add(CreateEDef("A.1", "A:Slice.1"));
-            items.Add(CreateEDef("A.1", "A.1"));
+            items.Add(CreateEDef("A.2", "A.2"));
             items.Add(CreateEDef("B", "B"));
 
             ElementLoader loader = new ElementLoader();
@@ -77,13 +77,18 @@ namespace Eir.FhirKhit.R4.XUnitTests
 
             Assert.True(e.Children.Count == 2);
 
-            Assert.True(e.Children[0].Id == "A");
-            Assert.True(e.Children[0].Children.Count == 1);
-            Assert.True(e.Children[0].Children[0].Id == "A.1");
+            ElementNode child1 = e.Children[0];
+            Assert.True(child1.Id.ToString() == "A");
+            Assert.True(child1.Children.Count == 1);
+            Assert.True(child1.Children[0].Id.ToString() == "A.2");
 
-            Assert.True(e.Slices.Count == 1);
-            Assert.True(e.Slices[0].ElementNode.Children.Count == 1);
-            Assert.True(e.Slices[0].ElementNode.Children[0].Id == "A:Slice.1");
+            Assert.True(child1.Slices.Count == 1);
+            Assert.True(child1.Slices[0].ElementNode.Children.Count == 1);
+            Assert.True(child1.Slices[0].ElementNode.Children[0].Id.ToString() == "A:Slice.1");
+
+            ElementNode child2 = e.Children[1];
+            Assert.True(child2.Slices.Count == 0);
+            Assert.True(child2.Id.ToString() == "B");
         }
     }
 }

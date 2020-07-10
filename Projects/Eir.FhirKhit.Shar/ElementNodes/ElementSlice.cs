@@ -13,10 +13,10 @@ namespace Eir.FhirKhit.R3
         public String SliceName { get; }
         public ElementNode ElementNode { get; set; }
 
-        public ElementSlice(String sliceName, String elementName)
+        public ElementSlice(String sliceName, ElementPath id)
         {
             this.SliceName = sliceName;
-            this.ElementNode = new ElementNode(elementName);
+            this.ElementNode = new ElementNode(id);
         }
     }
 }

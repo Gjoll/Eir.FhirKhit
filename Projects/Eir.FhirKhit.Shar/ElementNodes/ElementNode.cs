@@ -17,20 +17,20 @@ namespace Eir.FhirKhit.R3
         /// </summary>
         public List<String> Names { get; } = new List<string>();
 
-        public String Id { get; }
+        public ElementPath Id { get; }
 
         public ElementDefinition Element { get; set; }
         public List<ElementNode> Children { get; } = new List<ElementNode>();
         public List<ElementSlice> Slices { get; } = new List<ElementSlice>();
 
-        public ElementNode(String id)
+        public ElementNode(ElementPath id)
         {
             this.Id = id;
         }
 
         public ElementNode(ElementDefinition element)
         {
-            this.Id = element.ElementId;
+            this.Id = new ElementPath(element.ElementId);
             this.Element = element;
             this.Names.Add(element.ElementId.LastPathPart());
         }

@@ -50,7 +50,7 @@ namespace Eir.FhirKhit.R3
             });
             if (items != null)
             {
-                Load("", head, items.ToArray(), ref itemIndex);
+                Load(0, head, items.ToArray(), ref itemIndex);
                 if (itemIndex != items.Count())
                 {
                     this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
@@ -63,70 +63,104 @@ namespace Eir.FhirKhit.R3
         /// <summary>
         /// Wildly recursive. Be carefull!
         /// </summary>
-        void Load(String baseId,
+        void Load(Int32 pathDepth,
             ElementNode head,
             ElementDefinition[] loadItems,
             ref Int32 itemIndex)
         {
-            //const String fcn = "Load";
-
             while (itemIndex < loadItems.Length)
             {
                 ElementDefinition loadItem = loadItems[itemIndex];
-
-                if (loadItem.ElementId.StartsWith(baseId) == false)
+                if (Load(pathDepth, head, loadItem) == false)
                     return;
-                String loadId = loadItem.ElementId.Substring(baseId.Length);
-
-                String[] parts = loadId.Split('.');
-                String[] sliceParts = parts[0].Split(':');
-                String newId = $"{baseId}{sliceParts[0]}";
-                ElementNode newNode = this.GetNode(head, newId);
-                switch (sliceParts.Length)
-                {
-                    case 1:
-                        break;
-
-                    case 2:
-                        {
-                            ElementSlice s = this.GetSlice(newNode, sliceParts[1], sliceParts[0]);
-                            newNode = s.ElementNode;
-                        }
-                        break;
-
-                    default:
-                        throw new Exception($"Invalid Element path part {loadItem.ElementId}");
-                }
-
-                if (parts.Length == 1)
-                {
-                    itemIndex += 1;
-                    if (newNode.Element != null)
-                        throw new Exception($"Duplicate Element {loadItem.ElementId}");
-                    newNode.Element = loadItem;
-                }
-                Load($"{newId}.", newNode, loadItems, ref itemIndex);
+                itemIndex += 1;
             }
         }
 
-        ElementNode GetNode(ElementNode head, String name)
+        bool SameBegin(Int32 depth,
+            ElementPath basePath,
+            ElementPath path)
         {
-            if (head.TryGetChild(name, out ElementNode childNode) == false)
+            if (basePath.Nodes.Count < depth)
+                return false;
+            if (path.Nodes.Count < depth)
+                return false;
+            for (Int32 i = 0; i < depth; i++)
             {
-                childNode = new ElementNode(name);
+                ElementPath.Node baseNode = basePath.Nodes[i];
+                ElementPath.Node pathNode = path.Nodes[i];
+                bool Same()
+                {
+                    if (baseNode.Name != pathNode.Name)
+                        return false;
+                    if ((baseNode.Slice == null) && (pathNode.Slice == null))
+                        return true;
+                    if ((baseNode.Slice != null) || (pathNode.Slice != null))
+                        return false;
+                    if (baseNode.Slice != pathNode.Slice)
+                        return false;
+                    return true;
+                }
+                if (Same() == false)
+                    return false;
+            }
+
+            return true;
+        }
+
+        bool Load(Int32 pathDepth,
+                ElementNode head,
+                ElementDefinition loadItem)
+        {
+            ElementPath p = new ElementPath(loadItem.ElementId);
+
+            ElementNode newNode = null;
+            while (pathDepth < p.Nodes.Count)
+            {
+                ElementPath.Node pathNode = p.Nodes[pathDepth];
+                newNode = this.GetNode(head, pathNode);
+                head = newNode;
+                pathDepth += 1;
+            }
+
+            newNode.Element = loadItem;
+            return true;
+        }
+
+        ElementNode GetNode(ElementNode head, ElementPath.Node pathNode)
+        {
+            if (head.TryGetChild(pathNode.Name, out ElementNode childNode) == false)
+            {
+                ElementPath id = new ElementPath();
+                id.Nodes.AddRange(head.Id.Nodes);
+                id.Nodes.Add(new ElementPath.Node
+                {
+                    Name = pathNode.Name
+                });
+
+                childNode = new ElementNode(id);
                 head.Children.Add(childNode);
             }
-            return childNode;
-        }
 
-        ElementSlice GetSlice(ElementNode head, String sliceName, String elementName)
-        {
-            if (head.TryGetSlice(sliceName, out ElementSlice slice) == false)
+            if (String.IsNullOrEmpty(pathNode.Slice) == false)
             {
-                slice = new ElementSlice(sliceName, elementName);
-                head.Slices.Add(slice);
+                if (head.TryGetSlice(pathNode.Slice, out ElementSlice slice) == false)
+                {
+                    ElementPath id = new ElementPath();
+                    id.Nodes.AddRange(head.Id.Nodes);
+                    id.Nodes.Add(new ElementPath.Node
+                    {
+                        Name = pathNode.Name,
+                        Slice = pathNode.Slice
+                    });
+
+                    slice = new ElementSlice(pathNode.Slice, head.Id);
+                    childNode.Slices.Add(slice);
+                }
+                childNode = slice.ElementNode;
             }
-            return slice;
+
+            return childNode;
         }
     }
 }

@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CodeGen\GenerateFixCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementPath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementSlice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementNode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementTree\Compare.cs" />
