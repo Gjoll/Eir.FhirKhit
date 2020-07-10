@@ -89,20 +89,20 @@ namespace Eir.FhirKhit.R3
 
                     case 2:
                         {
-                            ElementSlice s = this.GetSlice(head, sliceParts[1], sliceParts[0]);
+                            ElementSlice s = this.GetSlice(newNode, sliceParts[1], sliceParts[0]);
                             newNode = s.ElementNode;
                         }
                         break;
 
                     default:
-                        throw new Exception($"Invalid Element path part {parts[0]}");
+                        throw new Exception($"Invalid Element path part {loadItem.ElementId}");
                 }
 
-                if (parts.Length ==  1)
+                if (parts.Length == 1)
                 {
                     itemIndex += 1;
                     if (newNode.Element != null)
-                        throw new Exception($"Duplicate Element {baseId}");
+                        throw new Exception($"Duplicate Element {loadItem.ElementId}");
                     newNode.Element = loadItem;
                 }
                 Load($"{newId}.", newNode, loadItems, ref itemIndex);

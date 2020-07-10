@@ -68,13 +68,14 @@ namespace Eir.FhirKhit.R4.XUnitTests
             List<ElementDefinition> items = new List<ElementDefinition>();
             items.Add(CreateEDef("A", "A"));
             items.Add(CreateEDef("A", "A:Slice"));
-            //items.Add(CreateEDef("A.1", "A:Slice.1"));
+            items.Add(CreateEDef("A.1", "A:Slice.1"));
             items.Add(CreateEDef("A.1", "A.1"));
+            items.Add(CreateEDef("B", "B"));
 
             ElementLoader loader = new ElementLoader();
             ElementNode e = loader.Create(items);
 
-            Assert.True(e.Children.Count == 3);
+            Assert.True(e.Children.Count == 2);
 
             Assert.True(e.Children[0].Id == "A");
             Assert.True(e.Children[0].Children.Count == 1);
