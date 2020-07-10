@@ -131,30 +131,15 @@ namespace Eir.FhirKhit.R3
         {
             if (head.TryGetChild(pathNode.Name, out ElementNode childNode) == false)
             {
-                ElementPath id = new ElementPath();
-                id.Nodes.AddRange(head.Id.Nodes);
-                id.Nodes.Add(new ElementPath.Node
-                {
-                    Name = pathNode.Name
-                });
-
-                childNode = new ElementNode(id);
+                childNode = new ElementNode(pathNode.Name);
                 head.Children.Add(childNode);
             }
 
             if (String.IsNullOrEmpty(pathNode.Slice) == false)
             {
-                if (head.TryGetSlice(pathNode.Slice, out ElementSlice slice) == false)
+                if (childNode.TryGetSlice(pathNode.Slice, out ElementSlice slice) == false)
                 {
-                    ElementPath id = new ElementPath();
-                    id.Nodes.AddRange(head.Id.Nodes);
-                    id.Nodes.Add(new ElementPath.Node
-                    {
-                        Name = pathNode.Name,
-                        Slice = pathNode.Slice
-                    });
-
-                    slice = new ElementSlice(pathNode.Slice, head.Id);
+                    slice = new ElementSlice(pathNode.Slice, pathNode.Name);
                     childNode.Slices.Add(slice);
                 }
                 childNode = slice.ElementNode;

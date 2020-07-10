@@ -17,36 +17,30 @@ namespace Eir.FhirKhit.R3
         /// </summary>
         public List<String> Names { get; } = new List<string>();
 
-        public ElementPath Id { get; }
+        public String PathName { get; }
 
         public ElementDefinition Element { get; set; }
         public List<ElementNode> Children { get; } = new List<ElementNode>();
         public List<ElementSlice> Slices { get; } = new List<ElementSlice>();
 
-        public ElementNode(ElementPath id)
+        public ElementNode(String pathName)
         {
-            this.Id = id;
+            this.PathName = pathName;
         }
 
         public ElementNode(ElementDefinition element)
         {
-            this.Id = new ElementPath(element.ElementId);
+            this.PathName = element.ElementId.LastPathPart().Split(':')[0];
             this.Element = element;
             this.Names.Add(element.ElementId.LastPathPart());
         }
 
         public bool TryGetChild(String name, out ElementNode child)
         {
-            String fullName = "";
-            if (this.Element.ElementId.Length > 0)
-            {
-                fullName += $"{this.Element.ElementId}.";
-            }
-            fullName += name;
             child = null;
             foreach (ElementNode c in this.Children)
             {
-                if (c.Element.ElementId == fullName)
+                if (c.PathName == name)
                 {
                     child = c;
                     return true;

@@ -38,27 +38,27 @@ namespace Eir.FhirKhit.R4.XUnitTests
         {
             List<ElementDefinition> items = new List<ElementDefinition>();
             items.Add(CreateEDef("A", "A"));
-            items.Add(CreateEDef("A.1", "A.1"));
+            items.Add(CreateEDef("A.1", "A.A1"));
             items.Add(CreateEDef("B", "B"));
             items.Add(CreateEDef("C", "C"));
-            items.Add(CreateEDef("C.1", "C.1"));
-            items.Add(CreateEDef("C.2", "C.2"));
+            items.Add(CreateEDef("C.1", "C.C1"));
+            items.Add(CreateEDef("C.2", "C.C2"));
             ElementLoader loader = new ElementLoader();
             ElementNode e = loader.Create(items);
 
             Assert.True(e.Children.Count == 3);
 
-            Assert.True(e.Children[0].Id.ToString() == "A");
+            Assert.True(e.Children[0].PathName == "A");
             Assert.True(e.Children[0].Children.Count == 1);
-            Assert.True(e.Children[0].Children[0].Id.ToString() == "A.1");
+            Assert.True(e.Children[0].Children[0].PathName == "A1");
 
-            Assert.True(e.Children[1].Id.ToString() == "B");
+            Assert.True(e.Children[1].PathName == "B");
             Assert.True(e.Children[1].Children.Count == 0);
 
-            Assert.True(e.Children[2].Id.ToString() == "C");
+            Assert.True(e.Children[2].PathName == "C");
             Assert.True(e.Children[2].Children.Count == 2);
-            Assert.True(e.Children[2].Children[0].Id.ToString() == "C.1");
-            Assert.True(e.Children[2].Children[1].Id.ToString() == "C.2");
+            Assert.True(e.Children[2].Children[0].PathName == "C1");
+            Assert.True(e.Children[2].Children[1].PathName == "C2");
         }
 
 
@@ -68,8 +68,8 @@ namespace Eir.FhirKhit.R4.XUnitTests
             List<ElementDefinition> items = new List<ElementDefinition>();
             items.Add(CreateEDef("A", "A"));
             items.Add(CreateEDef("A", "A:Slice"));
-            items.Add(CreateEDef("A.1", "A:Slice.1"));
-            items.Add(CreateEDef("A.2", "A.2"));
+            items.Add(CreateEDef("A.1", "A:Slice.A1"));
+            items.Add(CreateEDef("A.2", "A.A2"));
             items.Add(CreateEDef("B", "B"));
 
             ElementLoader loader = new ElementLoader();
@@ -78,17 +78,17 @@ namespace Eir.FhirKhit.R4.XUnitTests
             Assert.True(e.Children.Count == 2);
 
             ElementNode child1 = e.Children[0];
-            Assert.True(child1.Id.ToString() == "A");
+            Assert.True(child1.PathName == "A");
             Assert.True(child1.Children.Count == 1);
-            Assert.True(child1.Children[0].Id.ToString() == "A.2");
+            Assert.True(child1.Children[0].PathName == "A2");
 
             Assert.True(child1.Slices.Count == 1);
             Assert.True(child1.Slices[0].ElementNode.Children.Count == 1);
-            Assert.True(child1.Slices[0].ElementNode.Children[0].Id.ToString() == "A:Slice.1");
+            Assert.True(child1.Slices[0].ElementNode.Children[0].PathName == "A1");
 
             ElementNode child2 = e.Children[1];
             Assert.True(child2.Slices.Count == 0);
-            Assert.True(child2.Id.ToString() == "B");
+            Assert.True(child2.PathName == "B");
         }
     }
 }
