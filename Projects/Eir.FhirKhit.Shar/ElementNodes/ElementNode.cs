@@ -11,7 +11,7 @@ namespace Eir.FhirKhit.R4
 namespace Eir.FhirKhit.R3
 #endif
 {
-    [DebuggerDisplay("{this.NodeName}")]
+    [DebuggerDisplay("{this.ElementId}")]
     public class ElementNode
     {
         /// <summary>
@@ -20,6 +20,8 @@ namespace Eir.FhirKhit.R3
         public List<String> Names { get; } = new List<string>();
 
         public String NodeName { get; }
+
+        public String ElementId => this.Element == null ? this.NodeName : this.Element.ElementId;
 
         public ElementDefinition Element { get; set; }
         public List<ElementNode> Children { get; } = new List<ElementNode>();
