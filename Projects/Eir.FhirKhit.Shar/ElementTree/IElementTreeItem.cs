@@ -12,6 +12,7 @@ namespace Eir.FhirKhit.R4
 namespace Eir.FhirKhit.R3
 #endif
 {
+    [Obsolete("Discontinued")]
     public interface IElementTreeItem
     {
         String Name { get; }

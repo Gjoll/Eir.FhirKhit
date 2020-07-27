@@ -39,6 +39,7 @@ namespace Eir.FhirKhit.R3
     ///     
     /// </summary>
     [DebuggerDisplay("{this.Path}")]
+    [Obsolete("Discontinued")]
     public class ElementTreeNode : IElementTreeItem, IEnumerable<ElementTreeSlice>
     {
         /// <summary>

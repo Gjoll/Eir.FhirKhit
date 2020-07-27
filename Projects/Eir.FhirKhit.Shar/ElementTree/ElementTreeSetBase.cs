@@ -15,6 +15,7 @@ namespace Eir.FhirKhit.R3
     /// <summary>
     /// Set Base element for every item.
     /// </summary>
+    [Obsolete("Discontinued")]
     public class ElementTreeSetBase
     {
         IConversionInfo info;

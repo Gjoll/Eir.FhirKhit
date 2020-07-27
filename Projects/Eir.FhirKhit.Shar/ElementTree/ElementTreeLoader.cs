@@ -42,6 +42,7 @@ namespace Eir.FhirKhit.R3
     ///    Path = "a.b.c"
     ///    will fail.
     /// </summary>
+    [Obsolete("Discontinued")]
     public class ElementTreeLoader
     {
         IConversionInfo info;

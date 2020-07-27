@@ -15,6 +15,7 @@ namespace Eir.FhirKhit.R3
     /// <summary>
     /// Remove all elements from modified that are the same as the matching element in original.
     /// </summary>
+    [Obsolete("Discontinued")]
     public class ElementTreeDiffer
     {
         IConversionInfo info;

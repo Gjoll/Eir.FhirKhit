@@ -29,6 +29,7 @@ namespace Eir.FhirKhit.R3
     /// Elements of a different slice would be contained in a different instance.
     /// </summary>
     [DebuggerDisplay("{this.parent.Path}[{this.Name}]")]
+    [Obsolete("Discontinued")]
     public class ElementTreeSlice : IElementTreeItem, IEnumerable<ElementTreeNode>
     {
         public const String DefaultSlice = "";

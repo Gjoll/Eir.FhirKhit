@@ -9,6 +9,7 @@ namespace Eir.FhirKhit.R4
 namespace Eir.FhirKhit.R3
 #endif
 {
+    [Obsolete("Discontinued")]
     public class ElementTreeItemList<T> : IEnumerable<T>
         where T : class, IElementTreeItem
     {
