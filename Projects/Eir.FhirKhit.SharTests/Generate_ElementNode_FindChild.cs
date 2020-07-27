@@ -99,113 +99,113 @@ namespace Eir.FhirKhit.R4.XUnitTests
                 ;
         }
 
-        [Fact(DisplayName = "CodeGen.Validate")]
-        void Validate()
-        {
-            String savePath = $"\\Temp\\test.json";
-            FhirValidator fv = new FhirValidator();
-            fv.Validate("4.0.0", savePath);
-            StringBuilder sb = new StringBuilder();
-            bool success = fv.FormatMessages(sb);
-            Trace.WriteLine(sb.ToString());
-            Assert.True(success);
-            Trace.WriteLine("Validation complete");
-        }
+        //[Fact(DisplayName = "CodeGen.Validate")]
+        //void Validate()
+        //{
+        //    String savePath = $"\\Temp\\test.json";
+        //    FhirValidator fv = new FhirValidator();
+        //    fv.Validate("4.0.0", savePath);
+        //    StringBuilder sb = new StringBuilder();
+        //    bool success = fv.FormatMessages(sb);
+        //    Trace.WriteLine(sb.ToString());
+        //    Assert.True(success);
+        //    Trace.WriteLine("Validation complete");
+        //}
 
         /// <summary>
         /// Create the AddChildXXX methods of ElementDefinitionNode.
         /// </summary>
-        [Fact(DisplayName = "CodeGen.GenerateFindCommonChildren")]
-        [Trait("CodeGen", "CodeGen")]
-        void GenerateFindCommonChildren()
-        {
-            CodeEditor editor = new CodeEditor();
+//        [Fact(DisplayName = "CodeGen.GenerateFindCommonChildren")]
+//        [Trait("CodeGen", "CodeGen")]
+//        void GenerateFindCommonChildren()
+//        {
+//            CodeEditor editor = new CodeEditor();
 
-            CodeBlockNested main = editor.Blocks.AppendBlock();
-            main
-                .AppendLine($"using System;")
-                .AppendLine($"using System.Linq;")
-                .AppendLine($"using System.Collections.Generic;")
-                .AppendLine($"using System.Reflection;")
-                .AppendLine($"using System.Text;")
-                .AppendLine($"using Eir.FhirKhit;")
-                .AppendLine($"using Hl7.Fhir.Introspection;")
-                .AppendLine($"using Hl7.Fhir.Model;")
-                .AppendLine($"using Hl7.Fhir.Support.Model;")
-                .AppendLine($"using System.Diagnostics;")
-                .AppendLine($"using Hl7.FhirPath;")
-                .BlankLine()
-#if FHIR_R3
-                .AppendLine($"namespace Eir.FhirKhit.R3")
-#elif FHIR_R4
-                .AppendLine($"namespace Eir.FhirKhit.R4")
-#endif
-                .OpenBrace()
-                .AppendCode($"public partial class ElementDefinitionNode")
-                .OpenBrace()
-                ;
-            CodeBlockNested construct = main.AppendBlock();
-            CodeBlockNested methods = main.AppendBlock();
+//            CodeBlockNested main = editor.Blocks.AppendBlock();
+//            main
+//                .AppendLine($"using System;")
+//                .AppendLine($"using System.Linq;")
+//                .AppendLine($"using System.Collections.Generic;")
+//                .AppendLine($"using System.Reflection;")
+//                .AppendLine($"using System.Text;")
+//                .AppendLine($"using Eir.FhirKhit;")
+//                .AppendLine($"using Hl7.Fhir.Introspection;")
+//                .AppendLine($"using Hl7.Fhir.Model;")
+//                .AppendLine($"using Hl7.Fhir.Support.Model;")
+//                .AppendLine($"using System.Diagnostics;")
+//                .AppendLine($"using Hl7.FhirPath;")
+//                .BlankLine()
+//#if FHIR_R3
+//                .AppendLine($"namespace Eir.FhirKhit.R3")
+//#elif FHIR_R4
+//                .AppendLine($"namespace Eir.FhirKhit.R4")
+//#endif
+//                .OpenBrace()
+//                .AppendCode($"public partial class ElementDefinitionNode")
+//                .OpenBrace()
+//                ;
+//            CodeBlockNested construct = main.AppendBlock();
+//            CodeBlockNested methods = main.AppendBlock();
 
-            main
-                .CloseBrace()
-                .CloseBrace()
-                ;
+//            main
+//                .CloseBrace()
+//                .CloseBrace()
+//                ;
 
-            construct
-                .SummaryOpen()
-                .Summary($"Create ElementDefinitionNode for child of common/primitive Fhir data type elements")
-                .SummaryClose()
-                .AppendCode($"public ElementDefinitionNode FindCommonChild(String parentPath, String childName)")
-                .OpenBrace()
-                .AppendCode($"switch (this.FhirItemType.FriendlyName())")
-                .OpenBrace()
-                ;
+//            construct
+//                .SummaryOpen()
+//                .Summary($"Create ElementDefinitionNode for child of common/primitive Fhir data type elements")
+//                .SummaryClose()
+//                .AppendCode($"public ElementDefinitionNode FindCommonChild(String parentPath, String childName)")
+//                .OpenBrace()
+//                .AppendCode($"switch (this.FhirItemType.FriendlyName())")
+//                .OpenBrace()
+//                ;
 
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Ratio);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Period);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Range);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Attachment);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Identifier);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Annotation);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.HumanName);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.CodeableConcept);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Ratio);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Period);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Range);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Attachment);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Identifier);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Annotation);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.HumanName);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.CodeableConcept);
 
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.ContactPoint);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Coding);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Money);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Address);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Timing);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Quantity);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.SampledData);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Signature);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Age);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Distance);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Duration);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Count);
-#if FHIR_R4
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.MoneyQuantity);
-#endif
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.SimpleQuantity);
-            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Extension);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.ContactPoint);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Coding);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Money);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Address);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Timing);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Quantity);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.SampledData);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Signature);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Age);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Distance);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Duration);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Count);
+//#if FHIR_R4
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.MoneyQuantity);
+//#endif
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.SimpleQuantity);
+//            GenerateFindCommonChild(construct, methods, FHIRAllTypes.Extension);
 
-            construct
-                .AppendCode($"default: return null;")
-                .CloseBrace()
-                .CloseBrace()
-                ;
+//            construct
+//                .AppendCode($"default: return null;")
+//                .CloseBrace()
+//                .CloseBrace()
+//                ;
 
-#if FHIR_R3
-            String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
-                "Eir.FhirKhit.R3",
-                "ElementDefinitionNode.FindChild.cs");
-#elif FHIR_R4
-            String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
-                "Eir.FhirKhit.R4",
-                "ElementDefinitionNode.FindChild.cs");
-#endif
-            editor.Save(outputPath);
-        }
+//#if FHIR_R3
+//            String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
+//                "Eir.FhirKhit.R3",
+//                "ElementDefinitionNode.FindChild.cs");
+//#elif FHIR_R4
+//            String outputPath = Path.Combine(DirHelper.FindParentDir("Tools"),
+//                "Eir.FhirKhit.R4",
+//                "ElementDefinitionNode.FindChild.cs");
+//#endif
+//            editor.Save(outputPath);
+//        }
 #endif
     }
 }

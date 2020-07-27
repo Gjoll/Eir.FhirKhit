@@ -48,17 +48,17 @@ namespace Eir.FhirKhit.R4.XUnitTests
 
             Assert.True(e.Children.Count == 3);
 
-            Assert.True(e.Children[0].PathName == "A");
+            Assert.True(e.Children[0].NodeName == "A");
             Assert.True(e.Children[0].Children.Count == 1);
-            Assert.True(e.Children[0].Children[0].PathName == "A1");
+            Assert.True(e.Children[0].Children[0].NodeName == "A1");
 
-            Assert.True(e.Children[1].PathName == "B");
+            Assert.True(e.Children[1].NodeName == "B");
             Assert.True(e.Children[1].Children.Count == 0);
 
-            Assert.True(e.Children[2].PathName == "C");
+            Assert.True(e.Children[2].NodeName == "C");
             Assert.True(e.Children[2].Children.Count == 2);
-            Assert.True(e.Children[2].Children[0].PathName == "C1");
-            Assert.True(e.Children[2].Children[1].PathName == "C2");
+            Assert.True(e.Children[2].Children[0].NodeName == "C1");
+            Assert.True(e.Children[2].Children[1].NodeName == "C2");
         }
 
 
@@ -78,17 +78,17 @@ namespace Eir.FhirKhit.R4.XUnitTests
             Assert.True(e.Children.Count == 2);
 
             ElementNode child1 = e.Children[0];
-            Assert.True(child1.PathName == "A");
+            Assert.True(child1.NodeName == "A");
             Assert.True(child1.Children.Count == 1);
-            Assert.True(child1.Children[0].PathName == "A2");
+            Assert.True(child1.Children[0].NodeName == "A2");
 
             Assert.True(child1.Slices.Count == 1);
             Assert.True(child1.Slices[0].ElementNode.Children.Count == 1);
-            Assert.True(child1.Slices[0].ElementNode.Children[0].PathName == "A1");
+            Assert.True(child1.Slices[0].ElementNode.Children[0].NodeName == "A1");
 
             ElementNode child2 = e.Children[1];
             Assert.True(child2.Slices.Count == 0);
-            Assert.True(child2.PathName == "B");
+            Assert.True(child2.NodeName == "B");
         }
     }
 }

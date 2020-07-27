@@ -5,7 +5,7 @@
     <LangVersion>7.1</LangVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.4.9</Version>
+    <Version>1.5.0</Version>
     <Authors>Kurt W. Allen</Authors>
     <Company>Eir Solutions, LLC.</Company>
     <PackageProjectUrl>https://github.com/Gjoll/Eir.FhirKhit</PackageProjectUrl>
@@ -29,13 +29,12 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="CommonMark.NET" Version="0.15.1" />
     <PackageReference Include="Eir.DevTools" Version="1.16.3" />
-    <PackageReference Include="Hl7.Fhir.ElementModel" Version="1.8.0" />
-    <PackageReference Include="Hl7.Fhir.R4" Version="1.8.0" />
-    <PackageReference Include="Hl7.Fhir.Serialization" Version="1.8.0" />
-    <PackageReference Include="Hl7.Fhir.Specification.R4" Version="1.8.0" />
-    <PackageReference Include="Hl7.FhirPath" Version="1.8.0" />
+    <PackageReference Include="Hl7.Fhir.ElementModel" Version="1.9.0" />
+    <PackageReference Include="Hl7.Fhir.R4" Version="1.9.0" />
+    <PackageReference Include="Hl7.Fhir.Serialization" Version="1.9.0" />
+    <PackageReference Include="Hl7.Fhir.Specification.R4" Version="1.9.0" />
+    <PackageReference Include="Hl7.FhirPath" Version="1.9.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
