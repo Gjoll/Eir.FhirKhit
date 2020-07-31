@@ -3,6 +3,7 @@ using Hl7.Fhir.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 #if FHIR_R4
@@ -41,13 +42,38 @@ namespace Eir.FhirKhit.R3
 
         /// <summary>
         /// Drill down to search for child.
+        /// This assumes that path is a period seperated list, and that path[0] is the name
+        /// of the current node).
         /// </summary>
         /// <returns></returns>
-        public bool TryGetChild(String path, out ElementNode child)
+        public bool TryGetNode(String path, out ElementNode child)
+        {
+            child = this;
+            String[] pathParts = path.Split('.');
+            if (pathParts[0] != this.ElementId)
+                return false;
+            return TryGetChild(pathParts.Skip(1), out child);
+        }
+
+        /// <summary>
+        /// Drill down to search for child.
+        /// This assumes that path is a period seperated list, and that path[0] is the name
+        /// of a child node (not name of current node).
+        /// </summary>
+        /// <returns></returns>
+        public bool TryGetChild(String path, out ElementNode child) => TryGetChild(path.Split('.'), out child);
+
+        /// <summary>
+        /// Drill down to search for child.
+        /// This assumes that pathParts[0] is the name
+        /// of a child node (not name of current node).
+        /// </summary>
+        /// <returns></returns>
+        public bool TryGetChild(IEnumerable<String> pathParts, out ElementNode child)
         {
             child = null;
             ElementNode working = this;
-            foreach (String pathPart in path.Split('.'))
+            foreach (String pathPart in pathParts)
             {
                 String[] nameParts = pathPart.Split(':');
                 if (working.TryGetImmediateChild(nameParts[0], out working) == false)
