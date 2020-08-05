@@ -16,15 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementPath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementSlice.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElementNodes\ElementNode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\Compare.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeDiffer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeItemList.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeLoader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeNode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeSetBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeSlice.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\ElementTreeSorter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ElementTree\IElementTreeItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BaseExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DomainResourceExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ElementDefinitionExtensions.cs" />
