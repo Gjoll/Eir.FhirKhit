@@ -70,7 +70,9 @@ namespace Eir.FhirKhit.R3
             }
         }
 
+#pragma warning disable CA1055 // Uri return values should not be strings
         public static String GetUrl(this DomainResource domainResource)
+#pragma warning restore CA1055 // Uri return values should not be strings
         {
             switch (domainResource)
             {

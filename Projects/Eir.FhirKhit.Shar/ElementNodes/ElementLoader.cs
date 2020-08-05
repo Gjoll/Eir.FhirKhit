@@ -38,7 +38,8 @@ namespace Eir.FhirKhit.R3
                 this.info.ConversionError(className, method, msg);
         }
 
-        public ElementNode Create(IEnumerable<ElementDefinition> items)
+        public ElementNode Create(IEnumerable<ElementDefinition> snapShotItems,
+            IEnumerable<ElementDefinition> differentialItems)
         {
             const String fcn = "Create";
 
@@ -48,10 +49,10 @@ namespace Eir.FhirKhit.R3
                 Path = "",
                 ElementId = ""
             });
-            if (items != null)
+            if (snapShotItems != null)
             {
-                Load(0, head, items.ToArray(), ref itemIndex);
-                if (itemIndex != items.Count())
+                Load(0, head, snapShotItems.ToArray(), ref itemIndex);
+                if (itemIndex != snapShotItems.Count())
                 {
                     this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
                     return null;
@@ -75,37 +76,6 @@ namespace Eir.FhirKhit.R3
                     return;
                 itemIndex += 1;
             }
-        }
-
-        bool SameBegin(Int32 depth,
-            ElementPath basePath,
-            ElementPath path)
-        {
-            if (basePath.Nodes.Count < depth)
-                return false;
-            if (path.Nodes.Count < depth)
-                return false;
-            for (Int32 i = 0; i < depth; i++)
-            {
-                ElementPath.Node baseNode = basePath.Nodes[i];
-                ElementPath.Node pathNode = path.Nodes[i];
-                bool Same()
-                {
-                    if (baseNode.Name != pathNode.Name)
-                        return false;
-                    if ((baseNode.Slice == null) && (pathNode.Slice == null))
-                        return true;
-                    if ((baseNode.Slice != null) || (pathNode.Slice != null))
-                        return false;
-                    if (baseNode.Slice != pathNode.Slice)
-                        return false;
-                    return true;
-                }
-                if (Same() == false)
-                    return false;
-            }
-
-            return true;
         }
 
         bool Load(Int32 pathDepth,

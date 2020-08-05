@@ -44,7 +44,7 @@ namespace Eir.FhirKhit.R4.XUnitTests
             items.Add(CreateEDef("C.1", "C.C1"));
             items.Add(CreateEDef("C.2", "C.C2"));
             ElementLoader loader = new ElementLoader();
-            ElementNode e = loader.Create(items);
+            ElementNode e = loader.Create(items, null);
 
             Assert.True(e.Children.Count == 3);
 
@@ -73,7 +73,7 @@ namespace Eir.FhirKhit.R4.XUnitTests
             items.Add(CreateEDef("B", "B"));
 
             ElementLoader loader = new ElementLoader();
-            ElementNode e = loader.Create(items);
+            ElementNode e = loader.Create(items, null);
 
             Assert.True(e.Children.Count == 2);
 
