@@ -15,11 +15,6 @@ namespace Eir.FhirKhit.R3
     [DebuggerDisplay("{this.ElementId}")]
     public class ElementNode
     {
-        /// <summary>
-        /// All names that this element is known by (i.e. value[x], valueInteger, etc)
-        /// </summary>
-        public List<String> Names { get; } = new List<string>();
-
         public String NodeName { get; }
 
         public String ElementId => this.Element == null ? this.NodeName : this.Element.ElementId;
@@ -31,32 +26,12 @@ namespace Eir.FhirKhit.R3
         public ElementNode(String pathName)
         {
             this.NodeName = pathName;
-            this.Names.Add(this.NodeName);
         }
 
         public ElementNode(ElementDefinition element)
         {
             this.NodeName = element.ElementId.LastPathPart().Split(':')[0];
             this.Element = element;
-            this.Names.Add(this.NodeName);
-            AddAliases(element);
-        }
-
-        /// <summary>
-        /// value[x] can also be references as valueCode or valueString. 
-        /// register alias' for these names as well.
-        /// </summary>
-        void AddAliases(ElementDefinition node)
-        {
-            if (node.ElementId.EndsWith("[x]") == false)
-                return;
-
-            String nameBase = node.ElementId.Substring(0, node.ElementId.Length - 3);
-            foreach (ElementDefinition.TypeRefComponent type in node.Type)
-            {
-                String xPath = $"{nameBase}{type.Code.CapFirstLetter()}";
-                this.Names.Add(xPath);
-            }
         }
 
         /// <summary>
@@ -124,7 +99,7 @@ namespace Eir.FhirKhit.R3
             child = null;
             foreach (ElementNode c in this.Children)
             {
-                if (c.Names.Contains(name))
+                if (c.NodeName == name)
                 {
                     child = c;
                     return true;
