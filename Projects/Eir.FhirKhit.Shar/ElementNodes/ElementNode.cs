@@ -37,7 +37,25 @@ namespace Eir.FhirKhit.R3
         {
             this.NodeName = element.ElementId.LastPathPart().Split(':')[0];
             this.Element = element;
-            this.Names.Add(element.ElementId.LastPathPart());
+            this.Names.Add(this.NodeName);
+            AddAliases(element);
+        }
+
+        /// <summary>
+        /// value[x] can also be references as valueCode or valueString. 
+        /// register alias' for these names as well.
+        /// </summary>
+        void AddAliases(ElementDefinition node)
+        {
+            if (node.ElementId.EndsWith("[x]") == false)
+                return;
+
+            String nameBase = node.ElementId.Substring(0, node.ElementId.Length - 3);
+            foreach (ElementDefinition.TypeRefComponent type in node.Type)
+            {
+                String xPath = $"{nameBase}{type.Code.CapFirstLetter()}";
+                this.Names.Add(xPath);
+            }
         }
 
         /// <summary>
@@ -105,7 +123,7 @@ namespace Eir.FhirKhit.R3
             child = null;
             foreach (ElementNode c in this.Children)
             {
-                if (c.NodeName == name)
+                if (c.Names.Contains(name))
                 {
                     child = c;
                     return true;
