@@ -31,6 +31,7 @@ namespace Eir.FhirKhit.R3
         public ElementNode(String pathName)
         {
             this.NodeName = pathName;
+            this.Names.Add(this.NodeName);
         }
 
         public ElementNode(ElementDefinition element)
