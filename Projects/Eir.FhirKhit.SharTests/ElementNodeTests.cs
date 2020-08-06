@@ -90,5 +90,50 @@ namespace Eir.FhirKhit.R4.XUnitTests
             Assert.True(child2.Slices.Count == 0);
             Assert.True(child2.NodeName == "B");
         }
+        [Fact(DisplayName = "ElementNode.LoadSubTypes")]
+        void LoadSubTypes()
+        {
+            List<ElementDefinition> items = new List<ElementDefinition>();
+            items.Add(CreateEDef("A", "A"));
+            ElementDefinition a1 = CreateEDef("A.value[x]", "A.value[x]");
+            a1.Type.Add(new ElementDefinition.TypeRefComponent
+            {
+                Code = "String"
+            });
+            a1.Type.Add(new ElementDefinition.TypeRefComponent
+            {
+                Code = "Range"
+            });
+            items.Add(a1);
+
+            items.Add(CreateEDef("A.valueString", "A.valueString"));
+            items.Add(CreateEDef("A.valueRange", "A.valueRange"));
+            items.Add(CreateEDef("B", "B"));
+
+            ElementLoader loader = new ElementLoader();
+            ElementNode e = loader.Create(items, null);
+
+            Assert.True(e.Children.Count == 2);
+
+            ElementNode childA = e.Children[0];
+            Assert.True(childA.NodeName == "A");
+            Assert.True(childA.Children.Count == 1);
+
+            ElementNode childB = e.Children[1];
+            Assert.True(childB.NodeName == "B");
+            Assert.True(childB.Children.Count == 0);
+            
+            ElementNode valueX = e.Children[0].Children[0];
+            Assert.True(valueX.NodeName == "value[x]");
+            Assert.True(valueX.Children.Count == 0);
+            Assert.True(valueX.ElementTypes.Count == 2);
+
+            Assert.True(valueX.ElementTypes.TryGetValue("String", out ElementNode valueString)== true);
+            Assert.True(valueString.NodeName == "valueString");
+
+            Assert.True(valueX.ElementTypes.TryGetValue("Range", out ElementNode valueRange) == true);
+            Assert.True(valueRange.NodeName == "valueRange");
+        }
+
     }
 }

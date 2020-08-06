@@ -15,12 +15,42 @@ namespace Eir.FhirKhit.R3
     [DebuggerDisplay("{this.ElementId}")]
     public class ElementNode
     {
+        /// <summary>
+        /// Name of node. (Last item of ElementId path).
+        /// This is kept as a seperate item because sometimes we make
+        /// noted without an ElementDefinition, so ElementId is null.
+        /// </summary>
         public String NodeName { get; }
 
         public String ElementId => this.Element == null ? this.NodeName : this.Element.ElementId;
 
+        /// <summary>
+        /// Fhir element definition
+        /// </summary>
         public ElementDefinition Element { get; set; }
+
+        /// <summary>
+        /// Dictionary of Fhir ElementDefinitions for specific types.
+        /// i.e.
+        /// value[X]                - in ElementDefinition
+        /// valueInteger            - in ElementTypes
+        /// valueBoolean            - in ElementTypes
+        /// </summary>
+        public Dictionary<String, ElementNode> ElementTypes { get; } = new Dictionary<string, ElementNode>();
+
+        /// <summary>
+        /// Children nodes
+        /// i.e.
+        /// X.item                - in ElementDefinition
+        /// x.item.foo            - child item
+        /// </summary>
         public List<ElementNode> Children { get; } = new List<ElementNode>();
+
+        /// <summary>
+        /// Slices
+        /// X.item                - in ElementDefinition
+        /// x.item:xxyyz          - slice
+        /// </summary>
         public List<ElementSlice> Slices { get; } = new List<ElementSlice>();
 
         public ElementNode(String pathName)

@@ -52,6 +52,7 @@ namespace Eir.FhirKhit.R3
             if (snapShotItems != null)
             {
                 Load(0, head, snapShotItems.ToArray(), ref itemIndex);
+                ProcessTypeNodes(head);
                 if (itemIndex != snapShotItems.Count())
                 {
                     this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
@@ -62,7 +63,61 @@ namespace Eir.FhirKhit.R3
         }
 
         /// <summary>
-        /// Wildly recursive. Be carefull!
+        /// Moves appropriate nodes into ElementTypes
+        /// </summary>
+        /// <param name="head"></param>
+        void ProcessTypeNodes(ElementNode head)
+        {
+            Int32 index = 0;
+            while (index < head.Children.Count)
+            {
+                ElementNode n = head.Children[index];
+                if (n.NodeName.EndsWith("[x]"))
+                    ProcessTypeNodes(head, index);
+
+                // Recursively call on children.
+                ProcessTypeNodes(n);
+
+                // Recursively call on all slices.
+                foreach (ElementSlice slice in n.Slices)
+                    ProcessTypeNodes(slice.ElementNode);
+                
+                index += 1;
+            }
+        }
+
+        void ProcessTypeNodes(ElementNode head, Int32 index)
+        {
+            ElementNode baseNode = head.Children[index++];
+            String baseName = baseNode.NodeName.Substring(0, baseNode.NodeName.Length - 3);
+
+            while (index < head.Children.Count)
+            {
+                ElementNode n = head.Children[index];
+                if (n.NodeName.StartsWith(baseName) == false)
+                    return;
+
+                String code = String.Empty;
+                bool match = false;
+                foreach (ElementDefinition.TypeRefComponent type in baseNode.Element.Type)
+                {
+                    if (n.NodeName == $"{baseName}{type.Code}")
+                    {
+                        code = type.Code;
+                        match = true;
+                        break;
+                    }
+                }
+
+                if (match == false)
+                    return;
+                baseNode.ElementTypes.Add(code, n);
+                head.Children.RemoveAt(index);
+            }
+        }
+
+        /// <summary>
+        /// Load ElementDefinition into hierarchical list.
         /// </summary>
         void Load(Int32 pathDepth,
             ElementNode head,
@@ -72,13 +127,12 @@ namespace Eir.FhirKhit.R3
             while (itemIndex < loadItems.Length)
             {
                 ElementDefinition loadItem = loadItems[itemIndex];
-                if (Load(pathDepth, head, loadItem) == false)
-                    return;
+                Load(pathDepth, head, loadItem);
                 itemIndex += 1;
             }
         }
 
-        bool Load(Int32 pathDepth,
+        void Load(Int32 pathDepth,
                 ElementNode head,
                 ElementDefinition loadItem)
         {
@@ -92,9 +146,7 @@ namespace Eir.FhirKhit.R3
                 head = newNode;
                 pathDepth += 1;
             }
-
             newNode.Element = loadItem;
-            return true;
         }
 
         ElementNode GetNode(ElementNode head, ElementPath.Node pathNode)
