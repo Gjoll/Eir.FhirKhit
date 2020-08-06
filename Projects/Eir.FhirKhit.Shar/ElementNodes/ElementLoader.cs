@@ -14,6 +14,7 @@ namespace Eir.FhirKhit.R3
     public class ElementLoader
     {
         IConversionInfo info;
+        Dictionary<String, ElementNode> snapShotNodes = new Dictionary<string, ElementNode>();
 
         public ElementLoader(IConversionInfo info = null)
         {
@@ -49,16 +50,16 @@ namespace Eir.FhirKhit.R3
                 Path = "",
                 ElementId = ""
             });
-            if (snapShotItems != null)
+            Load(0, head, snapShotItems.ToArray(), ref itemIndex);
+            ProcessTypeNodes(head);
+            if (itemIndex != snapShotItems.Count())
             {
-                Load(0, head, snapShotItems.ToArray(), ref itemIndex);
-                ProcessTypeNodes(head);
-                if (itemIndex != snapShotItems.Count())
-                {
-                    this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
-                    return null;
-                }
+                this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
+                return null;
             }
+
+            if (differentialItems != null)
+                LinkDifferentialItems(differentialItems);
             return head;
         }
 
@@ -81,7 +82,7 @@ namespace Eir.FhirKhit.R3
                 // Recursively call on all slices.
                 foreach (ElementSlice slice in n.Slices)
                     ProcessTypeNodes(slice.ElementNode);
-                
+
                 index += 1;
             }
         }
@@ -147,6 +148,7 @@ namespace Eir.FhirKhit.R3
                 pathDepth += 1;
             }
             newNode.Element = loadItem;
+            this.snapShotNodes.Add(newNode.ElementId, newNode);
         }
 
         ElementNode GetNode(ElementNode head, ElementPath.Node pathNode)
@@ -169,5 +171,25 @@ namespace Eir.FhirKhit.R3
 
             return childNode;
         }
+
+        void LinkDifferentialItems(IEnumerable<ElementDefinition> differentialItems)
+        {
+            foreach (ElementDefinition differentialItem in differentialItems)
+                LinkDifferentialItem(differentialItem);
+        }
+
+        void LinkDifferentialItem(ElementDefinition differentialItem)
+        {
+            if (this.snapShotNodes.TryGetValue(differentialItem.ElementId, out ElementNode snapshotNode) == true)
+            {
+                if (snapshotNode.DiffElement != null)
+                    throw new Exception("Differential item {differentialItem.ElementId} already linked");
+                snapshotNode.DiffElement = differentialItem;
+                return;
+            }
+
+            throw new Exception($"Can not find snapshot node matching differential {differentialItem.ElementId}");
+        }
+
     }
 }

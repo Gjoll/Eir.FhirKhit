@@ -25,7 +25,7 @@ namespace Eir.FhirKhit.R3
         public String ElementId => this.Element == null ? this.NodeName : this.Element.ElementId;
 
         /// <summary>
-        /// Fhir element definition
+        /// Fhir snapshot (complete) element definition
         /// </summary>
         public ElementDefinition Element { get; set; }
 
@@ -37,6 +37,12 @@ namespace Eir.FhirKhit.R3
         /// valueBoolean            - in ElementTypes
         /// </summary>
         public Dictionary<String, ElementNode> ElementTypes { get; } = new Dictionary<string, ElementNode>();
+
+        /// <summary>
+        /// Fhir differential element definition
+        /// This may be null if there is no differential item matching this snapshot item.
+        /// </summary>
+        public ElementDefinition DiffElement { get; set; }
 
         /// <summary>
         /// Children nodes
