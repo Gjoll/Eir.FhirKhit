@@ -16,7 +16,6 @@ namespace Eir.FhirKhit.R3
     public class ElementLoader
     {
         IConversionInfo info;
-        Dictionary<String, ElementNode> nodes = new Dictionary<string, ElementNode>();
 
         public ElementLoader(IConversionInfo info = null)
         {
@@ -65,8 +64,9 @@ namespace Eir.FhirKhit.R3
                 return null;
             }
 
+            itemIndex = 0;
             if (differentialItems != null)
-                LinkDifferentialItems(head, differentialItems);
+                LoadDifferentialNodes(0, head, differentialItems.ToArray(), ref itemIndex);
             return head;
         }
 
@@ -90,18 +90,6 @@ namespace Eir.FhirKhit.R3
                 ElementNode head,
                 ElementDefinition loadItem)
         {
-            /*
-             * Type nodes (valueReferrence) may have been created already with empty Element. If so, put
-             * element into existing type node if same elementId.
-             */
-            if (this.nodes.TryGetValue(loadItem.ElementId, out var existingNode) == true)
-            {
-                if (existingNode.Element != null)
-                    throw new Exception($"Node {loadItem.ElementId} already populated");
-                existingNode.Element = loadItem;
-                return;
-            }
-
             ElementPath p = new ElementPath(loadItem.ElementId);
 
             ElementNode newNode = null;
@@ -114,27 +102,47 @@ namespace Eir.FhirKhit.R3
                 pathDepth += 1;
             }
 
-            Debug.Assert(newNode.ElementId == loadItem.ElementId);
             newNode.Element = loadItem;
-            this.nodes.Add(newNode.ElementId, newNode);
+        }
 
-            void AddTypeNodes()
+
+
+
+
+
+        /// <summary>
+        /// Load differential nodes.
+        /// </summary>
+        void LoadDifferentialNodes(Int32 pathDepth,
+            ElementNode head,
+            ElementDefinition[] loadItems,
+            ref Int32 itemIndex)
+        {
+            while (itemIndex < loadItems.Length)
             {
-                String elementName = loadItem.ElementId;
-                if (elementName.EndsWith("[x]") == false)
-                    return;
-                String baseName = elementName.Substring(0, elementName.Length - 3);
-                foreach (ElementDefinition.TypeRefComponent elementType in loadItem.Type)
-                {
-                    String typeName = $"{baseName}{elementType.Code}";
-                    ElementNode typeNode = new ElementNode(typeName);
-                    newNode.ElementTypes.Add(elementType.Code, typeNode);
-                    this.nodes.Add(typeNode.ElementId, typeNode);
-                }
+                ElementDefinition loadItem = loadItems[itemIndex];
+                DifferentialNode(pathDepth, head, loadItem);
+                itemIndex += 1;
+            }
+        }
 
+        void DifferentialNode(Int32 pathDepth,
+                ElementNode head,
+                ElementDefinition loadItem)
+        {
+            ElementPath p = new ElementPath(loadItem.ElementId);
+
+            ElementNode newNode = null;
+            String elementId = head.ElementId;
+            while (pathDepth < p.Nodes.Count)
+            {
+                ElementPath.Node pathNode = p.Nodes[pathDepth];
+                newNode = this.GetNode(head, pathNode, ref elementId);
+                head = newNode;
+                pathDepth += 1;
             }
 
-            AddTypeNodes();
+            newNode.DiffElement = loadItem;
         }
 
         ElementNode GetNode(ElementNode head,
@@ -144,12 +152,28 @@ namespace Eir.FhirKhit.R3
             if (String.IsNullOrEmpty(elementId) == false)
                 elementId += ".";
             elementId += $"{pathNode.Name}";
-            if (head.TryGetImmediateChild(pathNode.Name, out ElementNode childNode) == false)
+            if (head.TryGetImmediateType(pathNode.Name, out String typeCode, out ElementNode childNode) == false)
             {
                 childNode = new ElementNode(elementId);
                 head.Children.Add(childNode);
             }
+            else
+            {
+                if (String.IsNullOrEmpty(typeCode) == false)
+                {
+                    switch (childNode.ElementTypes.TryGetValue(typeCode, out ElementNode typeNode))
+                    {
+                        case true:
+                            childNode = typeNode;
+                            break;
 
+                        case false:
+                            childNode = new ElementNode(elementId);
+                            childNode.ElementTypes.Add(typeCode, childNode);
+                            break;
+                    }
+                }
+            }
             if (String.IsNullOrEmpty(pathNode.Slice) == false)
             {
                 elementId += $":{pathNode.Slice}";
@@ -161,33 +185,26 @@ namespace Eir.FhirKhit.R3
                 childNode = slice.ElementNode;
             }
 
-            Debug.Assert(childNode.ElementId == elementId);
             return childNode;
         }
 
-        void LinkDifferentialItems(ElementNode head,
-            IEnumerable<ElementDefinition> differentialItems)
-        {
-            foreach (ElementDefinition differentialItem in differentialItems)
-                LinkDifferentialItem(head, differentialItem);
-        }
 
-        void LinkDifferentialItem(ElementNode head,
-            ElementDefinition differentialItem)
-        {
-            if (this.nodes.TryGetValue(differentialItem.ElementId, out ElementNode snapshotNode) == true)
-            {
-                if (snapshotNode.DiffElement != null)
-                    throw new Exception("Differential item {differentialItem.ElementId} already linked");
-                snapshotNode.DiffElement = differentialItem;
-                return;
-            }
+        //$void LinkDifferentialItem(ElementNode head,
+        //    ElementDefinition differentialItem)
+        //{
+        //    if (this.nodes.TryGetValue(differentialItem.ElementId, out ElementNode differentialNode) == true)
+        //    {
+        //        if (differentialNode.DiffElement != null)
+        //            throw new Exception("Differential item {differentialItem.ElementId} already linked");
+        //        differentialNode.DiffElement = differentialItem;
+        //        return;
+        //    }
 
-            StringBuilder sb = new StringBuilder();
-            foreach (ElementNode node in this.nodes.Values)
-                node.Dump(sb);
-            File.WriteAllText(@"c:\Temp\scr.txt", sb.ToString());
-            throw new Exception($"Can not find snapshot node matching differential {differentialItem.ElementId}");
-        }
+        //    StringBuilder sb = new StringBuilder();
+        //    foreach (ElementNode node in this.nodes.Values)
+        //        node.Dump(sb);
+        //    File.WriteAllText(@"c:\Temp\scr.txt", sb.ToString());
+        //    throw new Exception($"Can not find snapshot node matching differential {differentialItem.ElementId}");
+        //}
     }
 }

@@ -32,9 +32,6 @@ namespace Eir.FhirKhit.R4
 
         public void AddGrouping(String groupId, String name, String description)
         {
-            Debug.Assert(groupId.StartsWith(" ") == false);
-            Debug.Assert(groupId.EndsWith(" ") == false);
-
             this.groupIds.Add(groupId);
             this.groups
                 .AppendLine($"<grouping id=\"{groupId}\">")
@@ -54,9 +51,6 @@ namespace Eir.FhirKhit.R4
             String groupId,
             String exampleProfile)
         {
-            Debug.Assert(groupId.StartsWith(" ") == false);
-            Debug.Assert(groupId.EndsWith(" ") == false);
-
             if (this.groupIds.Contains(groupId) == false)
                 throw new Exception($"Group {groupId} has not been defined");
 
@@ -79,9 +73,6 @@ namespace Eir.FhirKhit.R4
             String groupId,
             bool example)
         {
-            Debug.Assert(groupId.StartsWith(" ") == false);
-            Debug.Assert(groupId.EndsWith(" ") == false);
-
             if (this.groupIds.Contains(groupId) == false)
                 throw new Exception($"Group {groupId} has not been defined");
 

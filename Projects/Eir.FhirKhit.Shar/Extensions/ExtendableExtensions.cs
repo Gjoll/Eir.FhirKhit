@@ -143,7 +143,6 @@ namespace Eir.FhirKhit.R3
             // Make sure that generic name is a.b.c:d
             String[] parts = genericParamPath.Split('.');
             String[] subParts = parts[parts.Length - 1].Split(':');
-            Debug.Assert(subParts.Length == 2);
 
             ElementDefinition genericElement = new ElementDefinition()
             {
