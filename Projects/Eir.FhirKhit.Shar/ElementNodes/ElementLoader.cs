@@ -59,7 +59,6 @@ namespace Eir.FhirKhit.R3
                 ElementId = ""
             });
             Load(0, head, snapShotItems.ToArray(), ref itemIndex);
-            ProcessTypeNodes(head);
             if (itemIndex != snapShotItems.Count())
             {
                 this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
@@ -69,60 +68,6 @@ namespace Eir.FhirKhit.R3
             if (differentialItems != null)
                 LinkDifferentialItems(head, differentialItems);
             return head;
-        }
-
-        /// <summary>
-        /// Moves appropriate nodes into ElementTypes
-        /// </summary>
-        /// <param name="head"></param>
-        void ProcessTypeNodes(ElementNode head)
-        {
-            Int32 index = 0;
-            while (index < head.Children.Count)
-            {
-                ElementNode n = head.Children[index];
-                if (n.ElementId.EndsWith("[x]"))
-                    ProcessTypeNodes(head, index);
-
-                // Recursively call on children.
-                ProcessTypeNodes(n);
-
-                // Recursively call on all slices.
-                foreach (ElementSlice slice in n.Slices)
-                    ProcessTypeNodes(slice.ElementNode);
-
-                index += 1;
-            }
-        }
-
-        void ProcessTypeNodes(ElementNode head, Int32 index)
-        {
-            ElementNode baseNode = head.Children[index++];
-            String baseName = baseNode.ElementId.Substring(0, baseNode.ElementId.Length - 3);
-
-            while (index < head.Children.Count)
-            {
-                ElementNode n = head.Children[index];
-                if (n.ElementId.StartsWith(baseName) == false)
-                    return;
-
-                String code = String.Empty;
-                bool match = false;
-                foreach (ElementDefinition.TypeRefComponent type in baseNode.Element.Type)
-                {
-                    if (n.ElementId.LastPathPart() == $"{baseName}{type.Code}")
-                    {
-                        code = type.Code;
-                        match = true;
-                        break;
-                    }
-                }
-
-                if (match == false)
-                    return;
-                baseNode.ElementTypes.Add(code, n);
-                head.Children.RemoveAt(index);
-            }
         }
 
         /// <summary>
@@ -145,6 +90,18 @@ namespace Eir.FhirKhit.R3
                 ElementNode head,
                 ElementDefinition loadItem)
         {
+            /*
+             * Type ndoes (valueReferrence) may have been created already with empty Element. If so, put
+             * element into existing type node if same elementId.
+             */
+            if (this.nodes.TryGetValue(loadItem.ElementId, out var existingNode) == true)
+            {
+                if (existingNode.Element != null)
+                    throw new Exception($"Node {loadItem.ElementId} already populated");
+                existingNode.Element = loadItem;
+                return;
+            }
+
             ElementPath p = new ElementPath(loadItem.ElementId);
 
             ElementNode newNode = null;
@@ -160,10 +117,24 @@ namespace Eir.FhirKhit.R3
             Debug.Assert(newNode.ElementId == loadItem.ElementId);
             newNode.Element = loadItem;
             this.nodes.Add(newNode.ElementId, newNode);
-            //foreach (KeyValuePair<String, ElementNode> type in newNode)
-            //{
 
-            //}
+            void AddTypeNodes()
+            {
+                String elementName = loadItem.ElementId;
+                if (elementName.EndsWith("[x]") == false)
+                    return;
+                String baseName = elementName.Substring(0, elementName.Length - 3);
+                foreach (ElementDefinition.TypeRefComponent elementType in loadItem.Type)
+                {
+                    String typeName = $"{baseName}{elementType.Code}";
+                    ElementNode typeNode = new ElementNode(typeName);
+                    newNode.ElementTypes.Add(elementType.Code, typeNode);
+                    this.nodes.Add(typeNode.ElementId, typeNode);
+                }
+
+            }
+
+            AddTypeNodes();
         }
 
         ElementNode GetNode(ElementNode head,
@@ -205,14 +176,6 @@ namespace Eir.FhirKhit.R3
             ElementDefinition differentialItem)
         {
             if (this.nodes.TryGetValue(differentialItem.ElementId, out ElementNode snapshotNode) == true)
-            {
-                if (snapshotNode.DiffElement != null)
-                    throw new Exception("Differential item {differentialItem.ElementId} already linked");
-                snapshotNode.DiffElement = differentialItem;
-                return;
-            }
-
-            if (head.TryGetAlias(differentialItem.ElementId, out ElementNode child) == true)
             {
                 if (snapshotNode.DiffElement != null)
                     throw new Exception("Differential item {differentialItem.ElementId} already linked");
