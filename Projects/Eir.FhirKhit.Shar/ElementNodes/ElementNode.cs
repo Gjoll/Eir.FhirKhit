@@ -25,6 +25,12 @@ namespace Eir.FhirKhit.R3
         public String ElementId => this.Element == null ? this.NodeName : this.Element.ElementId;
 
         /// <summary>
+        /// Return true if this node has any differential elements.
+        /// </summary>
+        /// <returns></returns>
+        public bool HasDifferential => (this.DiffElement != null);
+
+        /// <summary>
         /// Fhir snapshot (complete) element definition
         /// </summary>
         public ElementDefinition Element { get; set; }
@@ -69,6 +75,7 @@ namespace Eir.FhirKhit.R3
             this.NodeName = element.ElementId.LastPathPart().Split(':')[0];
             this.Element = element;
         }
+
 
         /// <summary>
         /// Drill down to search for child.

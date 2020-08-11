@@ -39,6 +39,12 @@ namespace Eir.FhirKhit.R3
                 this.info.ConversionError(className, method, msg);
         }
 
+        public ElementNode Create(StructureDefinition sDef)
+        {
+            return this.Create(sDef.Snapshot.Element, sDef.Differential.Element);
+        }
+
+
         public ElementNode Create(IEnumerable<ElementDefinition> snapShotItems,
             IEnumerable<ElementDefinition> differentialItems)
         {
