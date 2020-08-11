@@ -16,13 +16,13 @@ namespace Eir.FhirKhit.R3
     public class ElementNode
     {
         /// <summary>
-        /// Name of node. (Last item of ElementId path).
+        /// ElementId.
         /// This is kept as a seperate item because sometimes we make
-        /// noted without an ElementDefinition, so ElementId is null.
+        /// nodes without an ElementDefinition, so Element.ElementId is null.
         /// </summary>
-        public String NodeName { get; }
+        String elementId { get; }
 
-        public String ElementId => this.Element == null ? this.NodeName : this.Element.ElementId;
+        public String ElementId => this.Element == null ? this.elementId : this.Element.ElementId;
 
         /// <summary>
         /// Return true if this node has any differential elements.
@@ -65,14 +65,13 @@ namespace Eir.FhirKhit.R3
         /// </summary>
         public List<ElementSlice> Slices { get; } = new List<ElementSlice>();
 
-        public ElementNode(String pathName)
+        public ElementNode(String elementId)
         {
-            this.NodeName = pathName;
+            this.elementId = elementId;
         }
 
         public ElementNode(ElementDefinition element)
         {
-            this.NodeName = element.ElementId.LastPathPart().Split(':')[0];
             this.Element = element;
         }
 
@@ -142,7 +141,7 @@ namespace Eir.FhirKhit.R3
             child = null;
             foreach (ElementNode c in this.Children)
             {
-                if (c.NodeName == name)
+                if (c.ElementId.LastPathPart() == name)
                 {
                     child = c;
                     return true;
@@ -151,6 +150,86 @@ namespace Eir.FhirKhit.R3
             return false;
         }
 
+        /// <summary>
+        /// Drill down to search for child with same name (or type i.e. value[x] and valueInteger).
+        /// This assumes that path is a period seperated list, and that path[0] is the name
+        /// of a child node (not name of current node).
+        /// </summary>
+        /// <returns></returns>
+        public bool TryGetAlias(String path, out ElementNode child) => TryGetAlias(path.Split('.'), out child);
+
+
+        /// <summary>
+        /// Drill down to search for child. (or type i.e. value[x] and valueInteger).
+        /// This assumes that pathParts[0] is the name
+        /// of a child node (not name of current node).
+        /// </summary>
+        /// <returns></returns>
+        public bool TryGetAlias(IEnumerable<String> pathParts, out ElementNode child)
+        {
+            child = null;
+            ElementNode working = this;
+            foreach (String pathPart in pathParts)
+            {
+                String[] nameParts = pathPart.Split(':');
+                if (working.TryGetImmediateAlias(nameParts[0], out working) == false)
+                    return false;
+                switch (nameParts.Length)
+                {
+                    case 1:
+                        break;
+
+                    case 2:
+                        if (working.TryGetSlice(nameParts[1], out ElementSlice slice) == false)
+                            return false;
+                        working = slice.ElementNode;
+                        break;
+
+                    default:
+                        throw new NotImplementedException($"Invalid path name {pathPart}");
+                }
+            }
+            child = working;
+            return true;
+        }
+
+        /// <summary>
+        /// Try to get immediate child, or an alias.
+        /// i.e. match value[x] matches valueInteger if Integer is a valid type.
+        /// </summary>
+        public bool TryGetImmediateAlias(String name, out ElementNode child)
+        {
+            child = null;
+            foreach (ElementNode c in this.Children)
+            {
+                ElementDefinition ed = c.Element;
+                String elementName = ed.ElementId.LastPathPart();
+
+                bool SameName() => (elementName == name);
+                bool TypeName()
+                {
+                    if (elementName.EndsWith("[x]") == false)
+                        return false;
+                    String baseName = elementName.Substring(0, elementName.Length - 3);
+                    if (name.StartsWith(baseName) == false)
+                        return false;
+                    foreach (ElementDefinition.TypeRefComponent elementType in ed.Type)
+                    {
+                        String typeName = $"{baseName}{elementType.Code}";
+                        if (name == typeName)
+                            return true;
+                    }
+                    return false;
+                }
+
+                if (SameName() || TypeName())
+                {
+                    child = c;
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public bool TryGetSlice(String name, out ElementSlice slice)
         {

@@ -81,7 +81,7 @@ namespace Eir.FhirKhit.R3
             while (index < head.Children.Count)
             {
                 ElementNode n = head.Children[index];
-                if (n.NodeName.EndsWith("[x]"))
+                if (n.ElementId.EndsWith("[x]"))
                     ProcessTypeNodes(head, index);
 
                 // Recursively call on children.
@@ -98,19 +98,19 @@ namespace Eir.FhirKhit.R3
         void ProcessTypeNodes(ElementNode head, Int32 index)
         {
             ElementNode baseNode = head.Children[index++];
-            String baseName = baseNode.NodeName.Substring(0, baseNode.NodeName.Length - 3);
+            String baseName = baseNode.ElementId.Substring(0, baseNode.ElementId.Length - 3);
 
             while (index < head.Children.Count)
             {
                 ElementNode n = head.Children[index];
-                if (n.NodeName.StartsWith(baseName) == false)
+                if (n.ElementId.StartsWith(baseName) == false)
                     return;
 
                 String code = String.Empty;
                 bool match = false;
                 foreach (ElementDefinition.TypeRefComponent type in baseNode.Element.Type)
                 {
-                    if (n.NodeName == $"{baseName}{type.Code}")
+                    if (n.ElementId.LastPathPart() == $"{baseName}{type.Code}")
                     {
                         code = type.Code;
                         match = true;
@@ -211,7 +211,14 @@ namespace Eir.FhirKhit.R3
                 snapshotNode.DiffElement = differentialItem;
                 return;
             }
-            ElementNode s = Search(head, differentialItem.ElementId);
+
+            if (head.TryGetAlias(differentialItem.ElementId, out ElementNode child) == true)
+            {
+                if (snapshotNode.DiffElement != null)
+                    throw new Exception("Differential item {differentialItem.ElementId} already linked");
+                snapshotNode.DiffElement = differentialItem;
+                return;
+            }
 
             StringBuilder sb = new StringBuilder();
             foreach (ElementNode node in this.nodes.Values)
@@ -219,51 +226,5 @@ namespace Eir.FhirKhit.R3
             File.WriteAllText(@"c:\Temp\scr.txt", sb.ToString());
             throw new Exception($"Can not find snapshot node matching differential {differentialItem.ElementId}");
         }
-
-        ElementNode SearchChild(ElementNode head, String nodeName)
-        {
-            for (Int32 i = 0; i < head.Children.Count; i++)
-            {
-                ElementNode n = head.Children[i];
-                if (n.NodeName == nodeName)
-                    return n;
-            }
-            return null;
-        }
-
-        ElementNode SearchSlice(ElementNode head, String sliceName)
-        {
-            ElementSlice slice = null;
-            foreach (ElementSlice s in n.Slices)
-            {
-                if (String.Compare(sliceParts[1], s.SliceName) == 0)
-                {
-                    slice = s;
-                    n = slice.ElementNode;
-                    break;
-                }
-            }
-        }
-
-        ElementNode Search(ElementNode head, String elementId)
-        {
-            ElementNode node = null;
-            String[] elementParts = elementId.Split('.');
-            foreach (String elementPart in elementParts)
-            {
-                String[] sliceParts = elementPart.Split(':');
-                ElementNode child = SearchChild(head, sliceParts[0]);
-                if (child == null)
-                    throw new Exception($"Node {elementId} not found");
-
-                if (sliceParts.Length > 1)
-                {
-                }
-            }
-        }
-    }
-            return node;
-        }
-
     }
 }
