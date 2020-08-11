@@ -165,5 +165,27 @@ namespace Eir.FhirKhit.R3
             }
             return false;
         }
+
+        public String Dump()
+        {
+            StringBuilder sb = new StringBuilder();
+            this.Dump(sb);
+            return sb.ToString();
+        }
+
+        public void Dump(StringBuilder sb, String margin = "")
+        {
+            void Line(String s) => sb.AppendLine($"{margin} {s}");
+
+            Line($"Node: '{this.ElementId}'");
+            if (this.HasDifferential)
+                Line($"  Differential: '{this.DiffElement.ElementId}'");
+
+            foreach (KeyValuePair<String, ElementNode> kvp in ElementTypes)
+                Line($"  Diff Type: '{kvp.Key}' {kvp.Value}");
+
+            foreach (ElementSlice slice in this.Slices)
+                slice.Dump(sb, $"{margin}  ");
+        }
     }
 }

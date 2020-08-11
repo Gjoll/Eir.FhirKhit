@@ -2,6 +2,8 @@
 using Hl7.Fhir.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -14,7 +16,7 @@ namespace Eir.FhirKhit.R3
     public class ElementLoader
     {
         IConversionInfo info;
-        Dictionary<String, ElementNode> snapShotNodes = new Dictionary<string, ElementNode>();
+        Dictionary<String, ElementNode> nodes = new Dictionary<string, ElementNode>();
 
         public ElementLoader(IConversionInfo info = null)
         {
@@ -146,35 +148,49 @@ namespace Eir.FhirKhit.R3
             ElementPath p = new ElementPath(loadItem.ElementId);
 
             ElementNode newNode = null;
+            String elementId = head.ElementId;
             while (pathDepth < p.Nodes.Count)
             {
                 ElementPath.Node pathNode = p.Nodes[pathDepth];
-                newNode = this.GetNode(head, pathNode);
+                newNode = this.GetNode(head, pathNode, ref elementId);
                 head = newNode;
                 pathDepth += 1;
             }
+
+            Debug.Assert(newNode.ElementId == loadItem.ElementId);
             newNode.Element = loadItem;
-            this.snapShotNodes.Add(newNode.ElementId, newNode);
+            this.nodes.Add(newNode.ElementId, newNode);
+            //foreach (KeyValuePair<String, ElementNode> type in newNode)
+            //{
+
+            //}
         }
 
-        ElementNode GetNode(ElementNode head, ElementPath.Node pathNode)
+        ElementNode GetNode(ElementNode head,
+            ElementPath.Node pathNode,
+            ref String elementId)
         {
+            if (String.IsNullOrEmpty(elementId) == false)
+                elementId += ".";
+            elementId += $"{pathNode.Name}";
             if (head.TryGetImmediateChild(pathNode.Name, out ElementNode childNode) == false)
             {
-                childNode = new ElementNode(pathNode.Name);
+                childNode = new ElementNode(elementId);
                 head.Children.Add(childNode);
             }
 
             if (String.IsNullOrEmpty(pathNode.Slice) == false)
             {
+                elementId += $":{pathNode.Slice}";
                 if (childNode.TryGetSlice(pathNode.Slice, out ElementSlice slice) == false)
                 {
-                    slice = new ElementSlice(pathNode.Slice, pathNode.Name);
+                    slice = new ElementSlice(pathNode.Slice, elementId);
                     childNode.Slices.Add(slice);
                 }
                 childNode = slice.ElementNode;
             }
 
+            Debug.Assert(childNode.ElementId == elementId);
             return childNode;
         }
 
@@ -186,14 +202,17 @@ namespace Eir.FhirKhit.R3
 
         void LinkDifferentialItem(ElementDefinition differentialItem)
         {
-            if (this.snapShotNodes.TryGetValue(differentialItem.ElementId, out ElementNode snapshotNode) == true)
+            if (this.nodes.TryGetValue(differentialItem.ElementId, out ElementNode snapshotNode) == true)
             {
                 if (snapshotNode.DiffElement != null)
                     throw new Exception("Differential item {differentialItem.ElementId} already linked");
                 snapshotNode.DiffElement = differentialItem;
                 return;
             }
-
+            StringBuilder sb = new StringBuilder();
+            foreach (ElementNode node in this.nodes.Values)
+                node.Dump(sb);
+            File.WriteAllText(@"c:\Temp\scr.txt", sb.ToString());
             throw new Exception($"Can not find snapshot node matching differential {differentialItem.ElementId}");
         }
 

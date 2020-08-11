@@ -20,5 +20,12 @@ namespace Eir.FhirKhit.R3
             this.SliceName = sliceName;
             this.ElementNode = new ElementNode(pathName);
         }
+        public void Dump(StringBuilder sb, String margin = "")
+        {
+            void Line(String s) => sb.AppendLine($"{margin} {s}");
+
+            Line($"Slice: '{this.SliceName}'");
+            this.ElementNode.Dump(sb, $"{margin}  ");
+        }
     }
 }
