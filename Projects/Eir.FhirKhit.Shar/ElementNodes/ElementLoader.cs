@@ -67,7 +67,7 @@ namespace Eir.FhirKhit.R3
             }
 
             if (differentialItems != null)
-                LinkDifferentialItems(differentialItems);
+                LinkDifferentialItems(head, differentialItems);
             return head;
         }
 
@@ -194,13 +194,15 @@ namespace Eir.FhirKhit.R3
             return childNode;
         }
 
-        void LinkDifferentialItems(IEnumerable<ElementDefinition> differentialItems)
+        void LinkDifferentialItems(ElementNode head,
+            IEnumerable<ElementDefinition> differentialItems)
         {
             foreach (ElementDefinition differentialItem in differentialItems)
-                LinkDifferentialItem(differentialItem);
+                LinkDifferentialItem(head, differentialItem);
         }
 
-        void LinkDifferentialItem(ElementDefinition differentialItem)
+        void LinkDifferentialItem(ElementNode head,
+            ElementDefinition differentialItem)
         {
             if (this.nodes.TryGetValue(differentialItem.ElementId, out ElementNode snapshotNode) == true)
             {
@@ -209,11 +211,58 @@ namespace Eir.FhirKhit.R3
                 snapshotNode.DiffElement = differentialItem;
                 return;
             }
+            ElementNode s = Search(head, differentialItem.ElementId);
+
             StringBuilder sb = new StringBuilder();
             foreach (ElementNode node in this.nodes.Values)
                 node.Dump(sb);
             File.WriteAllText(@"c:\Temp\scr.txt", sb.ToString());
             throw new Exception($"Can not find snapshot node matching differential {differentialItem.ElementId}");
+        }
+
+        ElementNode SearchChild(ElementNode head, String nodeName)
+        {
+            for (Int32 i = 0; i < head.Children.Count; i++)
+            {
+                ElementNode n = head.Children[i];
+                if (n.NodeName == nodeName)
+                    return n;
+            }
+            return null;
+        }
+
+        ElementNode SearchSlice(ElementNode head, String sliceName)
+        {
+            ElementSlice slice = null;
+            foreach (ElementSlice s in n.Slices)
+            {
+                if (String.Compare(sliceParts[1], s.SliceName) == 0)
+                {
+                    slice = s;
+                    n = slice.ElementNode;
+                    break;
+                }
+            }
+        }
+
+        ElementNode Search(ElementNode head, String elementId)
+        {
+            ElementNode node = null;
+            String[] elementParts = elementId.Split('.');
+            foreach (String elementPart in elementParts)
+            {
+                String[] sliceParts = elementPart.Split(':');
+                ElementNode child = SearchChild(head, sliceParts[0]);
+                if (child == null)
+                    throw new Exception($"Node {elementId} not found");
+
+                if (sliceParts.Length > 1)
+                {
+                }
+            }
+        }
+    }
+            return node;
         }
 
     }
