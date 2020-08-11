@@ -58,7 +58,7 @@ namespace Eir.FhirKhit.R3
                 Path = "",
                 ElementId = ""
             });
-            Load(0, head, snapShotItems.ToArray(), ref itemIndex);
+            LoadSnapshotNodes(0, head, snapShotItems.ToArray(), ref itemIndex);
             if (itemIndex != snapShotItems.Count())
             {
                 this.Error(this.GetType().Name, fcn, $"Loader error. Unconsumed elements leftover....");
@@ -71,9 +71,9 @@ namespace Eir.FhirKhit.R3
         }
 
         /// <summary>
-        /// Load ElementDefinition into hierarchical list.
+        /// Load snapshot nodes into hierarchical list.
         /// </summary>
-        void Load(Int32 pathDepth,
+        void LoadSnapshotNodes(Int32 pathDepth,
             ElementNode head,
             ElementDefinition[] loadItems,
             ref Int32 itemIndex)
@@ -81,17 +81,17 @@ namespace Eir.FhirKhit.R3
             while (itemIndex < loadItems.Length)
             {
                 ElementDefinition loadItem = loadItems[itemIndex];
-                Load(pathDepth, head, loadItem);
+                SnapshotNode(pathDepth, head, loadItem);
                 itemIndex += 1;
             }
         }
 
-        void Load(Int32 pathDepth,
+        void SnapshotNode(Int32 pathDepth,
                 ElementNode head,
                 ElementDefinition loadItem)
         {
             /*
-             * Type ndoes (valueReferrence) may have been created already with empty Element. If so, put
+             * Type nodes (valueReferrence) may have been created already with empty Element. If so, put
              * element into existing type node if same elementId.
              */
             if (this.nodes.TryGetValue(loadItem.ElementId, out var existingNode) == true)
