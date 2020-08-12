@@ -161,17 +161,12 @@ namespace Eir.FhirKhit.R3
             {
                 if (String.IsNullOrEmpty(typeCode) == false)
                 {
-                    switch (childNode.ElementTypes.TryGetValue(typeCode, out ElementNode typeNode))
+                    if (childNode.ElementTypes.TryGetValue(typeCode, out ElementNode typeNode) == false)
                     {
-                        case true:
-                            childNode = typeNode;
-                            break;
-
-                        case false:
-                            childNode = new ElementNode(elementId);
-                            childNode.ElementTypes.Add(typeCode, childNode);
-                            break;
+                        typeNode = new ElementNode(elementId);
+                        childNode.ElementTypes.Add(typeCode, typeNode);
                     }
+                    childNode = typeNode;
                 }
             }
             if (String.IsNullOrEmpty(pathNode.Slice) == false)

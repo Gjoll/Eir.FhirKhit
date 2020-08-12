@@ -26,7 +26,7 @@ namespace Eir.FhirKhit.FhirConstructTests
     /// </summary>
     public class CodeGenerationTest
     {
-        Int32 tempCounter = 0;
+        Int32 tempCounter;
         String TempName()
         {
             tempCounter += 1;
@@ -91,7 +91,7 @@ namespace Eir.FhirKhit.FhirConstructTests
                         .AppendCode($"while ((i < {varName}.{pi.Name}.Length) && (j < 32))")
                         .OpenBrace()
                         .AppendCode($"sb.Append($\"{{{varName}.{pi.Name}[i]}}\");")
-                        .AppendCode($"if (i < {varName}.{pi.Name}.Length - 1) sb.Append(\",\");")
+                        .AppendCode($"if (i < {varName}.{pi.Name}.Length - 1) sb.Append(',');")
                         .AppendCode($"j += 1;")
                         .AppendCode($"i += 1;")
                         .CloseBrace()

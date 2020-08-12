@@ -224,9 +224,12 @@ namespace Eir.FhirKhit.R3
                         return false;
                     foreach (ElementDefinition.TypeRefComponent elementType in ed.Type)
                     {
-                        String typeName = $"{baseName}{elementType.Code}";
+                        String typeName = $"{baseName}{elementType.Code.UCFirstChar()}";
                         if (name == typeName)
+                        {
+                            localTypeCode = elementType.Code;
                             return true;
+                        }
                     }
                     return false;
                 }

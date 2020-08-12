@@ -5335,8 +5335,8 @@ namespace Eir.FhirKhit.R4
             retVal.VersionIdElement.Value = "String";                                                                                       // FhirConstruct.cs:3622
             retVal.VersionIdElement.ElementId = "String";                                                                                   // FhirConstruct.cs:3624
             retVal.LastUpdatedElement = new Instant();                                                                                      // FhirConstruct.cs:3628
-            retVal.LastUpdatedElement.Value = new DateTimeOffset(2020, 8, 5,                                                                // FhirConstruct.cs:3633
-                16, 21, 10, 629,                                                                                                            // FhirConstruct.cs:3634
+            retVal.LastUpdatedElement.Value = new DateTimeOffset(2020, 8, 11,                                                               // FhirConstruct.cs:3633
+                19, 33, 1, 424,                                                                                                             // FhirConstruct.cs:3634
                 new TimeSpan(-5, 0, 0));                                                                                                    // FhirConstruct.cs:3635
             retVal.LastUpdatedElement.ElementId = "String";                                                                                 // FhirConstruct.cs:3639
             retVal.SourceElement = new FhirUri();                                                                                           // FhirConstruct.cs:3643
@@ -7676,8 +7676,8 @@ namespace Eir.FhirKhit.R4
                 retVal.Type.Add(temp116);                                                                                                   // FhirConstruct.cs:5904
             }                                                                                                                               // FhirConstruct.cs:5905
             retVal.WhenElement = new Instant();                                                                                             // FhirConstruct.cs:5910
-            retVal.WhenElement.Value = new DateTimeOffset(2020, 8, 5,                                                                       // FhirConstruct.cs:5915
-                16, 21, 10, 734,                                                                                                            // FhirConstruct.cs:5916
+            retVal.WhenElement.Value = new DateTimeOffset(2020, 8, 11,                                                                      // FhirConstruct.cs:5915
+                19, 33, 1, 613,                                                                                                             // FhirConstruct.cs:5916
                 new TimeSpan(-5, 0, 0));                                                                                                    // FhirConstruct.cs:5917
             retVal.WhenElement.ElementId = "String";                                                                                        // FhirConstruct.cs:5921
             retVal.TargetFormatElement = new Code();                                                                                        // FhirConstruct.cs:5925
@@ -11992,8 +11992,8 @@ namespace Eir.FhirKhit.R4
         public Instant Method100()                                                                                                          // FhirConstruct.cs:7089
         {                                                                                                                                   // FhirConstruct.cs:7090
             Instant retVal = new Instant();                                                                                                 // FhirConstruct.cs:7091
-            retVal.Value = new DateTimeOffset(2020, 8, 5,                                                                                   // FhirConstruct.cs:7099
-                16, 21, 10, 892,                                                                                                            // FhirConstruct.cs:7100
+            retVal.Value = new DateTimeOffset(2020, 8, 11,                                                                                  // FhirConstruct.cs:7099
+                19, 33, 1, 816,                                                                                                             // FhirConstruct.cs:7100
                 new TimeSpan(-5, 0, 0));                                                                                                    // FhirConstruct.cs:7101
             retVal.ElementId = "String";                                                                                                    // FhirConstruct.cs:7105
             return retVal;                                                                                                                  // FhirConstruct.cs:7108

@@ -55,7 +55,7 @@ namespace Eir.FhirKhit.R3
             NodeStr(this.Nodes[0]);
             for (Int32 i = 1; i < this.Nodes.Count; i++)
             {
-                sb.Append(".");
+                sb.Append('.');
                 NodeStr(this.Nodes[i]);
             }
 

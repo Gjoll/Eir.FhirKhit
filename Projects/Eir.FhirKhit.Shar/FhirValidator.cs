@@ -22,7 +22,7 @@ namespace Eir.FhirKhit.R3
     public class FhirValidator : ConverterProcess
     {
         public bool FailOnWarnings { get; set; } = true;
-        public bool CheckIfResourceFlag { get; set; } = false;
+        public bool CheckIfResourceFlag { get; set; }
 
         public String ValidatorArgs { get; set; }
         public String ValidationPath { get; set; }

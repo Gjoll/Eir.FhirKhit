@@ -48,17 +48,17 @@ namespace Eir.FhirKhit.R4.XUnitTests
 
             Assert.True(e.Children.Count == 3);
 
-            Assert.True(e.Children[0].NodeName == "A");
+            Assert.True(e.Children[0].ElementId == "A");
             Assert.True(e.Children[0].Children.Count == 1);
-            Assert.True(e.Children[0].Children[0].NodeName == "A1");
+            Assert.True(e.Children[0].Children[0].ElementId == "A.A1");
 
-            Assert.True(e.Children[1].NodeName == "B");
+            Assert.True(e.Children[1].ElementId == "B");
             Assert.True(e.Children[1].Children.Count == 0);
 
-            Assert.True(e.Children[2].NodeName == "C");
+            Assert.True(e.Children[2].ElementId == "C");
             Assert.True(e.Children[2].Children.Count == 2);
-            Assert.True(e.Children[2].Children[0].NodeName == "C1");
-            Assert.True(e.Children[2].Children[1].NodeName == "C2");
+            Assert.True(e.Children[2].Children[0].ElementId == "C.C1");
+            Assert.True(e.Children[2].Children[1].ElementId == "C.C2");
         }
 
 
@@ -78,40 +78,40 @@ namespace Eir.FhirKhit.R4.XUnitTests
             Assert.True(e.Children.Count == 2);
 
             ElementNode child1 = e.Children[0];
-            Assert.True(child1.NodeName == "A");
+            Assert.True(child1.ElementId == "A");
             Assert.True(child1.Children.Count == 1);
-            Assert.True(child1.Children[0].NodeName == "A2");
+            Assert.True(child1.Children[0].ElementId == "A.A2");
 
             Assert.True(child1.Slices.Count == 1);
             Assert.True(child1.Slices[0].ElementNode.Children.Count == 1);
-            Assert.True(child1.Slices[0].ElementNode.Children[0].NodeName == "A1");
+            Assert.True(child1.Slices[0].ElementNode.Children[0].ElementId == "A:Slice.A1");
 
             ElementNode child2 = e.Children[1];
             Assert.True(child2.Slices.Count == 0);
-            Assert.True(child2.NodeName == "B");
+            Assert.True(child2.ElementId == "B");
         }
         [Fact(DisplayName = "ElementNode.LoadSubTypes")]
         void LoadSubTypes()
         {
             List<ElementDefinition> snapItems = new List<ElementDefinition>();
             snapItems.Add(CreateEDef("A", "A"));
-            ElementDefinition a1 = CreateEDef("A.value[x]", "A.value[x]");
-            a1.Type.Add(new ElementDefinition.TypeRefComponent
             {
-                Code = "String"
-            });
-            a1.Type.Add(new ElementDefinition.TypeRefComponent
-            {
-                Code = "Range"
-            });
-            snapItems.Add(a1);
-
+                ElementDefinition a1 = CreateEDef("A.value[x]", "A.value[x]");
+                a1.Type.Add(new ElementDefinition.TypeRefComponent
+                {
+                    Code = "String"
+                });
+                a1.Type.Add(new ElementDefinition.TypeRefComponent
+                {
+                    Code = "Range"
+                });
+                snapItems.Add(a1);
+            }
             snapItems.Add(CreateEDef("A.valueString", "A.valueString"));
             snapItems.Add(CreateEDef("A.valueRange", "A.valueRange"));
             snapItems.Add(CreateEDef("B", "B"));
 
             List<ElementDefinition> diffItems = new List<ElementDefinition>();
-            diffItems.Add(CreateEDef("A.value[x]", "A.value[x]"));
             diffItems.Add(CreateEDef("A.valueString", "A.valueString"));
             diffItems.Add(CreateEDef("A.valueRange", "A.valueRange"));
 
@@ -121,27 +121,27 @@ namespace Eir.FhirKhit.R4.XUnitTests
             Assert.True(e.Children.Count == 2);
 
             ElementNode childA = e.Children[0];
-            Assert.True(childA.NodeName == "A");
+            Assert.True(childA.ElementId == "A");
             Assert.True(childA.Children.Count == 1);
             Assert.True(childA.DiffElement == null);
 
             ElementNode childB = e.Children[1];
-            Assert.True(childB.NodeName == "B");
+            Assert.True(childB.ElementId == "B");
             Assert.True(childB.Children.Count == 0);
             Assert.True(childB.DiffElement == null);
 
             ElementNode valueX = e.Children[0].Children[0];
-            Assert.True(valueX.NodeName == "value[x]");
+            Assert.True(valueX.ElementId == "A.value[x]");
             Assert.True(valueX.Children.Count == 0);
             Assert.True(valueX.ElementTypes.Count == 2);
-            Assert.True(valueX.DiffElement.ElementId == "A.value[x]");
+            Assert.True(valueX.DiffElement == null);
 
             Assert.True(valueX.ElementTypes.TryGetValue("String", out ElementNode valueString)== true);
-            Assert.True(valueString.NodeName == "valueString");
+            Assert.True(valueString.ElementId == "A.valueString");
             Assert.True(valueString.DiffElement.ElementId == "A.valueString");
 
             Assert.True(valueX.ElementTypes.TryGetValue("Range", out ElementNode valueRange) == true);
-            Assert.True(valueRange.NodeName == "valueRange");
+            Assert.True(valueRange.ElementId == "A.valueRange");
             Assert.True(valueRange.DiffElement.ElementId == "A.valueRange");
         }
 

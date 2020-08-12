@@ -38,6 +38,6 @@ namespace Eir.FhirKhit.R3
                 return ZipFhirSource.source;
             }
         }
-        static ZipSource source = null;
+        static ZipSource source;
     }
 }

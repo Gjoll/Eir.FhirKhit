@@ -11,7 +11,7 @@ namespace Eir.FhirKhit.R3
     public class Modified<T>
         where T : class
     {
-        public bool ModifiedFlag { get; set; } = false;
+        public bool ModifiedFlag { get; set; }
         public T Item { get; set; }
 
         public Modified(T item)

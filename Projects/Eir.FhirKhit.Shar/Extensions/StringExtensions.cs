@@ -3,6 +3,7 @@ using Hl7.Fhir.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 #if FHIR_R4
@@ -13,6 +14,13 @@ namespace Eir.FhirKhit.R3
 {
     public static class StringExtensions
     {
+        public static String UCFirstChar(this string s)
+        {
+            if (String.IsNullOrEmpty(s) == true)
+                return "";
+            return $"{Char.ToUpper(s[0])}{s.Substring(1)}";
+        }
+
         /// <summary>
         /// Create Markdown instance from a string.
         /// </summary>
@@ -25,7 +33,7 @@ namespace Eir.FhirKhit.R3
                 if (line.First() == ' ')
                     spaceFlag = false;
                 if (spaceFlag)
-                    sb.Append(" ");
+                    sb.Append(' ');
                 sb.Append($"{line}\n");
                 spaceFlag = (line.Last() != ' ');
             }
