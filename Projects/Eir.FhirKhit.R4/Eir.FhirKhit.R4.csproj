@@ -30,11 +30,6 @@
   
   <ItemGroup>
     <PackageReference Include="Eir.DevTools" Version="1.16.5" />
-    <PackageReference Include="Hl7.Fhir.ElementModel" Version="1.9.0" />
-    <PackageReference Include="Hl7.Fhir.R4" Version="1.9.0" />
-    <PackageReference Include="Hl7.Fhir.Serialization" Version="1.9.0" />
-    <PackageReference Include="Hl7.Fhir.Specification.R4" Version="1.9.0" />
-    <PackageReference Include="Hl7.FhirPath" Version="1.9.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -44,6 +39,13 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\common\src\Hl7.Fhir.ElementModel\Hl7.Fhir.ElementModel.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\common\src\Hl7.Fhir.Serialization\Hl7.Fhir.Serialization.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\common\src\Hl7.Fhir.Support.Poco\Hl7.Fhir.Support.Poco.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\common\src\Hl7.Fhir.Support\Hl7.Fhir.Support.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\common\src\Hl7.FhirPath\Hl7.FhirPath.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\src\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\src\Hl7.Fhir.Specification\Hl7.Fhir.Specification.csproj" />
     <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj" />
   </ItemGroup>
   

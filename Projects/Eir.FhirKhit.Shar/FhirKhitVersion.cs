@@ -13,7 +13,7 @@ namespace Eir.FhirKhit.R3
     public static class FhirKhitVersion
     {
         public const String FhirVersion = "4.0.0";
-        public const FHIRVersion FhirVersionEnum = FHIRVersion.N4_0_0;
+        public const FHIRVersion FhirVersionEnum = FHIRVersion.N400;
     }
 #elif FHIR_R3
     public static class FhirKhitVersion
