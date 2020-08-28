@@ -47,7 +47,7 @@ namespace Eir.FhirKhit.FhirConstructTests
             //    return;
             //}
 
-            FhirElementAttribute attribute = pi.GetCustomAttribute<FhirElementAttribute>();
+            FhirElementAttribute attribute = pi.GetCustomAttributes<FhirElementAttribute>().FirstOrDefault();
             if (attribute == null)
                 return;
 
@@ -439,13 +439,14 @@ namespace Eir.FhirKhit.FhirConstructTests
         void SetFixField(PropertyInfo pi,
             Base retVal)
         {
-            FhirElementAttribute attribute = pi.GetCustomAttribute<FhirElementAttribute>();
+            FhirElementAttribute attribute = pi.GetCustomAttributes<FhirElementAttribute>().FirstOrDefault();
             if (attribute == null)
                 return;
 
             String name = pi.PropertyType.FriendlyName();
             switch (name)
             {
+                case "DataType":
                 case "Element":
                 case "Extension":
                 case "ResourceReference":

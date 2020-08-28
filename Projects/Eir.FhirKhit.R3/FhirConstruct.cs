@@ -609,7 +609,7 @@ namespace Eir.FhirKhit.R3
                             while ((i < fix.DataElement.Value.Length) && (j < 32))                                                          // FhirConstructGeneration.cs:91
                             {                                                                                                               // FhirConstructGeneration.cs:92
                                 sb.Append($"{fix.DataElement.Value[i]}");                                                                   // FhirConstructGeneration.cs:93
-                                if (i < fix.DataElement.Value.Length - 1) sb.Append(",");                                                   // FhirConstructGeneration.cs:94
+                                if (i < fix.DataElement.Value.Length - 1) sb.Append(',');                                                   // FhirConstructGeneration.cs:94
                                 j += 1;                                                                                                     // FhirConstructGeneration.cs:95
                                 i += 1;                                                                                                     // FhirConstructGeneration.cs:96
                             }                                                                                                               // FhirConstructGeneration.cs:97
@@ -654,7 +654,7 @@ namespace Eir.FhirKhit.R3
                             while ((i < fix.HashElement.Value.Length) && (j < 32))                                                          // FhirConstructGeneration.cs:91
                             {                                                                                                               // FhirConstructGeneration.cs:92
                                 sb.Append($"{fix.HashElement.Value[i]}");                                                                   // FhirConstructGeneration.cs:93
-                                if (i < fix.HashElement.Value.Length - 1) sb.Append(",");                                                   // FhirConstructGeneration.cs:94
+                                if (i < fix.HashElement.Value.Length - 1) sb.Append(',');                                                   // FhirConstructGeneration.cs:94
                                 j += 1;                                                                                                     // FhirConstructGeneration.cs:95
                                 i += 1;                                                                                                     // FhirConstructGeneration.cs:96
                             }                                                                                                               // FhirConstructGeneration.cs:97
@@ -4001,7 +4001,7 @@ namespace Eir.FhirKhit.R3
                                 while ((i < fix.Document.DataElement.Value.Length) && (j < 32))                                             // FhirConstructGeneration.cs:91
                                 {                                                                                                           // FhirConstructGeneration.cs:92
                                     sb.Append($"{fix.Document.DataElement.Value[i]}");                                                      // FhirConstructGeneration.cs:93
-                                    if (i < fix.Document.DataElement.Value.Length - 1) sb.Append(",");                                      // FhirConstructGeneration.cs:94
+                                    if (i < fix.Document.DataElement.Value.Length - 1) sb.Append(',');                                      // FhirConstructGeneration.cs:94
                                     j += 1;                                                                                                 // FhirConstructGeneration.cs:95
                                     i += 1;                                                                                                 // FhirConstructGeneration.cs:96
                                 }                                                                                                           // FhirConstructGeneration.cs:97
@@ -4046,7 +4046,7 @@ namespace Eir.FhirKhit.R3
                                 while ((i < fix.Document.HashElement.Value.Length) && (j < 32))                                             // FhirConstructGeneration.cs:91
                                 {                                                                                                           // FhirConstructGeneration.cs:92
                                     sb.Append($"{fix.Document.HashElement.Value[i]}");                                                      // FhirConstructGeneration.cs:93
-                                    if (i < fix.Document.HashElement.Value.Length - 1) sb.Append(",");                                      // FhirConstructGeneration.cs:94
+                                    if (i < fix.Document.HashElement.Value.Length - 1) sb.Append(',');                                      // FhirConstructGeneration.cs:94
                                     j += 1;                                                                                                 // FhirConstructGeneration.cs:95
                                     i += 1;                                                                                                 // FhirConstructGeneration.cs:96
                                 }                                                                                                           // FhirConstructGeneration.cs:97
@@ -4315,7 +4315,7 @@ namespace Eir.FhirKhit.R3
                             while ((i < fix.BlobElement.Value.Length) && (j < 32))                                                          // FhirConstructGeneration.cs:91
                             {                                                                                                               // FhirConstructGeneration.cs:92
                                 sb.Append($"{fix.BlobElement.Value[i]}");                                                                   // FhirConstructGeneration.cs:93
-                                if (i < fix.BlobElement.Value.Length - 1) sb.Append(",");                                                   // FhirConstructGeneration.cs:94
+                                if (i < fix.BlobElement.Value.Length - 1) sb.Append(',');                                                   // FhirConstructGeneration.cs:94
                                 j += 1;                                                                                                     // FhirConstructGeneration.cs:95
                                 i += 1;                                                                                                     // FhirConstructGeneration.cs:96
                             }                                                                                                               // FhirConstructGeneration.cs:97
@@ -5012,7 +5012,7 @@ namespace Eir.FhirKhit.R3
                         while ((i < fix.Value.Length) && (j < 32))                                                                          // FhirConstructGeneration.cs:91
                         {                                                                                                                   // FhirConstructGeneration.cs:92
                             sb.Append($"{fix.Value[i]}");                                                                                   // FhirConstructGeneration.cs:93
-                            if (i < fix.Value.Length - 1) sb.Append(",");                                                                   // FhirConstructGeneration.cs:94
+                            if (i < fix.Value.Length - 1) sb.Append(',');                                                                   // FhirConstructGeneration.cs:94
                             j += 1;                                                                                                         // FhirConstructGeneration.cs:95
                             i += 1;                                                                                                         // FhirConstructGeneration.cs:96
                         }                                                                                                                   // FhirConstructGeneration.cs:97

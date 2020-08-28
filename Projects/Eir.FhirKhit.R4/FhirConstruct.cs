@@ -23,8 +23,366 @@ namespace Eir.FhirKhit.R4
             String methodName,                                                                                                              // FhirConstructGeneration.cs:395
             out String propertyType,                                                                                                        // FhirConstructGeneration.cs:396
             String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:397
-        {
-            propertyType = "";
+        {                                                                                                                                   // FhirConstructGeneration.cs:398
+                                                                                                                                            // FhirConstructGeneration.cs:400
+            propertyType = null;                                                                                                            // FhirConstructGeneration.cs:401
+            switch (fix.TypeName)                                                                                                           // FhirConstructGeneration.cs:402
+            {                                                                                                                               // FhirConstructGeneration.cs:403
+                case "Address": // Address  - DataType                                                                                      // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Address";                                                                                               // FhirConstructGeneration.cs:307
+                    return Construct(block, (Address)fix, methodName, methodAccess);                                                        // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Age": // Age  - DataType                                                                                              // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Age";                                                                                                   // FhirConstructGeneration.cs:307
+                    return Construct(block, (Age)fix, methodName, methodAccess);                                                            // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Annotation": // Annotation  - DataType                                                                                // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Annotation";                                                                                            // FhirConstructGeneration.cs:307
+                    return Construct(block, (Annotation)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Attachment": // Attachment  - DataType                                                                                // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Attachment";                                                                                            // FhirConstructGeneration.cs:307
+                    return Construct(block, (Attachment)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "CodeableConcept": // CodeableConcept  - DataType                                                                      // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "CodeableConcept";                                                                                       // FhirConstructGeneration.cs:307
+                    return Construct(block, (CodeableConcept)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Coding": // Coding  - DataType                                                                                        // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Coding";                                                                                                // FhirConstructGeneration.cs:307
+                    return Construct(block, (Coding)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "ContactDetail": // ContactDetail  - DataType                                                                          // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "ContactDetail";                                                                                         // FhirConstructGeneration.cs:307
+                    return Construct(block, (ContactDetail)fix, methodName, methodAccess);                                                  // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "ContactPoint": // ContactPoint  - DataType                                                                            // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "ContactPoint";                                                                                          // FhirConstructGeneration.cs:307
+                    return Construct(block, (ContactPoint)fix, methodName, methodAccess);                                                   // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Contributor": // Contributor  - DataType                                                                              // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Contributor";                                                                                           // FhirConstructGeneration.cs:307
+                    return Construct(block, (Contributor)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Count": // Count  - DataType                                                                                          // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Count";                                                                                                 // FhirConstructGeneration.cs:307
+                    return Construct(block, (Count)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "DataRequirement": // DataRequirement  - DataType                                                                      // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "DataRequirement";                                                                                       // FhirConstructGeneration.cs:307
+                    return Construct(block, (DataRequirement)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Distance": // Distance  - DataType                                                                                    // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Distance";                                                                                              // FhirConstructGeneration.cs:307
+                    return Construct(block, (Distance)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Dosage": // Dosage  - DataType                                                                                        // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Dosage";                                                                                                // FhirConstructGeneration.cs:307
+                    return Construct(block, (Dosage)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Duration": // Duration  - DataType                                                                                    // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Duration";                                                                                              // FhirConstructGeneration.cs:307
+                    return Construct(block, (Duration)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "ElementDefinition": // ElementDefinition  - DataType                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "ElementDefinition";                                                                                     // FhirConstructGeneration.cs:307
+                    return Construct(block, (ElementDefinition)fix, methodName, methodAccess);                                              // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Expression": // Expression  - DataType                                                                                // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Expression";                                                                                            // FhirConstructGeneration.cs:307
+                    return Construct(block, (Expression)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Extension": // Extension  - DataType                                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Extension";                                                                                             // FhirConstructGeneration.cs:307
+                    return Construct(block, (Extension)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "HumanName": // HumanName  - DataType                                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "HumanName";                                                                                             // FhirConstructGeneration.cs:307
+                    return Construct(block, (HumanName)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Identifier": // Identifier  - DataType                                                                                // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Identifier";                                                                                            // FhirConstructGeneration.cs:307
+                    return Construct(block, (Identifier)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "MarketingStatus": // MarketingStatus  - DataType                                                                      // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "MarketingStatus";                                                                                       // FhirConstructGeneration.cs:307
+                    return Construct(block, (MarketingStatus)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Meta": // Meta  - DataType                                                                                            // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Meta";                                                                                                  // FhirConstructGeneration.cs:307
+                    return Construct(block, (Meta)fix, methodName, methodAccess);                                                           // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Money": // Money  - DataType                                                                                          // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Money";                                                                                                 // FhirConstructGeneration.cs:307
+                    return Construct(block, (Money)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Narrative": // Narrative  - DataType                                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Narrative";                                                                                             // FhirConstructGeneration.cs:307
+                    return Construct(block, (Narrative)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "ParameterDefinition": // ParameterDefinition  - DataType                                                              // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "ParameterDefinition";                                                                                   // FhirConstructGeneration.cs:307
+                    return Construct(block, (ParameterDefinition)fix, methodName, methodAccess);                                            // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Period": // Period  - DataType                                                                                        // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Period";                                                                                                // FhirConstructGeneration.cs:307
+                    return Construct(block, (Period)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Population": // Population  - DataType                                                                                // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Population";                                                                                            // FhirConstructGeneration.cs:307
+                    return Construct(block, (Population)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "ProdCharacteristic": // ProdCharacteristic  - DataType                                                                // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "ProdCharacteristic";                                                                                    // FhirConstructGeneration.cs:307
+                    return Construct(block, (ProdCharacteristic)fix, methodName, methodAccess);                                             // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "ProductShelfLife": // ProductShelfLife  - DataType                                                                    // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "ProductShelfLife";                                                                                      // FhirConstructGeneration.cs:307
+                    return Construct(block, (ProductShelfLife)fix, methodName, methodAccess);                                               // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Quantity": // Quantity  - DataType                                                                                    // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Quantity";                                                                                              // FhirConstructGeneration.cs:307
+                    return Construct(block, (Quantity)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Range": // Range  - DataType                                                                                          // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Range";                                                                                                 // FhirConstructGeneration.cs:307
+                    return Construct(block, (Range)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Ratio": // Ratio  - DataType                                                                                          // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Ratio";                                                                                                 // FhirConstructGeneration.cs:307
+                    return Construct(block, (Ratio)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Reference": // Reference  - DataType                                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Reference";                                                                                             // FhirConstructGeneration.cs:307
+                    return Construct(block, (ResourceReference)fix, methodName, methodAccess);                                              // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "RelatedArtifact": // RelatedArtifact  - DataType                                                                      // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "RelatedArtifact";                                                                                       // FhirConstructGeneration.cs:307
+                    return Construct(block, (RelatedArtifact)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "SampledData": // SampledData  - DataType                                                                              // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "SampledData";                                                                                           // FhirConstructGeneration.cs:307
+                    return Construct(block, (SampledData)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Signature": // Signature  - DataType                                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Signature";                                                                                             // FhirConstructGeneration.cs:307
+                    return Construct(block, (Signature)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "SubstanceAmount": // SubstanceAmount  - DataType                                                                      // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "SubstanceAmount";                                                                                       // FhirConstructGeneration.cs:307
+                    return Construct(block, (SubstanceAmount)fix, methodName, methodAccess);                                                // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "Timing": // Timing  - DataType                                                                                        // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "Timing";                                                                                                // FhirConstructGeneration.cs:307
+                    return Construct(block, (Timing)fix, methodName, methodAccess);                                                         // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "TriggerDefinition": // TriggerDefinition  - DataType                                                                  // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "TriggerDefinition";                                                                                     // FhirConstructGeneration.cs:307
+                    return Construct(block, (TriggerDefinition)fix, methodName, methodAccess);                                              // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "UsageContext": // UsageContext  - DataType                                                                            // FhirConstructGeneration.cs:305
+                {                                                                                                                           // FhirConstructGeneration.cs:306
+                    propertyType = "UsageContext";                                                                                          // FhirConstructGeneration.cs:307
+                    return Construct(block, (UsageContext)fix, methodName, methodAccess);                                                   // FhirConstructGeneration.cs:308
+                }                                                                                                                           // FhirConstructGeneration.cs:309
+                                                                                                                                            // FhirConstructGeneration.cs:310
+                case "base64Binary": // Base64Binary  - primitive                                                                           // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "base64Binary";                                                                                          // FhirConstructGeneration.cs:239
+                    return Construct(block, (Base64Binary)fix, methodName, methodAccess);                                                   // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "boolean": // Boolean  - primitive                                                                                     // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "boolean";                                                                                               // FhirConstructGeneration.cs:239
+                    return Construct(block, (FhirBoolean)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "canonical": // Canonical  - primitive                                                                                 // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "canonical";                                                                                             // FhirConstructGeneration.cs:239
+                    return Construct(block, (Canonical)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "code": // Code  - primitive                                                                                           // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "code";                                                                                                  // FhirConstructGeneration.cs:239
+                    return Construct(block, (Code)fix, methodName, methodAccess);                                                           // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "date": // Date  - primitive                                                                                           // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "date";                                                                                                  // FhirConstructGeneration.cs:239
+                    return Construct(block, (Date)fix, methodName, methodAccess);                                                           // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "dateTime": // DateTime  - primitive                                                                                   // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "dateTime";                                                                                              // FhirConstructGeneration.cs:239
+                    return Construct(block, (FhirDateTime)fix, methodName, methodAccess);                                                   // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "decimal": // Decimal  - primitive                                                                                     // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "decimal";                                                                                               // FhirConstructGeneration.cs:239
+                    return Construct(block, (FhirDecimal)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "id": // Id  - primitive                                                                                               // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "id";                                                                                                    // FhirConstructGeneration.cs:239
+                    return Construct(block, (Id)fix, methodName, methodAccess);                                                             // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "instant": // Instant  - primitive                                                                                     // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "instant";                                                                                               // FhirConstructGeneration.cs:239
+                    return Construct(block, (Instant)fix, methodName, methodAccess);                                                        // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "integer": // Integer  - primitive                                                                                     // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "integer";                                                                                               // FhirConstructGeneration.cs:239
+                    return Construct(block, (Integer)fix, methodName, methodAccess);                                                        // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "markdown": // Markdown  - primitive                                                                                   // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "markdown";                                                                                              // FhirConstructGeneration.cs:239
+                    return Construct(block, (Markdown)fix, methodName, methodAccess);                                                       // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "oid": // Oid  - primitive                                                                                             // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "oid";                                                                                                   // FhirConstructGeneration.cs:239
+                    return Construct(block, (Oid)fix, methodName, methodAccess);                                                            // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "positiveInt": // PositiveInt  - primitive                                                                             // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "positiveInt";                                                                                           // FhirConstructGeneration.cs:239
+                    return Construct(block, (PositiveInt)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "string": // String  - primitive                                                                                       // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "string";                                                                                                // FhirConstructGeneration.cs:239
+                    return Construct(block, (FhirString)fix, methodName, methodAccess);                                                     // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "time": // Time  - primitive                                                                                           // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "time";                                                                                                  // FhirConstructGeneration.cs:239
+                    return Construct(block, (Time)fix, methodName, methodAccess);                                                           // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "unsignedInt": // UnsignedInt  - primitive                                                                             // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "unsignedInt";                                                                                           // FhirConstructGeneration.cs:239
+                    return Construct(block, (UnsignedInt)fix, methodName, methodAccess);                                                    // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "uri": // Uri  - primitive                                                                                             // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "uri";                                                                                                   // FhirConstructGeneration.cs:239
+                    return Construct(block, (FhirUri)fix, methodName, methodAccess);                                                        // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "url": // Url  - primitive                                                                                             // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "url";                                                                                                   // FhirConstructGeneration.cs:239
+                    return Construct(block, (FhirUrl)fix, methodName, methodAccess);                                                        // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "uuid": // Uuid  - primitive                                                                                           // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "uuid";                                                                                                  // FhirConstructGeneration.cs:239
+                    return Construct(block, (Uuid)fix, methodName, methodAccess);                                                           // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+                case "xhtml": // Xhtml  - primitive                                                                                         // FhirConstructGeneration.cs:237
+                {                                                                                                                           // FhirConstructGeneration.cs:238
+                    propertyType = "xhtml";                                                                                                 // FhirConstructGeneration.cs:239
+                    return Construct(block, (XHtml)fix, methodName, methodAccess);                                                          // FhirConstructGeneration.cs:240
+                }                                                                                                                           // FhirConstructGeneration.cs:241
+                                                                                                                                            // FhirConstructGeneration.cs:242
+            }                                                                                                                               // FhirConstructGeneration.cs:417
             return false;                                                                                                                   // FhirConstructGeneration.cs:418
         }                                                                                                                                   // FhirConstructGeneration.cs:419
                                                                                                                                             // FhirConstructGeneration.cs:315
@@ -219,6 +577,12 @@ namespace Eir.FhirKhit.R4
                 ;                                                                                                                           // FhirConstructGeneration.cs:330
             if (fix != null)                                                                                                                // FhirConstructGeneration.cs:331
             {                                                                                                                               // FhirConstructGeneration.cs:332
+                if (fix.Author != null)                                                                                                     // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Author = new DataType();");                                                               // FhirConstructGeneration.cs:209
+                    if (fix.Author.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Author.ElementId = \"{fix.Author.ElementId}\";");                                         // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.TimeElement != null)                                                                                                // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.TimeElement = new FhirDateTime();");                                                      // FhirConstructGeneration.cs:209
@@ -902,6 +1266,12 @@ namespace Eir.FhirKhit.R4
                         block.CloseBrace();                                                                                                 // FhirConstructGeneration.cs:172
                     }                                                                                                                       // FhirConstructGeneration.cs:173
                 }                                                                                                                           // FhirConstructGeneration.cs:174
+                if (fix.Subject != null)                                                                                                    // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Subject = new DataType();");                                                              // FhirConstructGeneration.cs:209
+                    if (fix.Subject.ElementId != null)                                                                                      // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Subject.ElementId = \"{fix.Subject.ElementId}\";");                                       // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MustSupportElement != null)                                                                                         // FhirConstructGeneration.cs:159
                 {                                                                                                                           // FhirConstructGeneration.cs:160
                     block.AppendCode($"retVal.MustSupportElement = new List<FhirString>();");                                               // FhirConstructGeneration.cs:161
@@ -1034,6 +1404,12 @@ namespace Eir.FhirKhit.R4
                                 block.AppendCode($"temp20.SearchParamElement.Value = \"{temp19.SearchParamElement.Value}\";");              // FhirConstructGeneration.cs:138
                             if (temp19.SearchParamElement.ElementId != null)                                                                // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp20.SearchParamElement.ElementId = \"{temp19.SearchParamElement.ElementId}\";");      // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp19.Value != null)                                                                                           // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp20.Value = new DataType();");                                                        // FhirConstructGeneration.cs:209
+                            if (temp19.Value.ElementId != null)                                                                             // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp20.Value.ElementId = \"{temp19.Value.ElementId}\";");                                // FhirConstructGeneration.cs:138
                         }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp19.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                             block.AppendCode($"temp20.ElementId = \"{temp19.ElementId}\";");                                                // FhirConstructGeneration.cs:138
@@ -1282,6 +1658,12 @@ namespace Eir.FhirKhit.R4
                     if (fix.Timing.Repeat != null)                                                                                          // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.Timing.Repeat = new Timing.RepeatComponent();");                                      // FhirConstructGeneration.cs:209
+                        if (fix.Timing.Repeat.Bounds != null)                                                                               // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"retVal.Timing.Repeat.Bounds = new DataType();");                                         // FhirConstructGeneration.cs:209
+                            if (fix.Timing.Repeat.Bounds.ElementId != null)                                                                 // FhirConstructGeneration.cs:137
+                                block.AppendCode($"retVal.Timing.Repeat.Bounds.ElementId = \"{fix.Timing.Repeat.Bounds.ElementId}\";");     // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (fix.Timing.Repeat.CountElement != null)                                                                         // FhirConstructGeneration.cs:207
                         {                                                                                                                   // FhirConstructGeneration.cs:208
                                 block.AppendCode($"retVal.Timing.Repeat.CountElement = new PositiveInt();");                                // FhirConstructGeneration.cs:209
@@ -1480,6 +1862,12 @@ namespace Eir.FhirKhit.R4
                     }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Timing.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.Timing.ElementId = \"{fix.Timing.ElementId}\";");                                         // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.AsNeeded != null)                                                                                                   // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.AsNeeded = new DataType();");                                                             // FhirConstructGeneration.cs:209
+                    if (fix.AsNeeded.ElementId != null)                                                                                     // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.AsNeeded.ElementId = \"{fix.AsNeeded.ElementId}\";");                                     // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Site != null)                                                                                                       // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
@@ -1776,6 +2164,18 @@ namespace Eir.FhirKhit.R4
                             if (temp43.Type.ElementId != null)                                                                              // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp44.Type.ElementId = \"{temp43.Type.ElementId}\";");                                  // FhirConstructGeneration.cs:138
                         }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp43.Dose != null)                                                                                            // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp44.Dose = new DataType();");                                                         // FhirConstructGeneration.cs:209
+                            if (temp43.Dose.ElementId != null)                                                                              // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp44.Dose.ElementId = \"{temp43.Dose.ElementId}\";");                                  // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp43.Rate != null)                                                                                            // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp44.Rate = new DataType();");                                                         // FhirConstructGeneration.cs:209
+                            if (temp43.Rate.ElementId != null)                                                                              // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp44.Rate.ElementId = \"{temp43.Rate.ElementId}\";");                                  // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp43.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                             block.AppendCode($"temp44.ElementId = \"{temp43.ElementId}\";");                                                // FhirConstructGeneration.cs:138
                         block.AppendCode($"retVal.DoseAndRate.Add(temp44);");                                                               // FhirConstructGeneration.cs:171
@@ -1870,7 +2270,7 @@ namespace Eir.FhirKhit.R4
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MaxDosePerAdministration != null)                                                                                   // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.MaxDosePerAdministration = new SimpleQuantity();");                                       // FhirConstructGeneration.cs:209
+                        block.AppendCode($"retVal.MaxDosePerAdministration = new Quantity();");                                             // FhirConstructGeneration.cs:209
                     if (fix.MaxDosePerAdministration.ValueElement != null)                                                                  // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.MaxDosePerAdministration.ValueElement = new FhirDecimal();");                         // FhirConstructGeneration.cs:209
@@ -1910,7 +2310,7 @@ namespace Eir.FhirKhit.R4
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MaxDosePerLifetime != null)                                                                                         // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.MaxDosePerLifetime = new SimpleQuantity();");                                             // FhirConstructGeneration.cs:209
+                        block.AppendCode($"retVal.MaxDosePerLifetime = new Quantity();");                                                   // FhirConstructGeneration.cs:209
                     if (fix.MaxDosePerLifetime.ValueElement != null)                                                                        // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.MaxDosePerLifetime.ValueElement = new FhirDecimal();");                               // FhirConstructGeneration.cs:209
@@ -2365,6 +2765,12 @@ namespace Eir.FhirKhit.R4
                         block.CloseBrace();                                                                                                 // FhirConstructGeneration.cs:172
                     }                                                                                                                       // FhirConstructGeneration.cs:173
                 }                                                                                                                           // FhirConstructGeneration.cs:174
+                if (fix.DefaultValue != null)                                                                                               // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.DefaultValue = new DataType();");                                                         // FhirConstructGeneration.cs:209
+                    if (fix.DefaultValue.ElementId != null)                                                                                 // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.DefaultValue.ElementId = \"{fix.DefaultValue.ElementId}\";");                             // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MeaningWhenMissing != null)                                                                                         // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.MeaningWhenMissing = new Markdown();");                                                   // FhirConstructGeneration.cs:209
@@ -2381,6 +2787,18 @@ namespace Eir.FhirKhit.R4
                     if (fix.OrderMeaningElement.ElementId != null)                                                                          // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.OrderMeaningElement.ElementId = \"{fix.OrderMeaningElement.ElementId}\";");               // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Fixed != null)                                                                                                      // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Fixed = new DataType();");                                                                // FhirConstructGeneration.cs:209
+                    if (fix.Fixed.ElementId != null)                                                                                        // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Fixed.ElementId = \"{fix.Fixed.ElementId}\";");                                           // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Pattern != null)                                                                                                    // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Pattern = new DataType();");                                                              // FhirConstructGeneration.cs:209
+                    if (fix.Pattern.ElementId != null)                                                                                      // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Pattern.ElementId = \"{fix.Pattern.ElementId}\";");                                       // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Example != null)                                                                                                    // FhirConstructGeneration.cs:159
                 {                                                                                                                           // FhirConstructGeneration.cs:160
                     block.AppendCode($"retVal.Example = new List<ElementDefinition.ExampleComponent>();");                                  // FhirConstructGeneration.cs:161
@@ -2396,12 +2814,30 @@ namespace Eir.FhirKhit.R4
                             if (temp63.LabelElement.ElementId != null)                                                                      // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp64.LabelElement.ElementId = \"{temp63.LabelElement.ElementId}\";");                  // FhirConstructGeneration.cs:138
                         }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp63.Value != null)                                                                                           // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp64.Value = new DataType();");                                                        // FhirConstructGeneration.cs:209
+                            if (temp63.Value.ElementId != null)                                                                             // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp64.Value.ElementId = \"{temp63.Value.ElementId}\";");                                // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp63.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                             block.AppendCode($"temp64.ElementId = \"{temp63.ElementId}\";");                                                // FhirConstructGeneration.cs:138
                         block.AppendCode($"retVal.Example.Add(temp64);");                                                                   // FhirConstructGeneration.cs:171
                         block.CloseBrace();                                                                                                 // FhirConstructGeneration.cs:172
                     }                                                                                                                       // FhirConstructGeneration.cs:173
                 }                                                                                                                           // FhirConstructGeneration.cs:174
+                if (fix.MinValue != null)                                                                                                   // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.MinValue = new DataType();");                                                             // FhirConstructGeneration.cs:209
+                    if (fix.MinValue.ElementId != null)                                                                                     // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.MinValue.ElementId = \"{fix.MinValue.ElementId}\";");                                     // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.MaxValue != null)                                                                                                   // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.MaxValue = new DataType();");                                                             // FhirConstructGeneration.cs:209
+                    if (fix.MaxValue.ElementId != null)                                                                                     // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.MaxValue.ElementId = \"{fix.MaxValue.ElementId}\";");                                     // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MaxLengthElement != null)                                                                                           // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.MaxLengthElement = new Integer();");                                                      // FhirConstructGeneration.cs:209
@@ -2698,6 +3134,12 @@ namespace Eir.FhirKhit.R4
             {                                                                                                                               // FhirConstructGeneration.cs:332
                 if (fix.Url != null)                                                                                                        // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.Url = \"{fix.Url}\";");                                                                       // FhirConstructGeneration.cs:138
+                if (fix.Value != null)                                                                                                      // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Value = new DataType();");                                                                // FhirConstructGeneration.cs:209
+                    if (fix.Value.ElementId != null)                                                                                        // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Value.ElementId = \"{fix.Value.ElementId}\";");                                           // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ElementId != null)                                                                                                  // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.ElementId = \"{fix.ElementId}\";");                                                           // FhirConstructGeneration.cs:138
             }                                                                                                                               // FhirConstructGeneration.cs:338
@@ -3278,11 +3720,11 @@ namespace Eir.FhirKhit.R4
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ProfileElement != null)                                                                                             // FhirConstructGeneration.cs:159
                 {                                                                                                                           // FhirConstructGeneration.cs:160
-                    block.AppendCode($"retVal.ProfileElement = new List<Canonical>();");                                                    // FhirConstructGeneration.cs:161
+                    block.AppendCode($"retVal.ProfileElement = new List<FhirUri>();");                                                      // FhirConstructGeneration.cs:161
                     foreach (var temp85 in fix.ProfileElement)                                                                              // FhirConstructGeneration.cs:162
                     {                                                                                                                       // FhirConstructGeneration.cs:163
                         block.OpenBrace();                                                                                                  // FhirConstructGeneration.cs:164
-                        block.AppendCode("var temp86 = new Canonical();");                                                                  // FhirConstructGeneration.cs:165
+                        block.AppendCode("var temp86 = new FhirUri();");                                                                    // FhirConstructGeneration.cs:165
                         if (temp85.Value != null)                                                                                           // FhirConstructGeneration.cs:137
                             block.AppendCode($"temp86.Value = \"{temp85.Value}\";");                                                        // FhirConstructGeneration.cs:138
                         if (temp85.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
@@ -3453,7 +3895,6 @@ namespace Eir.FhirKhit.R4
             return  true;                                                                                                                   // FhirConstructGeneration.cs:343
         }                                                                                                                                   // FhirConstructGeneration.cs:344
                                                                                                                                             // FhirConstructGeneration.cs:315
-                                                                                                                                           // FhirConstructGeneration.cs:315
         /// <summary>
         /// Return c# text to create indicated element.
         /// </summary>
@@ -3612,6 +4053,12 @@ namespace Eir.FhirKhit.R4
                 ;                                                                                                                           // FhirConstructGeneration.cs:330
             if (fix != null)                                                                                                                // FhirConstructGeneration.cs:331
             {                                                                                                                               // FhirConstructGeneration.cs:332
+                if (fix.Age != null)                                                                                                        // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Age = new DataType();");                                                                  // FhirConstructGeneration.cs:209
+                    if (fix.Age.ElementId != null)                                                                                          // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Age.ElementId = \"{fix.Age.ElementId}\";");                                               // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Gender != null)                                                                                                     // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.Gender = new CodeableConcept();");                                                        // FhirConstructGeneration.cs:209
@@ -4746,7 +5193,7 @@ namespace Eir.FhirKhit.R4
             {                                                                                                                               // FhirConstructGeneration.cs:332
                 if (fix.Low != null)                                                                                                        // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.Low = new SimpleQuantity();");                                                            // FhirConstructGeneration.cs:209
+                        block.AppendCode($"retVal.Low = new Quantity();");                                                                  // FhirConstructGeneration.cs:209
                     if (fix.Low.ValueElement != null)                                                                                       // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.Low.ValueElement = new FhirDecimal();");                                              // FhirConstructGeneration.cs:209
@@ -4786,7 +5233,7 @@ namespace Eir.FhirKhit.R4
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.High != null)                                                                                                       // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.High = new SimpleQuantity();");                                                           // FhirConstructGeneration.cs:209
+                        block.AppendCode($"retVal.High = new Quantity();");                                                                 // FhirConstructGeneration.cs:209
                     if (fix.High.ValueElement != null)                                                                                      // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.High.ValueElement = new FhirDecimal();");                                             // FhirConstructGeneration.cs:209
@@ -5306,7 +5753,7 @@ namespace Eir.FhirKhit.R4
             {                                                                                                                               // FhirConstructGeneration.cs:332
                 if (fix.Origin != null)                                                                                                     // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.Origin = new SimpleQuantity();");                                                         // FhirConstructGeneration.cs:209
+                        block.AppendCode($"retVal.Origin = new Quantity();");                                                               // FhirConstructGeneration.cs:209
                     if (fix.Origin.ValueElement != null)                                                                                    // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.Origin.ValueElement = new FhirDecimal();");                                           // FhirConstructGeneration.cs:209
@@ -5546,7 +5993,6 @@ namespace Eir.FhirKhit.R4
             return  true;                                                                                                                   // FhirConstructGeneration.cs:343
         }                                                                                                                                   // FhirConstructGeneration.cs:344
                                                                                                                                             // FhirConstructGeneration.cs:315
-                                                                                                                                            // FhirConstructGeneration.cs:315
         /// <summary>
         /// Return c# text to create indicated element.
         /// </summary>
@@ -5563,6 +6009,12 @@ namespace Eir.FhirKhit.R4
                 ;                                                                                                                           // FhirConstructGeneration.cs:330
             if (fix != null)                                                                                                                // FhirConstructGeneration.cs:331
             {                                                                                                                               // FhirConstructGeneration.cs:332
+                if (fix.Amount != null)                                                                                                     // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Amount = new DataType();");                                                               // FhirConstructGeneration.cs:209
+                    if (fix.Amount.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Amount.ElementId = \"{fix.Amount.ElementId}\";");                                         // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.AmountType != null)                                                                                                 // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.AmountType = new CodeableConcept();");                                                    // FhirConstructGeneration.cs:209
@@ -5773,6 +6225,12 @@ namespace Eir.FhirKhit.R4
                 if (fix.Repeat != null)                                                                                                     // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.Repeat = new Timing.RepeatComponent();");                                                 // FhirConstructGeneration.cs:209
+                    if (fix.Repeat.Bounds != null)                                                                                          // FhirConstructGeneration.cs:207
+                    {                                                                                                                       // FhirConstructGeneration.cs:208
+                            block.AppendCode($"retVal.Repeat.Bounds = new DataType();");                                                    // FhirConstructGeneration.cs:209
+                        if (fix.Repeat.Bounds.ElementId != null)                                                                            // FhirConstructGeneration.cs:137
+                            block.AppendCode($"retVal.Repeat.Bounds.ElementId = \"{fix.Repeat.Bounds.ElementId}\";");                       // FhirConstructGeneration.cs:138
+                    }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Repeat.CountElement != null)                                                                                    // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.Repeat.CountElement = new PositiveInt();");                                           // FhirConstructGeneration.cs:209
@@ -6005,6 +6463,12 @@ namespace Eir.FhirKhit.R4
                     if (fix.NameElement.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.NameElement.ElementId = \"{fix.NameElement.ElementId}\";");                               // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Timing != null)                                                                                                     // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Timing = new DataType();");                                                               // FhirConstructGeneration.cs:209
+                    if (fix.Timing.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Timing.ElementId = \"{fix.Timing.ElementId}\";");                                         // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Data != null)                                                                                                       // FhirConstructGeneration.cs:159
                 {                                                                                                                           // FhirConstructGeneration.cs:160
                     block.AppendCode($"retVal.Data = new List<DataRequirement>();");                                                        // FhirConstructGeneration.cs:161
@@ -6029,6 +6493,12 @@ namespace Eir.FhirKhit.R4
                                 block.CloseBrace();                                                                                         // FhirConstructGeneration.cs:172
                             }                                                                                                               // FhirConstructGeneration.cs:173
                         }                                                                                                                   // FhirConstructGeneration.cs:174
+                        if (temp129.Subject != null)                                                                                        // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp130.Subject = new DataType();");                                                     // FhirConstructGeneration.cs:209
+                            if (temp129.Subject.ElementId != null)                                                                          // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp130.Subject.ElementId = \"{temp129.Subject.ElementId}\";");                          // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp129.MustSupportElement != null)                                                                             // FhirConstructGeneration.cs:159
                         {                                                                                                                   // FhirConstructGeneration.cs:160
                             block.AppendCode($"temp130.MustSupportElement = new List<FhirString>();");                                      // FhirConstructGeneration.cs:161
@@ -6161,6 +6631,12 @@ namespace Eir.FhirKhit.R4
                                         block.AppendCode($"temp140.SearchParamElement.Value = \"{temp139.SearchParamElement.Value}\";");    // FhirConstructGeneration.cs:138
                                     if (temp139.SearchParamElement.ElementId != null)                                                       // FhirConstructGeneration.cs:137
                                         block.AppendCode($"temp140.SearchParamElement.ElementId = \"{temp139.SearchParamElement.ElementId}\";");// FhirConstructGeneration.cs:138
+                                }                                                                                                           // FhirConstructGeneration.cs:213
+                                if (temp139.Value != null)                                                                                  // FhirConstructGeneration.cs:207
+                                {                                                                                                           // FhirConstructGeneration.cs:208
+                                        block.AppendCode($"temp140.Value = new DataType();");                                               // FhirConstructGeneration.cs:209
+                                    if (temp139.Value.ElementId != null)                                                                    // FhirConstructGeneration.cs:137
+                                        block.AppendCode($"temp140.Value.ElementId = \"{temp139.Value.ElementId}\";");                      // FhirConstructGeneration.cs:138
                                 }                                                                                                           // FhirConstructGeneration.cs:213
                                 if (temp139.ElementId != null)                                                                              // FhirConstructGeneration.cs:137
                                     block.AppendCode($"temp140.ElementId = \"{temp139.ElementId}\";");                                      // FhirConstructGeneration.cs:138
@@ -6327,6 +6803,12 @@ namespace Eir.FhirKhit.R4
                     }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Code.ElementId != null)                                                                                         // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.Code.ElementId = \"{fix.Code.ElementId}\";");                                             // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Value != null)                                                                                                      // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Value = new DataType();");                                                                // FhirConstructGeneration.cs:209
+                    if (fix.Value.ElementId != null)                                                                                        // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Value.ElementId = \"{fix.Value.ElementId}\";");                                           // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ElementId != null)                                                                                                  // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.ElementId = \"{fix.ElementId}\";");                                                           // FhirConstructGeneration.cs:138
