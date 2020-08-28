@@ -87,13 +87,13 @@ namespace Eir.FhirKhit.R4
             return e;
         }
 
-        public static ElementDefinition Fixed(this ElementDefinition e, Element value)
+        public static ElementDefinition Fixed(this ElementDefinition e, DataType value)
         {
             e.Fixed = value;
             return e;
         }
 
-        public static ElementDefinition Pattern(this ElementDefinition e, Element value)
+        public static ElementDefinition Pattern(this ElementDefinition e, DataType value)
         {
             e.Pattern = value;
             return e;

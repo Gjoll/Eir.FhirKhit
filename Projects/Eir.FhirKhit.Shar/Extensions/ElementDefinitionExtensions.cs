@@ -228,8 +228,13 @@ namespace Eir.FhirKhit.R3
             return elementDefinition;
         }
 
+#if FHIR_R4
         public static ElementDefinition SetFixed(this ElementDefinition elementDefinition,
+                DataType value)
+#else
+    public static ElementDefinition SetFixed(this ElementDefinition elementDefinition,
             Element value)
+#endif
         {
             if (elementDefinition is null)
                 throw new ArgumentNullException(nameof(elementDefinition));
@@ -434,8 +439,13 @@ namespace Eir.FhirKhit.R3
         /// <summary>
         /// Set maxValue.
         /// </summary>
+#if FHIR_R4
+        public static ElementDefinition SetMaxValue(this ElementDefinition elementDefinition,
+            DataType value)
+#else
         public static ElementDefinition SetMaxValue(this ElementDefinition elementDefinition,
             Element value)
+#endif
         {
             if (elementDefinition is null)
                 throw new ArgumentNullException(nameof(elementDefinition));
@@ -446,8 +456,13 @@ namespace Eir.FhirKhit.R3
         /// <summary>
         /// Set minValue.
         /// </summary>
+#if FHIR_R4
+        public static ElementDefinition SetMinValue(this ElementDefinition elementDefinition,
+            DataType value)
+#else
         public static ElementDefinition SetMinValue(this ElementDefinition elementDefinition,
             Element value)
+#endif
         {
             if (elementDefinition is null)
                 throw new ArgumentNullException(nameof(elementDefinition));
