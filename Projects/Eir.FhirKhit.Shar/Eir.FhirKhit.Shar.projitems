@@ -19,7 +19,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\BaseExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DomainResourceExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ElementDefinitionExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ExtendableExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\MarkDownExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\Misc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\StructureDefinitionExtensions.cs" />
@@ -34,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)IG\PageEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IG\ProfilesEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IG\ValueSetsEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SaveType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SDefCleaner.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SnapshotCreator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FhirValidator.cs" />

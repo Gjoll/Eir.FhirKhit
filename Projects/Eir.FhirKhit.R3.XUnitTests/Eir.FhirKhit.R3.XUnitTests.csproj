@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Eir.FhirKhit.R3\Eir.FhirKhit.R3.csproj" />
-    <ProjectReference Include="..\Eir.FhirKhit\Eir.FhirKhit.csproj" />
   </ItemGroup>
 
   <ItemGroup>

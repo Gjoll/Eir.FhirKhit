@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Eir.FhirKhit
+#if FHIR_R4
+namespace Eir.FhirKhit.R4
+#elif FHIR_R3
+namespace Eir.FhirKhit.R3
+#endif
 {
     public enum SaveType
     {
