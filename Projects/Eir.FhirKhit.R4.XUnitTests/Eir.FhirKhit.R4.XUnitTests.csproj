@@ -40,31 +40,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\src\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\src\Hl7.Fhir.Specification\Hl7.Fhir.Specification.csproj" />
     <ProjectReference Include="..\Eir.FhirKhit.r4\Eir.FhirKhit.R4.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Hl7.Fhir.ElementModel">
-      <HintPath>..\..\Library\Hl7.Fhir.ElementModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.R4.Core">
-      <HintPath>..\..\Library\Hl7.Fhir.R4.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.R4.Specification">
-      <HintPath>..\..\Library\Hl7.Fhir.R4.Specification.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.Serialization">
-      <HintPath>..\..\Library\Hl7.Fhir.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.Support">
-      <HintPath>..\..\Library\Hl7.Fhir.Support.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.Support.Poco">
-      <HintPath>..\..\Library\Hl7.Fhir.Support.Poco.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.FhirPath">
-      <HintPath>..\..\Library\Hl7.FhirPath.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@
     <LangVersion>7.1</LangVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.7.0</Version>
+    <Version>1.6.7</Version>
     <Authors>Kurt W. Allen</Authors>
     <Company>Eir Solutions, LLC.</Company>
     <PackageProjectUrl>https://github.com/Gjoll/Eir.FhirKhit</PackageProjectUrl>
@@ -45,77 +45,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="$(SolutionDir)Library/specification.zip">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-      <CopyToOutput>true</CopyToOutput>
-      <BuildAction>Content</BuildAction>
-      <copyToOutput>true</copyToOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Hl7.Fhir.ElementModel">
-      <HintPath>../../Library/Hl7.Fhir.ElementModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.R4.Core">
-      <HintPath>../../Library/Hl7.Fhir.R4.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.R4.Specification">
-      <HintPath>../../Library/Hl7.Fhir.R4.Specification.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.Serialization">
-      <HintPath>../../Library/Hl7.Fhir.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.Support">
-      <HintPath>../../Library/Hl7.Fhir.Support.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.Fhir.Support.Poco">
-      <HintPath>../../Library/Hl7.Fhir.Support.Poco.dll</HintPath>
-    </Reference>
-    <Reference Include="Hl7.FhirPath">
-      <HintPath>../../Library/Hl7.FhirPath.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="../../Library/Hl7.Fhir.ElementModel.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
-    <None Include="../../Library/Hl7.Fhir.R4.Core.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
-    <None Include="../../Library/Hl7.Fhir.R4.Specification.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
-    <None Include="../../Library/Hl7.Fhir.Serialization.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
-    <None Include="../../Library/Hl7.Fhir.Support.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
-    <None Include="../../Library/Hl7.Fhir.Support.Poco.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
-    <None Include="../../Library/Hl7.FhirPath.dll">
-      <Pack>true</Pack>
-      <IncludeInPackage>true</IncludeInPackage>
-      <PackagePath>lib/$(TargetFramework)</PackagePath>
-    </None>
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\src\Hl7.Fhir.Core\Hl7.Fhir.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\HL7\fhir-net-api\src\Hl7.Fhir.Specification\Hl7.Fhir.Specification.csproj" />
   </ItemGroup>
 
   <Import Project="../Eir.FhirKhit.Shar/Eir.FhirKhit.Shar.projitems" Label="PGShared" />
