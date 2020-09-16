@@ -26,8 +26,6 @@ jobs:
 
       - name: Build solution and generate NuGet package
         run: |  
-          cd Projects/Eir.FhirKhit
-          dotnet pack -v diag -c Release -o out  
           cd ../../Projects/Eir.FhirKhit.R3
           dotnet pack -v diag -c Release -o out  
           cd ../../Projects/Eir.FhirKhit.R4
@@ -35,7 +33,6 @@ jobs:
 
       - name: Push generated package to GitHub registry
         run: |
-          dotnet nuget push ./Projects/Eir.FhirKhit/out/*.nupkg -k ${{secrets.NugetApiToken}} --skip-duplicate
           dotnet nuget push ./Projects/Eir.FhirKhit.R3/out/*.nupkg -k ${{secrets.NugetApiToken}} --skip-duplicate
           dotnet nuget push ./Projects/Eir.FhirKhit.R4/out/*.nupkg -k ${{secrets.NugetApiToken}} --skip-duplicate
         
