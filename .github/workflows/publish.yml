@@ -35,5 +35,3 @@ jobs:
         run: |
           dotnet nuget push ./Projects/Eir.FhirKhit.R3/out/*.nupkg -k ${{secrets.NugetApiToken}} --skip-duplicate
           dotnet nuget push ./Projects/Eir.FhirKhit.R4/out/*.nupkg -k ${{secrets.NugetApiToken}} --skip-duplicate
-        
- No newline at end of file
