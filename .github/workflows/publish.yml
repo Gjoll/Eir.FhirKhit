@@ -26,10 +26,13 @@ jobs:
 
       - name: Build solution and generate NuGet package
         run: |  
-          cd ../../Projects/Eir.FhirKhit.R3
+          pushd Projects/Eir.FhirKhit.R3
           dotnet pack -v diag -c Release -o out  
-          cd ../../Projects/Eir.FhirKhit.R4
+          popd
+          
+          pushd Projects/Eir.FhirKhit.R4
           dotnet pack -v diag -c Release -o out  
+          popd
 
       - name: Push generated package to GitHub registry
         run: |
