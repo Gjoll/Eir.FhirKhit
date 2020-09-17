@@ -20,10 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Eir.DevTools" Version="1.16.5" />
-    <PackageReference Include="Hl7.Fhir.R4" Version="2.0.0-beta1" />
-    <PackageReference Include="Hl7.Fhir.Serialization" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.Fhir.Specification.R4" Version="2.0.0-beta1" />
-    <PackageReference Include="Hl7.Fhir.Support" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.FhirPath" Version="2.0.0-beta1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
