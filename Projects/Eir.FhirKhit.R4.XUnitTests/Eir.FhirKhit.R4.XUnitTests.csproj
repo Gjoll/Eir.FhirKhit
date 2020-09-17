@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="Eir.DevTools" Version="1.16.5" />
-    <PackageReference Include="Hl7.Fhir.ElementModel" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.Fhir.R4" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.Fhir.Serialization" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.Fhir.Specification.R4" Version="2.0.0-beta1" />
