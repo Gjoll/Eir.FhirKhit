@@ -26,10 +26,6 @@
     <PackageReference Include="Hl7.Fhir.Specification.R4" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.Fhir.Support" Version="2.0.0-beta1" />
     <PackageReference Include="Hl7.FhirPath" Version="2.0.0-beta1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
