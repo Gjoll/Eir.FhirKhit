@@ -24,7 +24,10 @@ namespace Eir.FhirKhit.R4
             // Generate StructureDefinition.Snapshot using c# API.
             SnapshotGeneratorSettings settings = SnapshotGeneratorSettings.CreateDefault();
             SnapshotGenerator generator = new SnapshotGenerator(ZipFhirSource.Source, settings);
-            await generator.UpdateAsync(structDef).ConfigureAwait(true);
+            lock (typeof(SnapshotCreator))
+            {
+                generator.UpdateAsync(structDef).Wait();
+            }
         }
     }
 }
