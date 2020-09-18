@@ -14,7 +14,7 @@ namespace Eir.FhirKhit.R4
     /// </summary>
     public static class SnapshotCreator
     {
-        public static async System.Threading.Tasks.Task CreateAsync(StructureDefinition structDef)
+        public static void Create(StructureDefinition structDef)
         {
             if (structDef is null)
                 throw new ArgumentNullException(nameof(structDef));
@@ -24,8 +24,21 @@ namespace Eir.FhirKhit.R4
             // Generate StructureDefinition.Snapshot using c# API.
             SnapshotGeneratorSettings settings = SnapshotGeneratorSettings.CreateDefault();
             SnapshotGenerator generator = new SnapshotGenerator(ZipFhirSource.Source, settings);
-            await generator.UpdateAsync(structDef).ConfigureAwait(true);
+            generator.UpdateAsync(structDef).Wait();
         }
+
+        //public static async System.Threading.Tasks.Task CreateAsync(StructureDefinition structDef)
+        //{
+        //    if (structDef is null)
+        //        throw new ArgumentNullException(nameof(structDef));
+
+        //    structDef.Snapshot = new StructureDefinition.SnapshotComponent();
+
+        //    // Generate StructureDefinition.Snapshot using c# API.
+        //    SnapshotGeneratorSettings settings = SnapshotGeneratorSettings.CreateDefault();
+        //    SnapshotGenerator generator = new SnapshotGenerator(ZipFhirSource.Source, settings);
+        //    await generator.UpdateAsync(structDef).ConfigureAwait(true);
+        //}
     }
 }
 

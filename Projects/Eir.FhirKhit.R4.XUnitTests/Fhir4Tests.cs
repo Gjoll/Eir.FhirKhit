@@ -13,7 +13,7 @@ namespace Eir.FhirKhit.R4.XUnitTests
     public class Fhir4Tests
     {
         [Fact(DisplayName = "SnapshotTest1")]
-        public async void SnapshotTest1()
+        public void SnapshotTest1()
         {
             String path = @"C:\Development\HL7\BreastRadiologyProfilesV3\Projects\build\input\profiles\StructureDefinition-AbnormalityArchitecturalDistortion.json";
             StructureDefinition sDef;
@@ -37,7 +37,8 @@ namespace Eir.FhirKhit.R4.XUnitTests
                     throw new Exception($"Unknown extension for serialized fhir resource '{path}'");
             }
 
-            await SnapshotCreator.CreateAsync(sDef);
+            //await SnapshotCreator.CreateAsync(sDef);
+            SnapshotCreator.Create(sDef);
             Debug.Assert(sDef.Snapshot != null);
             Debug.Assert(sDef.Snapshot.Element.Count > 0);
         }
