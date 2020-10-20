@@ -8,3 +8,4 @@
 *.pdf filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
+Projects/Eir.FhirKhit.R4/specification.zip filter=lfs diff=lfs merge=lfs -text

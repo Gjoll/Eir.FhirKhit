@@ -37,17 +37,11 @@
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="FhirConstruct.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
-
   <Import Project="../Eir.FhirKhit.Shar/Eir.FhirKhit.Shar.projitems" Label="PGShared" />
   <Import Project="../FhirKhit.GlobalSuppressions/FhirKhit.GlobalSuppressions.projitems" Label="PGShared" />
 
   <ItemGroup>
-    <Content Include="$(TargetDir)specification.zip">
+    <Content Include="specification.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <PackagePath>contentFiles/any/any</PackagePath>
       <PackageCopyToOutput>true</PackageCopyToOutput>
@@ -59,6 +53,10 @@
     <ItemGroup>
       <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
     </ItemGroup>
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(TargetDir)specification.zip $(ProjectDir)" />
   </Target>
 
 </Project>
