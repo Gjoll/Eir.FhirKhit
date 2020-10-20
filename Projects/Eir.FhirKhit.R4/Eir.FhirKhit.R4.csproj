@@ -49,7 +49,7 @@
   <ItemGroup>
     <Content Include="$(TargetDir)specification.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>contentFiles\any\any</PackagePath>
+      <PackagePath>contentFiles/any/any</PackagePath>
       <PackageCopyToOutput>true</PackageCopyToOutput>
       <PackageFlatten>true</PackageFlatten>
     </Content>
