@@ -44,12 +44,15 @@
     <Copy SourceFiles="$(TargetDir)specification.zip" DestinationFolder="$(ProjectDir)" />
   </Target>
 
-
   <ItemGroup>
-    <Content Include="specification.zip">
-      <PackagePath>contentFiles/any/any</PackagePath>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <PackageFlatten>true</PackageFlatten>
+    <Content Include="$(ProjectDir)specification.zip">
+      <Pack>true</Pack>
+      <IncludeInPackage>true</IncludeInPackage>
+      <PackagePath>lib/$(TargetFramework)</PackagePath>
+      <CopyToOutput>true</CopyToOutput>
+      <BuildAction>Content</BuildAction>
+      <copyToOutput>true</copyToOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
