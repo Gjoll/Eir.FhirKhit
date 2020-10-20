@@ -30,7 +30,9 @@
 
   <ItemGroup>
     <PackageReference Include="Eir.DevTools" Version="1.16.5" />
-    <PackageReference Include="Hl7.Fhir.Specification.R4" Version="2.0.0-beta1">
+    <PackageReference Include="Hl7.Fhir.Specification.R4" 
+                      Version="2.0.0-beta1"
+                      GeneratePathProperty="true" >
       <IncludeAssets>all</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -39,6 +41,11 @@
 
   <Import Project="../Eir.FhirKhit.Shar/Eir.FhirKhit.Shar.projitems" Label="PGShared" />
   <Import Project="../FhirKhit.GlobalSuppressions/FhirKhit.GlobalSuppressions.projitems" Label="PGShared" />
+
+  <Target Name="CopyFooBarFiles" BeforeTargets="Build">
+    <Copy SourceFiles="$(PkgHl7_Fhir_Specification_R4)/ContentFiles/Any/Any/specification.zip"
+          DestinationFolder="$(ProjectDir)" />
+  </Target>
 
   <ItemGroup>
     <Content Include="specification.zip">
@@ -53,10 +60,6 @@
     <ItemGroup>
       <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
     </ItemGroup>
-  </Target>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy $(TargetDir)specification.zip $(ProjectDir)" />
   </Target>
 
 </Project>
