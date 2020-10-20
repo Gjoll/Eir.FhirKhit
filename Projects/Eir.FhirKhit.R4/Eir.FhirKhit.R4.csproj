@@ -5,7 +5,7 @@
     <LangVersion>7.1</LangVersion>
     <Platforms>AnyCPU;x64</Platforms>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.9.10</Version>
+    <Version>1.9.11</Version>
     <Authors>Kurt W. Allen</Authors>
     <Company>Eir Solutions, LLC.</Company>
     <PackageProjectUrl>https://github.com/Gjoll/Eir.FhirKhit</PackageProjectUrl>
@@ -45,6 +45,15 @@
 
   <Import Project="../Eir.FhirKhit.Shar/Eir.FhirKhit.Shar.projitems" Label="PGShared" />
   <Import Project="../FhirKhit.GlobalSuppressions/FhirKhit.GlobalSuppressions.projitems" Label="PGShared" />
+
+  <ItemGroup>
+    <Content Include="$(TargetDir)specification.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PackagePath>contentFiles\any\any</PackagePath>
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <PackageFlatten>true</PackageFlatten>
+    </Content>
+  </ItemGroup>
 
   <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
     <ItemGroup>
