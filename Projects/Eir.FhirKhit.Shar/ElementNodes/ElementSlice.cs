@@ -9,7 +9,7 @@ namespace Eir.FhirKhit.R4
 namespace Eir.FhirKhit.R3
 #endif
 {
-    [DebuggerDisplay("{this.ElementNode.NodeName}:{this.SliceName}")]
+    [DebuggerDisplay("{this.ElementNode.ElementId}")]
     public class ElementSlice
     {
         public String SliceName { get; }
