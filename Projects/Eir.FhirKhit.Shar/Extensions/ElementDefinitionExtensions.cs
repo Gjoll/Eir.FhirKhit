@@ -239,7 +239,7 @@ namespace Eir.FhirKhit.R3
             if (elementDefinition is null)
                 throw new ArgumentNullException(nameof(elementDefinition));
 
-            elementDefinition.Fixed = value;
+            elementDefinition.Fixed = (DataType)value;
             return elementDefinition;
         }
 
@@ -449,7 +449,7 @@ namespace Eir.FhirKhit.R3
         {
             if (elementDefinition is null)
                 throw new ArgumentNullException(nameof(elementDefinition));
-            elementDefinition.MaxValue = value;
+            elementDefinition.MaxValue = (DataType)value;
             return elementDefinition;
         }
 
@@ -466,7 +466,7 @@ namespace Eir.FhirKhit.R3
         {
             if (elementDefinition is null)
                 throw new ArgumentNullException(nameof(elementDefinition));
-            elementDefinition.MinValue = value;
+            elementDefinition.MinValue = (DataType) value;
             return elementDefinition;
         }
 

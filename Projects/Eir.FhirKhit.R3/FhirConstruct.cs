@@ -208,12 +208,6 @@ namespace Eir.FhirKhit.R3
                     return Construct(block, (Signature)fix, methodName, methodAccess);                                                      // FhirConstructGeneration.cs:308
                 }                                                                                                                           // FhirConstructGeneration.cs:309
                                                                                                                                             // FhirConstructGeneration.cs:310
-                case "SimpleQuantity": // SimpleQuantity  - DataType                                                                        // FhirConstructGeneration.cs:305
-                {                                                                                                                           // FhirConstructGeneration.cs:306
-                    propertyType = "SimpleQuantity";                                                                                        // FhirConstructGeneration.cs:307
-                    return Construct(block, (SimpleQuantity)fix, methodName, methodAccess);                                                 // FhirConstructGeneration.cs:308
-                }                                                                                                                           // FhirConstructGeneration.cs:309
-                                                                                                                                            // FhirConstructGeneration.cs:310
                 case "Timing": // Timing  - DataType                                                                                        // FhirConstructGeneration.cs:305
                 {                                                                                                                           // FhirConstructGeneration.cs:306
                     propertyType = "Timing";                                                                                                // FhirConstructGeneration.cs:307
@@ -535,6 +529,12 @@ namespace Eir.FhirKhit.R3
                 ;                                                                                                                           // FhirConstructGeneration.cs:330
             if (fix != null)                                                                                                                // FhirConstructGeneration.cs:331
             {                                                                                                                               // FhirConstructGeneration.cs:332
+                if (fix.Author != null)                                                                                                     // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Author = new DataType();");                                                               // FhirConstructGeneration.cs:209
+                    if (fix.Author.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Author.ElementId = \"{fix.Author.ElementId}\";");                                         // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.TimeElement != null)                                                                                                // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.TimeElement = new FhirDateTime();");                                                      // FhirConstructGeneration.cs:209
@@ -1248,6 +1248,12 @@ namespace Eir.FhirKhit.R3
                             if (temp15.PathElement.ElementId != null)                                                                       // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp16.PathElement.ElementId = \"{temp15.PathElement.ElementId}\";");                    // FhirConstructGeneration.cs:138
                         }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp15.ValueSet != null)                                                                                        // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp16.ValueSet = new DataType();");                                                     // FhirConstructGeneration.cs:209
+                            if (temp15.ValueSet.ElementId != null)                                                                          // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp16.ValueSet.ElementId = \"{temp15.ValueSet.ElementId}\";");                          // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp15.ValueCodeElement != null)                                                                                // FhirConstructGeneration.cs:159
                         {                                                                                                                   // FhirConstructGeneration.cs:160
                             block.AppendCode($"temp16.ValueCodeElement = new List<Code>();");                                               // FhirConstructGeneration.cs:161
@@ -1420,6 +1426,12 @@ namespace Eir.FhirKhit.R3
                                 block.AppendCode($"temp26.PathElement.Value = \"{temp25.PathElement.Value}\";");                            // FhirConstructGeneration.cs:138
                             if (temp25.PathElement.ElementId != null)                                                                       // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp26.PathElement.ElementId = \"{temp25.PathElement.ElementId}\";");                    // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp25.Value != null)                                                                                           // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp26.Value = new DataType();");                                                        // FhirConstructGeneration.cs:209
+                            if (temp25.Value.ElementId != null)                                                                             // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp26.Value.ElementId = \"{temp25.Value.ElementId}\";");                                // FhirConstructGeneration.cs:138
                         }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp25.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                             block.AppendCode($"temp26.ElementId = \"{temp25.ElementId}\";");                                                // FhirConstructGeneration.cs:138
@@ -1637,6 +1649,12 @@ namespace Eir.FhirKhit.R3
                     if (fix.Timing.Repeat != null)                                                                                          // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.Timing.Repeat = new Timing.RepeatComponent();");                                      // FhirConstructGeneration.cs:209
+                        if (fix.Timing.Repeat.Bounds != null)                                                                               // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"retVal.Timing.Repeat.Bounds = new DataType();");                                         // FhirConstructGeneration.cs:209
+                            if (fix.Timing.Repeat.Bounds.ElementId != null)                                                                 // FhirConstructGeneration.cs:137
+                                block.AppendCode($"retVal.Timing.Repeat.Bounds.ElementId = \"{fix.Timing.Repeat.Bounds.ElementId}\";");     // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (fix.Timing.Repeat.CountElement != null)                                                                         // FhirConstructGeneration.cs:207
                         {                                                                                                                   // FhirConstructGeneration.cs:208
                                 block.AppendCode($"retVal.Timing.Repeat.CountElement = new Integer();");                                    // FhirConstructGeneration.cs:209
@@ -1835,6 +1853,12 @@ namespace Eir.FhirKhit.R3
                     }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Timing.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.Timing.ElementId = \"{fix.Timing.ElementId}\";");                                         // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.AsNeeded != null)                                                                                                   // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.AsNeeded = new DataType();");                                                             // FhirConstructGeneration.cs:209
+                    if (fix.AsNeeded.ElementId != null)                                                                                     // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.AsNeeded.ElementId = \"{fix.AsNeeded.ElementId}\";");                                     // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Site != null)                                                                                                       // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
@@ -2052,6 +2076,12 @@ namespace Eir.FhirKhit.R3
                     if (fix.Method.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.Method.ElementId = \"{fix.Method.ElementId}\";");                                         // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Dose != null)                                                                                                       // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Dose = new DataType();");                                                                 // FhirConstructGeneration.cs:209
+                    if (fix.Dose.ElementId != null)                                                                                         // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Dose.ElementId = \"{fix.Dose.ElementId}\";");                                             // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MaxDosePerPeriod != null)                                                                                           // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.MaxDosePerPeriod = new Ratio();");                                                        // FhirConstructGeneration.cs:209
@@ -2217,6 +2247,12 @@ namespace Eir.FhirKhit.R3
                     }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.MaxDosePerLifetime.ElementId != null)                                                                           // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.MaxDosePerLifetime.ElementId = \"{fix.MaxDosePerLifetime.ElementId}\";");                 // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Rate != null)                                                                                                       // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Rate = new DataType();");                                                                 // FhirConstructGeneration.cs:209
+                    if (fix.Rate.ElementId != null)                                                                                         // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Rate.ElementId = \"{fix.Rate.ElementId}\";");                                             // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ElementId != null)                                                                                                  // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.ElementId = \"{fix.ElementId}\";");                                                           // FhirConstructGeneration.cs:138
@@ -2608,6 +2644,12 @@ namespace Eir.FhirKhit.R3
                         block.CloseBrace();                                                                                                 // FhirConstructGeneration.cs:172
                     }                                                                                                                       // FhirConstructGeneration.cs:173
                 }                                                                                                                           // FhirConstructGeneration.cs:174
+                if (fix.DefaultValue != null)                                                                                               // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.DefaultValue = new DataType();");                                                         // FhirConstructGeneration.cs:209
+                    if (fix.DefaultValue.ElementId != null)                                                                                 // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.DefaultValue.ElementId = \"{fix.DefaultValue.ElementId}\";");                             // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MeaningWhenMissingElement != null)                                                                                  // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.MeaningWhenMissingElement = new Markdown();");                                            // FhirConstructGeneration.cs:209
@@ -2624,6 +2666,18 @@ namespace Eir.FhirKhit.R3
                     if (fix.OrderMeaningElement.ElementId != null)                                                                          // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.OrderMeaningElement.ElementId = \"{fix.OrderMeaningElement.ElementId}\";");               // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Fixed != null)                                                                                                      // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Fixed = new DataType();");                                                                // FhirConstructGeneration.cs:209
+                    if (fix.Fixed.ElementId != null)                                                                                        // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Fixed.ElementId = \"{fix.Fixed.ElementId}\";");                                           // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Pattern != null)                                                                                                    // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Pattern = new DataType();");                                                              // FhirConstructGeneration.cs:209
+                    if (fix.Pattern.ElementId != null)                                                                                      // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Pattern.ElementId = \"{fix.Pattern.ElementId}\";");                                       // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Example != null)                                                                                                    // FhirConstructGeneration.cs:159
                 {                                                                                                                           // FhirConstructGeneration.cs:160
                     block.AppendCode($"retVal.Example = new List<ElementDefinition.ExampleComponent>();");                                  // FhirConstructGeneration.cs:161
@@ -2639,12 +2693,30 @@ namespace Eir.FhirKhit.R3
                             if (temp59.LabelElement.ElementId != null)                                                                      // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp60.LabelElement.ElementId = \"{temp59.LabelElement.ElementId}\";");                  // FhirConstructGeneration.cs:138
                         }                                                                                                                   // FhirConstructGeneration.cs:213
+                        if (temp59.Value != null)                                                                                           // FhirConstructGeneration.cs:207
+                        {                                                                                                                   // FhirConstructGeneration.cs:208
+                                block.AppendCode($"temp60.Value = new DataType();");                                                        // FhirConstructGeneration.cs:209
+                            if (temp59.Value.ElementId != null)                                                                             // FhirConstructGeneration.cs:137
+                                block.AppendCode($"temp60.Value.ElementId = \"{temp59.Value.ElementId}\";");                                // FhirConstructGeneration.cs:138
+                        }                                                                                                                   // FhirConstructGeneration.cs:213
                         if (temp59.ElementId != null)                                                                                       // FhirConstructGeneration.cs:137
                             block.AppendCode($"temp60.ElementId = \"{temp59.ElementId}\";");                                                // FhirConstructGeneration.cs:138
                         block.AppendCode($"retVal.Example.Add(temp60);");                                                                   // FhirConstructGeneration.cs:171
                         block.CloseBrace();                                                                                                 // FhirConstructGeneration.cs:172
                     }                                                                                                                       // FhirConstructGeneration.cs:173
                 }                                                                                                                           // FhirConstructGeneration.cs:174
+                if (fix.MinValue != null)                                                                                                   // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.MinValue = new DataType();");                                                             // FhirConstructGeneration.cs:209
+                    if (fix.MinValue.ElementId != null)                                                                                     // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.MinValue.ElementId = \"{fix.MinValue.ElementId}\";");                                     // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.MaxValue != null)                                                                                                   // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.MaxValue = new DataType();");                                                             // FhirConstructGeneration.cs:209
+                    if (fix.MaxValue.ElementId != null)                                                                                     // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.MaxValue.ElementId = \"{fix.MaxValue.ElementId}\";");                                     // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.MaxLengthElement != null)                                                                                           // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.MaxLengthElement = new Integer();");                                                      // FhirConstructGeneration.cs:209
@@ -2783,6 +2855,12 @@ namespace Eir.FhirKhit.R3
                         if (fix.Binding.DescriptionElement.ElementId != null)                                                               // FhirConstructGeneration.cs:137
                             block.AppendCode($"retVal.Binding.DescriptionElement.ElementId = \"{fix.Binding.DescriptionElement.ElementId}\";");// FhirConstructGeneration.cs:138
                     }                                                                                                                       // FhirConstructGeneration.cs:213
+                    if (fix.Binding.ValueSet != null)                                                                                       // FhirConstructGeneration.cs:207
+                    {                                                                                                                       // FhirConstructGeneration.cs:208
+                            block.AppendCode($"retVal.Binding.ValueSet = new DataType();");                                                 // FhirConstructGeneration.cs:209
+                        if (fix.Binding.ValueSet.ElementId != null)                                                                         // FhirConstructGeneration.cs:137
+                            block.AppendCode($"retVal.Binding.ValueSet.ElementId = \"{fix.Binding.ValueSet.ElementId}\";");                 // FhirConstructGeneration.cs:138
+                    }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Binding.ElementId != null)                                                                                      // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.Binding.ElementId = \"{fix.Binding.ElementId}\";");                                       // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
@@ -2859,6 +2937,12 @@ namespace Eir.FhirKhit.R3
             {                                                                                                                               // FhirConstructGeneration.cs:332
                 if (fix.Url != null)                                                                                                        // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.Url = \"{fix.Url}\";");                                                                       // FhirConstructGeneration.cs:138
+                if (fix.Value != null)                                                                                                      // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Value = new DataType();");                                                                // FhirConstructGeneration.cs:209
+                    if (fix.Value.ElementId != null)                                                                                        // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Value.ElementId = \"{fix.Value.ElementId}\";");                                           // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ElementId != null)                                                                                                  // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.ElementId = \"{fix.ElementId}\";");                                                           // FhirConstructGeneration.cs:138
             }                                                                                                                               // FhirConstructGeneration.cs:338
@@ -3156,6 +3240,14 @@ namespace Eir.FhirKhit.R3
                     }                                                                                                                       // FhirConstructGeneration.cs:117
                     if (fix.LastUpdatedElement.ElementId != null)                                                                           // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.LastUpdatedElement.ElementId = \"{fix.LastUpdatedElement.ElementId}\";");                 // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.SourceElement != null)                                                                                              // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.SourceElement = new FhirUri();");                                                         // FhirConstructGeneration.cs:209
+                    if (fix.SourceElement.Value != null)                                                                                    // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.SourceElement.Value = \"{fix.SourceElement.Value}\";");                                   // FhirConstructGeneration.cs:138
+                    if (fix.SourceElement.ElementId != null)                                                                                // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.SourceElement.ElementId = \"{fix.SourceElement.ElementId}\";");                           // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ProfileElement != null)                                                                                             // FhirConstructGeneration.cs:159
                 {                                                                                                                           // FhirConstructGeneration.cs:160
@@ -3788,6 +3880,14 @@ namespace Eir.FhirKhit.R3
                     if (fix.ReferenceElement.ElementId != null)                                                                             // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.ReferenceElement.ElementId = \"{fix.ReferenceElement.ElementId}\";");                     // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.TypeElement != null)                                                                                                // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.TypeElement = new FhirUri();");                                                           // FhirConstructGeneration.cs:209
+                    if (fix.TypeElement.Value != null)                                                                                      // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.TypeElement.Value = \"{fix.TypeElement.Value}\";");                                       // FhirConstructGeneration.cs:138
+                    if (fix.TypeElement.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.TypeElement.ElementId = \"{fix.TypeElement.ElementId}\";");                               // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.Identifier != null)                                                                                                 // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.Identifier = new Identifier();");                                                         // FhirConstructGeneration.cs:209
@@ -4291,6 +4391,18 @@ namespace Eir.FhirKhit.R3
                     if (fix.WhenElement.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.WhenElement.ElementId = \"{fix.WhenElement.ElementId}\";");                               // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Who != null)                                                                                                        // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Who = new DataType();");                                                                  // FhirConstructGeneration.cs:209
+                    if (fix.Who.ElementId != null)                                                                                          // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Who.ElementId = \"{fix.Who.ElementId}\";");                                               // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.OnBehalfOf != null)                                                                                                 // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.OnBehalfOf = new DataType();");                                                           // FhirConstructGeneration.cs:209
+                    if (fix.OnBehalfOf.ElementId != null)                                                                                   // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.OnBehalfOf.ElementId = \"{fix.OnBehalfOf.ElementId}\";");                                 // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ContentTypeElement != null)                                                                                         // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.ContentTypeElement = new Code();");                                                       // FhirConstructGeneration.cs:209
@@ -4342,66 +4454,6 @@ namespace Eir.FhirKhit.R3
         /// Return c# text to create indicated element.
         /// </summary>
         static public bool Construct(CodeBlockNested block,                                                                                 // FhirConstructGeneration.cs:319
-            SimpleQuantity fix,                                                                                                             // FhirConstructGeneration.cs:320
-            String methodName,                                                                                                              // FhirConstructGeneration.cs:321
-            String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:322
-        {                                                                                                                                   // FhirConstructGeneration.cs:323
-                                                                                                                                            // FhirConstructGeneration.cs:325
-            block                                                                                                                           // FhirConstructGeneration.cs:326
-                .AppendCode($"{methodAccess} SimpleQuantity {methodName}()")                                                                // FhirConstructGeneration.cs:327
-                .OpenBrace()                                                                                                                // FhirConstructGeneration.cs:328
-                .AppendCode("SimpleQuantity retVal = new SimpleQuantity();")                                                                // FhirConstructGeneration.cs:329
-                ;                                                                                                                           // FhirConstructGeneration.cs:330
-            if (fix != null)                                                                                                                // FhirConstructGeneration.cs:331
-            {                                                                                                                               // FhirConstructGeneration.cs:332
-                if (fix.ValueElement != null)                                                                                               // FhirConstructGeneration.cs:207
-                {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.ValueElement = new FhirDecimal();");                                                      // FhirConstructGeneration.cs:209
-                    if (fix.ValueElement.Value.HasValue == true)                                                                            // FhirConstructGeneration.cs:123
-                        block.AppendCode($"retVal.ValueElement.Value = new Nullable<decimal>((decimal) {fix.ValueElement.Value.Value});");  // FhirConstructGeneration.cs:124
-                    if (fix.ValueElement.ElementId != null)                                                                                 // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.ValueElement.ElementId = \"{fix.ValueElement.ElementId}\";");                             // FhirConstructGeneration.cs:138
-                }                                                                                                                           // FhirConstructGeneration.cs:213
-                if (fix.ComparatorElement != null)                                                                                          // FhirConstructGeneration.cs:147
-                    block.AppendCode($"retVal.ComparatorElement = new Code<Quantity.QuantityComparator>(Quantity.QuantityComparator.{fix.ComparatorElement.Value});");// FhirConstructGeneration.cs:148
-                if (fix.UnitElement != null)                                                                                                // FhirConstructGeneration.cs:207
-                {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.UnitElement = new FhirString();");                                                        // FhirConstructGeneration.cs:209
-                    if (fix.UnitElement.Value != null)                                                                                      // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.UnitElement.Value = \"{fix.UnitElement.Value}\";");                                       // FhirConstructGeneration.cs:138
-                    if (fix.UnitElement.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.UnitElement.ElementId = \"{fix.UnitElement.ElementId}\";");                               // FhirConstructGeneration.cs:138
-                }                                                                                                                           // FhirConstructGeneration.cs:213
-                if (fix.SystemElement != null)                                                                                              // FhirConstructGeneration.cs:207
-                {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.SystemElement = new FhirUri();");                                                         // FhirConstructGeneration.cs:209
-                    if (fix.SystemElement.Value != null)                                                                                    // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.SystemElement.Value = \"{fix.SystemElement.Value}\";");                                   // FhirConstructGeneration.cs:138
-                    if (fix.SystemElement.ElementId != null)                                                                                // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.SystemElement.ElementId = \"{fix.SystemElement.ElementId}\";");                           // FhirConstructGeneration.cs:138
-                }                                                                                                                           // FhirConstructGeneration.cs:213
-                if (fix.CodeElement != null)                                                                                                // FhirConstructGeneration.cs:207
-                {                                                                                                                           // FhirConstructGeneration.cs:208
-                        block.AppendCode($"retVal.CodeElement = new Code();");                                                              // FhirConstructGeneration.cs:209
-                    if (fix.CodeElement.Value != null)                                                                                      // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.CodeElement.Value = \"{fix.CodeElement.Value}\";");                                       // FhirConstructGeneration.cs:138
-                    if (fix.CodeElement.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
-                        block.AppendCode($"retVal.CodeElement.ElementId = \"{fix.CodeElement.ElementId}\";");                               // FhirConstructGeneration.cs:138
-                }                                                                                                                           // FhirConstructGeneration.cs:213
-                if (fix.ElementId != null)                                                                                                  // FhirConstructGeneration.cs:137
-                    block.AppendCode($"retVal.ElementId = \"{fix.ElementId}\";");                                                           // FhirConstructGeneration.cs:138
-            }                                                                                                                               // FhirConstructGeneration.cs:338
-            block                                                                                                                           // FhirConstructGeneration.cs:339
-                .AppendCode("return retVal;")                                                                                               // FhirConstructGeneration.cs:340
-                .CloseBrace()                                                                                                               // FhirConstructGeneration.cs:341
-                ;                                                                                                                           // FhirConstructGeneration.cs:342
-            return  true;                                                                                                                   // FhirConstructGeneration.cs:343
-        }                                                                                                                                   // FhirConstructGeneration.cs:344
-                                                                                                                                            // FhirConstructGeneration.cs:315
-        /// <summary>
-        /// Return c# text to create indicated element.
-        /// </summary>
-        static public bool Construct(CodeBlockNested block,                                                                                 // FhirConstructGeneration.cs:319
             Timing fix,                                                                                                                     // FhirConstructGeneration.cs:320
             String methodName,                                                                                                              // FhirConstructGeneration.cs:321
             String methodAccess = "public")                                                                                                 // FhirConstructGeneration.cs:322
@@ -4432,6 +4484,12 @@ namespace Eir.FhirKhit.R3
                 if (fix.Repeat != null)                                                                                                     // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.Repeat = new Timing.RepeatComponent();");                                                 // FhirConstructGeneration.cs:209
+                    if (fix.Repeat.Bounds != null)                                                                                          // FhirConstructGeneration.cs:207
+                    {                                                                                                                       // FhirConstructGeneration.cs:208
+                            block.AppendCode($"retVal.Repeat.Bounds = new DataType();");                                                    // FhirConstructGeneration.cs:209
+                        if (fix.Repeat.Bounds.ElementId != null)                                                                            // FhirConstructGeneration.cs:137
+                            block.AppendCode($"retVal.Repeat.Bounds.ElementId = \"{fix.Repeat.Bounds.ElementId}\";");                       // FhirConstructGeneration.cs:138
+                    }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Repeat.CountElement != null)                                                                                    // FhirConstructGeneration.cs:207
                     {                                                                                                                       // FhirConstructGeneration.cs:208
                             block.AppendCode($"retVal.Repeat.CountElement = new Integer();");                                               // FhirConstructGeneration.cs:209
@@ -4664,6 +4722,12 @@ namespace Eir.FhirKhit.R3
                     if (fix.EventNameElement.ElementId != null)                                                                             // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.EventNameElement.ElementId = \"{fix.EventNameElement.ElementId}\";");                     // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.EventTiming != null)                                                                                                // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.EventTiming = new DataType();");                                                          // FhirConstructGeneration.cs:209
+                    if (fix.EventTiming.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.EventTiming.ElementId = \"{fix.EventTiming.ElementId}\";");                               // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.EventData != null)                                                                                                  // FhirConstructGeneration.cs:207
                 {                                                                                                                           // FhirConstructGeneration.cs:208
                         block.AppendCode($"retVal.EventData = new DataRequirement();");                                                     // FhirConstructGeneration.cs:209
@@ -4713,6 +4777,12 @@ namespace Eir.FhirKhit.R3
                                     block.AppendCode($"temp100.PathElement.Value = \"{temp99.PathElement.Value}\";");                       // FhirConstructGeneration.cs:138
                                 if (temp99.PathElement.ElementId != null)                                                                   // FhirConstructGeneration.cs:137
                                     block.AppendCode($"temp100.PathElement.ElementId = \"{temp99.PathElement.ElementId}\";");               // FhirConstructGeneration.cs:138
+                            }                                                                                                               // FhirConstructGeneration.cs:213
+                            if (temp99.ValueSet != null)                                                                                    // FhirConstructGeneration.cs:207
+                            {                                                                                                               // FhirConstructGeneration.cs:208
+                                    block.AppendCode($"temp100.ValueSet = new DataType();");                                                // FhirConstructGeneration.cs:209
+                                if (temp99.ValueSet.ElementId != null)                                                                      // FhirConstructGeneration.cs:137
+                                    block.AppendCode($"temp100.ValueSet.ElementId = \"{temp99.ValueSet.ElementId}\";");                     // FhirConstructGeneration.cs:138
                             }                                                                                                               // FhirConstructGeneration.cs:213
                             if (temp99.ValueCodeElement != null)                                                                            // FhirConstructGeneration.cs:159
                             {                                                                                                               // FhirConstructGeneration.cs:160
@@ -4887,6 +4957,12 @@ namespace Eir.FhirKhit.R3
                                 if (temp109.PathElement.ElementId != null)                                                                  // FhirConstructGeneration.cs:137
                                     block.AppendCode($"temp110.PathElement.ElementId = \"{temp109.PathElement.ElementId}\";");              // FhirConstructGeneration.cs:138
                             }                                                                                                               // FhirConstructGeneration.cs:213
+                            if (temp109.Value != null)                                                                                      // FhirConstructGeneration.cs:207
+                            {                                                                                                               // FhirConstructGeneration.cs:208
+                                    block.AppendCode($"temp110.Value = new DataType();");                                                   // FhirConstructGeneration.cs:209
+                                if (temp109.Value.ElementId != null)                                                                        // FhirConstructGeneration.cs:137
+                                    block.AppendCode($"temp110.Value.ElementId = \"{temp109.Value.ElementId}\";");                          // FhirConstructGeneration.cs:138
+                            }                                                                                                               // FhirConstructGeneration.cs:213
                             if (temp109.ElementId != null)                                                                                  // FhirConstructGeneration.cs:137
                                 block.AppendCode($"temp110.ElementId = \"{temp109.ElementId}\";");                                          // FhirConstructGeneration.cs:138
                             block.AppendCode($"retVal.EventData.DateFilter.Add(temp110);");                                                 // FhirConstructGeneration.cs:171
@@ -4972,6 +5048,12 @@ namespace Eir.FhirKhit.R3
                     }                                                                                                                       // FhirConstructGeneration.cs:213
                     if (fix.Code.ElementId != null)                                                                                         // FhirConstructGeneration.cs:137
                         block.AppendCode($"retVal.Code.ElementId = \"{fix.Code.ElementId}\";");                                             // FhirConstructGeneration.cs:138
+                }                                                                                                                           // FhirConstructGeneration.cs:213
+                if (fix.Value != null)                                                                                                      // FhirConstructGeneration.cs:207
+                {                                                                                                                           // FhirConstructGeneration.cs:208
+                        block.AppendCode($"retVal.Value = new DataType();");                                                                // FhirConstructGeneration.cs:209
+                    if (fix.Value.ElementId != null)                                                                                        // FhirConstructGeneration.cs:137
+                        block.AppendCode($"retVal.Value.ElementId = \"{fix.Value.ElementId}\";");                                           // FhirConstructGeneration.cs:138
                 }                                                                                                                           // FhirConstructGeneration.cs:213
                 if (fix.ElementId != null)                                                                                                  // FhirConstructGeneration.cs:137
                     block.AppendCode($"retVal.ElementId = \"{fix.ElementId}\";");                                                           // FhirConstructGeneration.cs:138
